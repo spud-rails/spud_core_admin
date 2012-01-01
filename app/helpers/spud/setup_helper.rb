@@ -1,0 +1,2 @@
+module Spud::SetupHelper
+end

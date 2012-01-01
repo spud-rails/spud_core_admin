@@ -1,0 +1,25 @@
+<%content_for :detail do%>
+	<%=form_tag "/spud/setup",:method => :post,:class=>"right_aligned_form" do %>
+		<fieldset>
+			<legend>New Admin Account</legend>
+			<ol>
+				<li><%=label_tag "Login"%>
+				  <%=text_field_tag :login,nil,:title => "",:size=>25%>
+				</li>
+				<li><%=label_tag "Email"%>
+				  <%=text_field_tag :email,nil,:title => "",:size=>25%>
+				</li>
+				<li><%=label_tag "Password"%>
+				  <%=password_field_tag :password,nil,:title => "",:size=>25%>
+				</li>
+				<li><%=label_tag "Confirm"%>
+				  <%=password_field_tag :password_confirmation,nil,:title => "",:size=>25%>
+				</li>
+				
+				  
+			</ol>
+		</fieldset>
+		<fieldset class="submit"><%=submit_tag "Create Admin Account"%></fieldset>
+	<%end%>
+	<br/>
+<%end%>

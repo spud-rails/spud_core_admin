@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Spud Admin</title>
+  <%= stylesheet_link_tag    "spud/admin/application" %>
+  <%= javascript_include_tag "spud/admin/application" %>
+  <%= csrf_meta_tags %>
+  <%=content_for :head%>
+</head>
+<body>
+<div id="header">
+	<h1>Spud Admin</h1>
+	<div id="user_meta">
+		<span class="greeting">Hello <%=@current_user.login%></span>&nbsp;|&nbsp;<a href="#">Settings</a>&nbsp;|&nbsp;<%=link_to "Logout",spud_user_session_url,:method => :delete%></a>
+	</div>
+</div>
+<div id="breadcrumbs">
+<%= render_breadcrumbs :separator => ' / ' %>
+</div>
+<div id="content">
+	<%= content_for?(:content) ? yield(:content) : yield %>
+</div>
+
+</body>
+</html>

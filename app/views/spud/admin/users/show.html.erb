@@ -1,0 +1,17 @@
+<%=content_for :data_controls do%>
+<%=link_to "Edit",edit_spud_admin_user_path(:id => @user.id),:class => "ajax",:title => "Edit User"%> | <%=link_to "Remove",spud_admin_user_path(:id => @user.id),:method => :delete,:title => "Remove User",:confirm => "Are you sure you wish to remove this user?"%>
+<%end%>
+<%=content_for :detail_nav do%>
+	<ul class="detail_nav">
+		<li><%=link_to "Permissions","#"%></li>
+	</ul>
+<%end%>
+
+<%=content_for :detail do%>
+	<div class="info_card">
+		<p><strong>Login:</strong> <%=@user.login%> <%="(Super Administrator)" if @user.super_admin%></p>
+		<p><strong>Email:</strong> <%=link_to @user.email, "mailto:#{@user.email}"%></p>
+		<p><strong>Last Login:</strong> <span title="IP: <%=@user.last_login_ip%>"><%=timestamp @user.last_login_at%></span></p>
+		<p><strong>Created:</strong> <%=timestamp @user.created_at%></p>
+	</div>
+<%end%>
