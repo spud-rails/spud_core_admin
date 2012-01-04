@@ -2,7 +2,7 @@
 //= require jquery_ujs
 //= require jquery-ui
 //= require spud/admin/jquery.dataTables.min
-
+//= require wymeditor/jquery.wymeditor.min
 $(document).ready(function() {
     $('#user_table').dataTable({
     	"bJQueryUI": true,
@@ -40,5 +40,23 @@ $(document).ready(function() {
         console.log(data)
       });
       $('a.button').button();
+    
 
+        var tabNames = [];
+       $('.formtabs .formtab').each(function(tabind) {
+           this.id = 'tab-' + tabind;
+           console.log($('.tab_name',this));
+           tabNames.push($('.tab_name',this).first().val())
+       });
+       var tabButtons = $('.formtabs .formtab_buttons').first();
+       for(var x=0;x<tabNames.length;x++)
+       {
+           tabButtons.append($('<li><a href="#tab-' + x + '">' + tabNames[x] + '</a></li>'))
+       }
+       
+       $('.formtabs').tabs();
+       $('textarea.wysiwym').wymeditor({
+         skinPath: "/assets/wymeditor/skins/default/"
+       });
+    
 } );
