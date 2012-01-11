@@ -31,5 +31,8 @@
   <%=f.password_field :password_confirmation, :title => "",:size => 25%>
   <%=error_message_on "user","password_confirmation"%>
 </li>
+<li><%=f.label :super_admin,"Super Admin"%>
+  <%=f.check_box :super_admin, :title => ""%>
+</li>
 </ol>
 </fieldset>
