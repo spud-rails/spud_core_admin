@@ -1,7 +1,7 @@
 class Spud::UserSessionsController < Spud::ApplicationController
   before_filter :require_no_user, :only => [:new, :create]
   before_filter :require_user, :only => :destroy
-  layout 'spud/login'
+  layout 'spud/login/application'
   def new
     if SpudUser.count == 0
       redirect_to spud_setup_url() and return
