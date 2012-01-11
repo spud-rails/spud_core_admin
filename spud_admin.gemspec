@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["David Estes"]
-  s.date = "2012-01-10"
+  s.date = "2012-01-11"
   s.email = "destes@redwindsw.com"
   s.files = [
     "app/assets/images/Sorting icons.psd",
@@ -60,6 +60,7 @@ Gem::Specification.new do |s|
     "app/assets/stylesheets/spud/admin/jquery-ui.css",
     "app/assets/stylesheets/spud/admin/users.css",
     "app/assets/stylesheets/spud/login.css",
+    "app/assets/stylesheets/spud/login/application.css",
     "app/assets/stylesheets/spud/setup.css",
     "app/assets/stylesheets/spud/user_sessions.css",
     "app/controllers/spud/admin/application_controller.rb",
@@ -77,7 +78,7 @@ Gem::Specification.new do |s|
     "app/models/spud_user_session.rb",
     "app/views/layouts/spud/admin/application.html.erb",
     "app/views/layouts/spud/admin/detail.html.erb",
-    "app/views/layouts/spud/login.html.erb",
+    "app/views/layouts/spud/login/application.html.erb",
     "app/views/layouts/spud/setup.html.erb",
     "app/views/spud/admin/dashboard/index.html.erb",
     "app/views/spud/admin/users/_edit.html.erb",
