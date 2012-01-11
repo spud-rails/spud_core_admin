@@ -407,3 +407,25 @@ form h2 {
 /*.wym_skin_default .wym_section h2 {
 	display:none !important;
 }*/
+
+/*Flash Styles*/
+div.flash {
+	padding:10px;
+}
+div.flash.notice {
+	background:#99ff99;
+}
+div.flash.warning {
+	background:#FFFACD;
+}
+div.flash.error {
+	background:#ff9999;
+}
+div.flash h2 {
+	color:white !important;
+	font-size:14px !important;
+}
+div.flash ul {
+	color:white !important;
+	font-size:12px !important;
+}
