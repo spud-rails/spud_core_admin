@@ -2,7 +2,8 @@
 //= require jquery_ujs
 //= require jquery-ui
 //= require spud/admin/jquery.dataTables.min
-//= require wymeditor/jquery.wymeditor.min
+//= require_self
+//= require_tree .
 $(document).ready(function() {
     $('#user_table').dataTable({
     	"bJQueryUI": true,
@@ -55,8 +56,6 @@ $(document).ready(function() {
        }
        
        $('.formtabs').tabs();
-       $('textarea.wysiwym').wymeditor({
-         skinPath: "/assets/wymeditor/skins/default/"
-       });
+
     
 } );

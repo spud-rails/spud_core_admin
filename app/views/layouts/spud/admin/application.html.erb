@@ -5,7 +5,7 @@
   <%= stylesheet_link_tag    "spud/admin/application" %>
   <%= javascript_include_tag "spud/admin/application" %>
   <%= csrf_meta_tags %>
-  <%=content_for :head%>
+  <%=yield :head%>
 </head>
 <body>
 <div id="header">
