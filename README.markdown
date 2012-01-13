@@ -1,12 +1,14 @@
-h2. Spud Core Admin
+Spud Core Admin
+===============
 
 Spud Admin is a dependency package that adds a nice looking administrative panel to any project you add it to with built in authlogic authentication ready to go out of the box. It supports easy engine integration and there are several planned future engines that we plan on designing for the spud suite. The first of which is Spud CMS which can be found at http://github.com/davydotcom/spud_cms
 
-h2. Installation/Usage
+Installation/Usage
+------------------
 
-In your Gemfile add the following
+1. In your Gemfile add the following
 
-@gem 'spud_admin', :git => "git@github.com:davydotcom/spud_core_admin.git"@
+```gem 'spud_admin', :git => "git@github.com:davydotcom/spud_core_admin.git"```
 
 2. Run bundle install
 3. Copy in database migrations to your new rails project
@@ -15,7 +17,8 @@ rake db:migrate
 ```
 4. run a rails server instance and point your browser to /spud/admin
 
-h2. Adding Your Own Engines
+Adding Your Own Engines
+-----------------------
 
 Creating a rails engine that ties into spud admin is fairly straight forward
 In your new engine add spud_admin as a dependency and right after your engine require line call.
