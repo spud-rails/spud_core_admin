@@ -11,7 +11,7 @@
 <div id="header">
 	<h1>Spud Admin</h1>
 	<div id="user_meta">
-		<span class="greeting">Hello <%=@current_user.login%></span>&nbsp;|&nbsp;<a href="#">Settings</a>&nbsp;|&nbsp;<%=link_to "Logout",spud_user_session_url,:method => :delete%></a>
+		<span class="greeting">Hello <%=@current_user.login%></span>&nbsp;|&nbsp;<%=link_to "Settings", spud_settings_path%>&nbsp;|&nbsp;<%=link_to "Logout",spud_user_session_url,:method => :delete%></a>
 	</div>
 </div>
 <div id="breadcrumbs">
