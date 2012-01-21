@@ -1,0 +1,2 @@
+module Spud::UsersHelper
+end

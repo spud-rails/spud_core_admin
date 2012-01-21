@@ -9,8 +9,11 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["David Estes"]
-  s.date = "2012-01-11"
+  s.date = "2012-01-18"
   s.email = "destes@redwindsw.com"
+  s.extra_rdoc_files = [
+    "README.markdown"
+  ]
   s.files = [
     "app/assets/images/Sorting icons.psd",
     "app/assets/images/back_disabled.jpg",
@@ -56,6 +59,7 @@ Gem::Specification.new do |s|
     "app/assets/javascripts/spud/admin/users.js",
     "app/assets/javascripts/spud/setup.js",
     "app/assets/javascripts/spud/user_sessions.js",
+    "app/assets/javascripts/spud/users.js",
     "app/assets/stylesheets/spud/admin/application.css",
     "app/assets/stylesheets/spud/admin/jquery-ui.css",
     "app/assets/stylesheets/spud/admin/users.css",
@@ -63,16 +67,19 @@ Gem::Specification.new do |s|
     "app/assets/stylesheets/spud/login/application.css",
     "app/assets/stylesheets/spud/setup.css",
     "app/assets/stylesheets/spud/user_sessions.css",
+    "app/assets/stylesheets/spud/users.css",
     "app/controllers/spud/admin/application_controller.rb",
     "app/controllers/spud/admin/dashboard_controller.rb",
     "app/controllers/spud/admin/users_controller.rb",
     "app/controllers/spud/application_controller.rb",
     "app/controllers/spud/setup_controller.rb",
     "app/controllers/spud/user_sessions_controller.rb",
+    "app/controllers/spud/users_controller.rb",
     "app/helpers/spud/admin/application_helper.rb",
     "app/helpers/spud/admin/users_helper.rb",
     "app/helpers/spud/setup_helper.rb",
     "app/helpers/spud/user_sessions_helper.rb",
+    "app/helpers/spud/users_helper.rb",
     "app/models/spud_admin_permission.rb",
     "app/models/spud_user.rb",
     "app/models/spud_user_session.rb",
@@ -88,6 +95,8 @@ Gem::Specification.new do |s|
     "app/views/spud/admin/users/show.html.erb",
     "app/views/spud/setup/index.html.erb",
     "app/views/spud/user_sessions/new.html.erb",
+    "app/views/spud/users/_form.html.erb",
+    "app/views/spud/users/settings.html.erb",
     "config/application.rb",
     "config/boot.rb",
     "config/routes.rb",

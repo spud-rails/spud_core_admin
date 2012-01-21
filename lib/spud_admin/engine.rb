@@ -11,7 +11,8 @@ module SpudAdmin
  class Engine < Rails::Engine
      engine_name :spud_admin
      @@AdminApplications = [{:name => "Users",:thumbnail => "spud/admin/users_thumb.png",:url => "/spud/admin/users",:order => 100}]
-
+     @@paperclip_storage = :filesystem
+     @@s3_credentials = "#{Rails.root}/config/s3.yml"
      def self.add_admin_application(options)
      	#Application Model
      	#Name
@@ -20,6 +21,20 @@ module SpudAdmin
      	#notify_ajax
      	@@AdminApplications.push(options)
      end
+
+     def self.paperclip_storage
+          return @@paperclip_storage
+     end
+     def self.paperclip_storage=(storage)
+          @@paperclip_storage = storage
+     end
+     def self.s3_credentials
+          return @@s3_credentials
+     end
+     def self.s3_credentials=(creds)
+          @@s3_credentials=creds
+     end
+
 
      def self.admin_applications
      	return @@AdminApplications

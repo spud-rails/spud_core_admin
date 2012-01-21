@@ -1,0 +1,35 @@
+<fieldset>
+  <legend>User Details</legend>
+<ol>
+<li><%=f.label :login, :required=>true%>
+  <%=f.text_field :login,:title => "",:size=>25%>
+  <%=error_message_on "user","login"%>
+</li>
+<li><%=f.label :email%>
+  <%=f.text_field :email, :title => "",:size => 25%>
+  <%=error_message_on "user","email"%>
+</li>
+<li><%=f.label :first_name%>
+  <%=f.text_field :first_name, :title => "",:size => 25%>
+  <%=error_message_on "user","first_name"%>
+</li>
+<li><%=f.label :last_name%>
+  <%=f.text_field :last_name, :title => "",:size => 25%>
+  <%=error_message_on "user","last_name"%>
+</li>
+
+</ol>
+</fieldset>
+<fieldset>
+  <legend>Credentials</legend>
+<ol>
+<li><%=f.label :password%>
+  <%=f.password_field :password, :title => "",:size => 25%>
+  <%=error_message_on "user","password"%>
+</li>
+<li><%=f.label :password_confirmation,"Confirm"%>
+  <%=f.password_field :password_confirmation, :title => "",:size => 25%>
+  <%=error_message_on "user","password_confirmation"%>
+</li>
+</ol>
+</fieldset>

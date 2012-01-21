@@ -1,6 +1,6 @@
 
   
-  <p> Fill in all information pertaining to the new user you wish to create. Fields marked with * are required and must be filled out.</p>
+  <p> Fill in all information pertaining to the current user you wish to modify. Fields marked with * are required and must be filled out.</p>
 
   <%=form_for @user,:url => spud_admin_user_path(:id => @user.id),:html=>{:class=>"right_aligned_form"} do |f|%>
     <%=render :partial => "form",:locals => {:f => f}%>

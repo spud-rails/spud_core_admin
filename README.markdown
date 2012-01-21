@@ -8,14 +8,14 @@ Installation/Usage
 
 1. In your Gemfile add the following
 
-```gem 'spud_admin', :git => "git@github.com:davydotcom/spud_core_admin.git"```
+		gem 'spud_admin', :git => "git@github.com:davydotcom/spud_core_admin.git"
 
 2. Run bundle install
 3. Copy in database migrations to your new rails project
 
-```bundle exec rake spud_admin:migrations:install
-rake db:migrate
-```
+		bundle exec rake spud_admin:install:migrations
+		rake db:migrate
+
 4. run a rails server instance and point your browser to /spud/admin
 
 Adding Your Own Engines
@@ -24,7 +24,11 @@ Adding Your Own Engines
 Creating a rails engine that ties into spud admin is fairly straight forward
 In your new engine add spud_admin as a dependency and right after your engine require line call.
 
-```SpudAdmin::Engine.add_admin_application({:name => "Media",:thumbnail => "spud/admin/media_thumb.png",:url => "/spud/admin/media",:order => 3})```
+	SpudAdmin::Engine.add_admin_application({
+		:name => "Media",
+		:thumbnail => "spud/admin/media_thumb.png",
+		:url => "/spud/admin/media",
+		:order => 3})
 
 You can use the layouts provided with spud admin by using 'spud/admin/application' or 'spud/admin/detail' layouts
 
