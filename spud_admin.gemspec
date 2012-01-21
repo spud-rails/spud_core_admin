@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["David Estes"]
-  s.date = "2012-01-18"
+  s.date = "2012-01-21"
   s.email = "destes@redwindsw.com"
   s.extra_rdoc_files = [
     "README.markdown"
@@ -56,13 +56,16 @@ Gem::Specification.new do |s|
     "app/assets/images/spud/admin/users_thumb.png",
     "app/assets/javascripts/spud/admin/application.js",
     "app/assets/javascripts/spud/admin/jquery.dataTables.min.js",
+    "app/assets/javascripts/spud/admin/settings.js",
     "app/assets/javascripts/spud/admin/users.js",
     "app/assets/javascripts/spud/setup.js",
     "app/assets/javascripts/spud/user_sessions.js",
     "app/assets/javascripts/spud/users.js",
     "app/assets/stylesheets/spud/admin/application.css",
     "app/assets/stylesheets/spud/admin/jquery-ui.css",
+    "app/assets/stylesheets/spud/admin/settings.css",
     "app/assets/stylesheets/spud/admin/users.css",
+    "app/assets/stylesheets/spud/forms.css",
     "app/assets/stylesheets/spud/login.css",
     "app/assets/stylesheets/spud/login/application.css",
     "app/assets/stylesheets/spud/setup.css",
@@ -70,17 +73,20 @@ Gem::Specification.new do |s|
     "app/assets/stylesheets/spud/users.css",
     "app/controllers/spud/admin/application_controller.rb",
     "app/controllers/spud/admin/dashboard_controller.rb",
+    "app/controllers/spud/admin/settings_controller.rb",
     "app/controllers/spud/admin/users_controller.rb",
     "app/controllers/spud/application_controller.rb",
     "app/controllers/spud/setup_controller.rb",
     "app/controllers/spud/user_sessions_controller.rb",
     "app/controllers/spud/users_controller.rb",
     "app/helpers/spud/admin/application_helper.rb",
+    "app/helpers/spud/admin/settings_helper.rb",
     "app/helpers/spud/admin/users_helper.rb",
     "app/helpers/spud/setup_helper.rb",
     "app/helpers/spud/user_sessions_helper.rb",
     "app/helpers/spud/users_helper.rb",
     "app/models/spud_admin_permission.rb",
+    "app/models/spud_setting.rb",
     "app/models/spud_user.rb",
     "app/models/spud_user_session.rb",
     "app/views/layouts/spud/admin/application.html.erb",
@@ -101,6 +107,7 @@ Gem::Specification.new do |s|
     "config/boot.rb",
     "config/routes.rb",
     "lib/spud_admin.rb",
+    "lib/spud_admin/configuration.rb",
     "lib/spud_admin/engine.rb"
   ]
   s.require_paths = ["lib"]

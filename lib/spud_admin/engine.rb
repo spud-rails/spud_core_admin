@@ -7,10 +7,11 @@ require 'authlogic'
 require 'dynamic_form'
 require 'breadcrumbs_on_rails'
 require 'will_paginate'
-module SpudAdmin 
+module Spud
+     module Core
  class Engine < Rails::Engine
-     engine_name :spud_admin
-     @@AdminApplications = [{:name => "Users",:thumbnail => "spud/admin/users_thumb.png",:url => "/spud/admin/users",:order => 100}]
+     engine_name :spud_core
+     @@AdminApplications = []
      @@paperclip_storage = :filesystem
      @@s3_credentials = "#{Rails.root}/config/s3.yml"
      def self.add_admin_application(options)
@@ -40,4 +41,5 @@ module SpudAdmin
      	return @@AdminApplications
      end
  end
+end
 end
