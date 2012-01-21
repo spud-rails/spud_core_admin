@@ -1,14 +1,22 @@
-
-
-<%= form_for @user_session, :url => spud_user_session_path do |f| %>
-  <%= f.error_messages %>
-  <%= f.label :login %><br />
-  <%= f.text_field :login %><br />
-  <br />
-  <%= f.label :password %><br />
-  <%= f.password_field :password %><br />
-  <br />
-  <%= f.check_box :remember_me %><%= f.label :remember_me %><br />
-  <br />
-  <%= f.submit "Login" %>
-<% end %>
+<div class="login-form">
+	<h1>Spud CMS Admin</h1>
+	<%= form_for @user_session, url: spud_user_session_path do |f| %>
+	  <div>
+		  <%= f.error_messages %>
+	  </div>
+	  <div class="field-group">
+		  <%= f.label :login %>
+		  <%= f.text_field :login %>
+	  </div>
+	  <div class="field-group">
+	  	<%= f.label :password %>
+	  	<%= f.password_field :password %>
+	  </div>
+	  <div class="field-group">
+	  	<%= f.check_box :remember_me %> <%= f.label :remember_me, class: 'inline' %>
+	  </div>
+	  <div class="field-group">
+	  	<%= f.submit "Login" %>
+	  </div>
+	<% end %>
+</div>
