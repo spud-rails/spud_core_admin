@@ -1,6 +1,7 @@
 /* ...
 *= require_self
 *= require spud/admin/jquery-ui
+*= require spud/forms
 */
 html {
 	font-family: Helvetica, Arial;

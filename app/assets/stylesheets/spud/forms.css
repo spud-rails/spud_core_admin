@@ -3,10 +3,22 @@ form {
 	margin:0 auto;
 	/*width:400px;*/
 }
+form input[type="text"],
+form textarea {
+	padding: 3px;
+	font-size: 1.15em;
+}
+form input.full-width {
+	display: block;
+	width: 99%;
+}
+label {
+	display:block;
+	padding: 8px 0 3px;
+}
+label.inline {display:inline}
 fieldset {
-    
-    padding: 0;
-    
+    padding: 5px;
     clear:both;
     width: 100%;
     margin: 0 auto 1.5em auto;
@@ -17,17 +29,14 @@ fieldset {
     filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#ffFFFFFF,endColorstr=#ffE9EFF2);
     -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#ffFFFFFF,endColorstr=#ffE9EFF2)";
 }
-fieldset p
-{
+fieldset p {
 	padding:0 20px;	
 }
 legend {
     margin-left:1em;
     color: #444;
     font-weight:bold;
-
 }
-
 form ol,fieldset ol { padding: 1em 1em 0 1em; list-style-type:none;}
 form ol li, fieldset ol li { padding-bottom: 1em;}
 fieldset.submit {
@@ -35,57 +44,42 @@ fieldset.submit {
     background-color: transparent;
     background: none;
 }
-
-label { display:block;}
-label.inline {display:inline}
-
 .left_aligned_form label {
     display:inline;
     float:left;
     width: 10em;
     margin-right: 1em;
 }
-
 .left_aligned_form ol li,
-.right_aligned_form ol li
-{
+.right_aligned_form ol li {
     float:left;
     clear:left;
     width: 100%;
     padding-bottom:1em;
 }
-
 .left_aligned_form fieldset,
-.right_aligned_form fieldset
-{
+.right_aligned_form fieldset {
     /*float:left ;*/
     clear:left;
     width: 100%;
     margin: 0 0 1.5em 0;
-    padding: 0;
 }
-
 .left_aligned_form fieldset.submit,
-.right_aligned_form fieldset.submit
-{
+.right_aligned_form fieldset.submit {
 	margin:5px 0;
     text-align:right;
     width: auto;
     border: 0 none #fff;
-    	width:auto;
+   	width:auto;
 }
-
 .right_aligned_form label {
     float:left ;
     display:inline;
     width: 6em;
-    margin-right:1em;
-    
+    margin-right:1em;   
     text-align: right;
 }
-
-#form_tip
-{
+#form_tip {
     position:absolute;
     bottom:40px;
     display:none;
@@ -96,11 +90,9 @@ label.inline {display:inline}
     border: 1px solid #FEDF02;
     text-align:justify;
 }
-#form_tip.active
-{
+#form_tip.active {
     display:block;
 }
-
 div.field_with_errors {
     display:inline;
 }
@@ -113,4 +105,4 @@ div.field_with_errors label {
     color:#F00;
     background: url(/images/icons/error.png) top left no-repeat;
 }
-.formtab_buttons li {
+.formtab_buttons li {}
