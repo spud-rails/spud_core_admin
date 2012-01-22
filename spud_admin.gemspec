@@ -9,13 +9,12 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["David Estes"]
-  s.date = "2012-01-21"
+  s.date = "2012-01-22"
   s.email = "destes@redwindsw.com"
   s.extra_rdoc_files = [
     "README.markdown"
   ]
   s.files = [
-    "app/assets/images/Sorting icons.psd",
     "app/assets/images/back_disabled.jpg",
     "app/assets/images/back_enabled.jpg",
     "app/assets/images/favicon.ico",
@@ -39,20 +38,6 @@ Gem::Specification.new do |s|
     "app/assets/images/spud/admin/flick/ui-icons_666666_256x240.png",
     "app/assets/images/spud/admin/flick/ui-icons_ff0084_256x240.png",
     "app/assets/images/spud/admin/flick/ui-icons_ffffff_256x240.png",
-    "app/assets/images/spud/admin/humanity/ui-bg_flat_75_aaaaaa_40x100.png",
-    "app/assets/images/spud/admin/humanity/ui-bg_glass_100_f5f0e5_1x400.png",
-    "app/assets/images/spud/admin/humanity/ui-bg_glass_25_cb842e_1x400.png",
-    "app/assets/images/spud/admin/humanity/ui-bg_glass_70_ede4d4_1x400.png",
-    "app/assets/images/spud/admin/humanity/ui-bg_highlight-hard_100_f4f0ec_1x100.png",
-    "app/assets/images/spud/admin/humanity/ui-bg_highlight-hard_65_fee4bd_1x100.png",
-    "app/assets/images/spud/admin/humanity/ui-bg_highlight-hard_75_f5f5b5_1x100.png",
-    "app/assets/images/spud/admin/humanity/ui-bg_inset-soft_100_f4f0ec_1x100.png",
-    "app/assets/images/spud/admin/humanity/ui-icons_c47a23_256x240.png",
-    "app/assets/images/spud/admin/humanity/ui-icons_cb672b_256x240.png",
-    "app/assets/images/spud/admin/humanity/ui-icons_f08000_256x240.png",
-    "app/assets/images/spud/admin/humanity/ui-icons_f35f07_256x240.png",
-    "app/assets/images/spud/admin/humanity/ui-icons_ff7519_256x240.png",
-    "app/assets/images/spud/admin/humanity/ui-icons_ffffff_256x240.png",
     "app/assets/images/spud/admin/users_thumb.png",
     "app/assets/javascripts/spud/admin/application.js",
     "app/assets/javascripts/spud/admin/jquery.dataTables.min.js",
@@ -110,6 +95,7 @@ Gem::Specification.new do |s|
     "lib/spud_admin/configuration.rb",
     "lib/spud_admin/engine.rb"
   ]
+  s.homepage = "http://github.com/davydotcom/spud_core_admin"
   s.require_paths = ["lib"]
   s.rubygems_version = "1.8.10"
   s.summary = "Spud Admin Panel Engine"

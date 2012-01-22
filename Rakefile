@@ -10,6 +10,7 @@ begin
         gem.add_dependency 'breadcrumbs_on_rails'
         gem.add_dependency 'will_paginate'
 	gem.authors = "David Estes"
+	gem.homepage = "http://github.com/davydotcom/spud_core_admin"
 	gem.email = "destes@redwindsw.com"
         # other fields that would normally go in your gemspec
         # like authors, email and has_rdoc can also be included here
