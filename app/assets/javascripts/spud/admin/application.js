@@ -42,22 +42,7 @@ $(document).ready(function() {
       });
       $('a.button').button();
     
-
-        var tabNames = [];
-       $('.formtabs .formtab').each(function(tabind) {
-           this.id = 'tab-' + tabind;
-           console.log($('.tab_name',this));
-           tabNames.push($('.tab_name',this).first().val())
-       });
-       var tabButtons = $('.formtabs .formtab_buttons').first();
-       for(var x=0;x<tabNames.length;x++)
-       {
-           tabButtons.append($('<li><a href="#tab-' + x + '">' + tabNames[x] + '</a></li>'))
-       }
-       
-       $('.formtabs').tabs();
-
-    
+	  initFormTabs(); 
 } );
 
 
@@ -70,4 +55,19 @@ function add_fields(link, association, content) {
   var new_id = new Date().getTime();
   var regexp = new RegExp("new_" + association, "g")
   $(link).parent().before(content.replace(regexp, new_id));
+}
+
+function initFormTabs(){
+   var tabNames = [];
+   $('.formtabs .formtab').each(function(tabind) {
+       this.id = 'tab-' + tabind;
+       tabNames.push($('.tab_name',this).first().val())
+   });
+   var tabButtons = $('.formtabs .formtab_buttons').first();
+   for(var x=0;x<tabNames.length;x++)
+   {
+       tabButtons.append($('<li><a href="#tab-' + x + '">' + tabNames[x] + '</a></li>'))
+   }
+       
+   $('.formtabs').tabs();
 }
