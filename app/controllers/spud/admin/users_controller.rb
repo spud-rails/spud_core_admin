@@ -1,35 +1,28 @@
 class Spud::Admin::UsersController < Spud::Admin::ApplicationController
 	layout 'spud/admin/detail'
+	belongs_to_spud_app :users
 	add_breadcrumb "Users", :spud_admin_users_path
 
 # filters
 	before_filter :load_user,:only => [:edit,:update,:show,:destroy]
 
 	def index
-		@page_thumbnail = "spud/admin/users_thumb.png"
-		@page_name = "Users"	
-
 		@users = SpudUser.order(:login).paginate :page => params[:page]
-		respond_to do |format|
-			format.json {render :json => @users.to_json}
-			format.js {render :json => @users.to_json}
-			format.xml {render :xml => @users.to_xml}
-			format.html { render }
-		end
+		respond_with @users
+		
 	end
 
 	def show
 			add_breadcrumb @user.full_name, :spud_admin_user_path
-			@page_thumbnail = "spud/admin/users_thumb.png"
-			@page_name = @user.full_name	
+			respond_with @user
 	end
 	def new
 		@user = SpudUser.new
 
-		respond_to do |format|
+		respond_with @user do |format|
 			format.js { render :partial => "new"}
-			format.html { render }
 		end
+
 		
 	end
 
