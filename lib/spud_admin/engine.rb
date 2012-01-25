@@ -11,6 +11,17 @@ module Spud
      module Core
  class Engine < Rails::Engine
      engine_name :spud_core
+     initializer :assets do |config| 
+     	Rails.application.config.assets.precompile += [ 
+    	   "jquery.wymeditor.pack.js",
+           "wymeditor/*", 
+           "wymeditor/lang/*", 
+           "wymeditor/skins/default/*", 
+           "wymeditor/skins/default/**/*",
+           "spud/admin*"
+        ]
+     end
+     
  end
 end
 end
