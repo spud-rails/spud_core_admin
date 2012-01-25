@@ -4,6 +4,9 @@ begin
         gem.name = "spud_admin"
         gem.summary = "Spud Admin Panel Engine"
         gem.files = Dir["{lib}/**/*", "{app}/**/*", "{config}/**/*"]
+	gem.platform = Gem::Platform::RUBY
+	gem.add_dependency "activesupport" , "~> 3.1.3"
+  	gem.add_dependency "rails"         , "~> 3.1.3"
         gem.add_dependency 'authlogic'
         gem.add_dependency 'jquery-rails'
         gem.add_dependency 'dynamic_form'
@@ -18,3 +21,4 @@ begin
 rescue
 	puts "Jeweler or one of its dependencies is not installed."
 end
+
