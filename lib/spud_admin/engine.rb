@@ -7,6 +7,7 @@ require 'authlogic'
 require 'dynamic_form'
 require 'breadcrumbs_on_rails'
 require 'will_paginate'
+require 'spud_admin/belongs_to_app'
 module Spud
      module Core
  class Engine < Rails::Engine
@@ -20,6 +21,12 @@ module Spud
            "wymeditor/skins/default/**/*",
            "spud/admin*"
         ]
+     end
+
+     initializer :controller_overrides do |config|
+     	ActionController::Base.class_eval do
+     		include Spud::BelongsToApp
+     	end
      end
      
  end

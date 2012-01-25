@@ -163,6 +163,7 @@ Gem::Specification.new do |s|
     "config/boot.rb",
     "config/routes.rb",
     "lib/spud_admin.rb",
+    "lib/spud_admin/belongs_to_app.rb",
     "lib/spud_admin/configuration.rb",
     "lib/spud_admin/engine.rb"
   ]
