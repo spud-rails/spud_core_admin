@@ -162,6 +162,7 @@ div.admin_application:hover {
 }
 #details {
 	padding:0 10px;
+	overflow: hidden;
 }
 #detail_nav_wrapper {
 	float:left;
@@ -341,11 +342,24 @@ div.field_with_errors label {
 .admin-table th {
 	font-weight:normal;
 	text-align:left;
-	padding:2px 5px;
+	padding: 5px 10px;
 }
 .admin-table td {
 	vertical-align:top;
-	padding:2px 5px;
+	padding: 5px 10px;
+}
+.admin-table tbody tr{
+	-webkit-transition: background 0.1s ease-in;
+	-moz-transition: background 0.1s ease-in;
+}
+.admin-table tbody tr:nth-child(even){
+	background: #f1f1f1;
+}
+.admin-table tbody tr:hover{
+	background: #FFEDDF;
+}
+.admin-table tbody tr:nth-child(even):hover{
+	background: #FAE7D9;
 }
 
 .info_card {
@@ -429,4 +443,14 @@ div.flash h2 {
 div.flash ul {
 	color:white !important;
 	font-size:12px !important;
+}
+
+/* Pagination
+--------------- */
+.spud_admin_pagination{
+	margin: 10px 0;	
+	overflow: hidden;
+}
+.spud_admin_pagination .pagination{
+	float: right;
 }

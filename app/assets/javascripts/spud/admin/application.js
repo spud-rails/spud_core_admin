@@ -71,3 +71,17 @@ function initFormTabs(){
        
    $('.formtabs').tabs();
 }
+
+function initWysiwym(selector){
+  selector = (typeof(selector) == 'undefined') ? 'textarea.wysiwym' : selector;
+  $(selector).wymeditor({
+    basePath:'/assets/wymeditor/'
+  });
+}
+
+function initDatePicker(selector){
+  selector = (typeof(selector) == 'undefined') ? '.spud_form_date_picker' : selector;
+  $(selector).datepicker({
+    dateFormat: 'yy-mm-dd'
+  }); 
+}
