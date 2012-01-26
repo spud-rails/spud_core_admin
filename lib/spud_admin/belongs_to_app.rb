@@ -1,21 +1,30 @@
 module Spud::BelongsToApp
-	def self.included(base)
-		base.extend(ClassMethods)
+	extend ActiveSupport::Concern
+	included do
+		extend ClassMethods
 	end
-
+    # class Config
+    # 	attr_reader :page_application
+    # 	attr_reader :page_thumbnail
+    # 	def initialize(app,thumb)
+    # 		@page_application = app
+    # 		@page_thumbnail = thumb
+    # 	end
+    # end
 	module ClassMethods
 		def belongs_to_spud_app(name=nil)
-			self.class_eval do
-				Spud::Core.admin_applications.each do |app|
+			
+			Spud::Core.admin_applications.each do |app|
 					if app[:name].parameterize.underscore.to_sym == name
-						@@page_thumbnail=app[:thumbnail]
-						@@page_application = app
+						@page_application = app
+						break
 					end
 				end
-				
+			self.class_eval do
+
 				before_filter { |controller|
-					@page_thumbnail = @@page_thumbnail
-					@page_name = @@page_application[:name]
+					@page_thumbnail = self.class.page_application[:thumbnail]
+					@page_name = self.class.page_application[:name]
 					if controller.action_name == 'new' || controller.action_name == 'create'
 						@page_name = "New #{@page_name.singularize}"
 					elsif controller.action_name == 'edit' || controller.action_name == 'update'
@@ -28,6 +37,8 @@ module Spud::BelongsToApp
 			end
 
 		end
-		
+		def page_application
+		      @page_application || self.superclass.instance_variable_get('@page_application')
+	    end
 	end
 end
