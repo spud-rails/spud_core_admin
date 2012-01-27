@@ -1,6 +1,8 @@
 class SpudUser < ActiveRecord::Base
-
+	has_many :spud_admin_permissions,:foreign_key => :user_id
+	accepts_nested_attributes_for :spud_admin_permissions, :allow_destroy => true
 	attr_protected :super_admin
+
 	acts_as_authentic do |c|
     # c.my_config_option = my_value # for available options see documentation in: Authlogic::ActsAsAuthentic
 	end # block optional

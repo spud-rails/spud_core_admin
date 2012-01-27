@@ -18,7 +18,9 @@ class Spud::Admin::UsersController < Spud::Admin::ApplicationController
 	end
 	def new
 		@user = SpudUser.new
-
+		Spud::Core.admin_applications.each do |application|
+			@user.spud_admin_permissions.new(:name => application[:name],:access => false)
+		end
 		respond_with @user do |format|
 			format.js { render :partial => "new"}
 		end
@@ -54,6 +56,12 @@ class Spud::Admin::UsersController < Spud::Admin::ApplicationController
 
 
 	def edit
+		Spud::Core.admin_applications.each do |application|
+			permission = @user.spud_admin_permissions.select {|perm| perm.name == application[:name]}
+			if permission.blank?
+				@user.spud_admin_permissions.new(:name => application[:name],:access => @user.super_admin)
+			end
+		end
 		respond_to do |format|
 			format.js { render :partial => "edit"}
 			format.html { render }
@@ -63,6 +71,7 @@ class Spud::Admin::UsersController < Spud::Admin::ApplicationController
 	def update
 		@user.attributes = params[:spud_user]
 		@user.super_admin = params[:spud_user][:super_admin]
+
 		if @user.save
 			flash[:notice] = "User saved successfully."
 			redirect_to spud_admin_users_url()

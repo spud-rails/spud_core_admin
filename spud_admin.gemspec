@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["David Estes"]
-  s.date = "2012-01-25"
+  s.date = "2012-01-27"
   s.email = "destes@redwindsw.com"
   s.extra_rdoc_files = [
     "README.markdown"
@@ -169,7 +169,7 @@ Gem::Specification.new do |s|
   ]
   s.homepage = "http://github.com/davydotcom/spud_core_admin"
   s.require_paths = ["lib"]
-  s.rubygems_version = "1.8.10"
+  s.rubygems_version = "1.8.15"
   s.summary = "Spud Admin Panel Engine"
 
   if s.respond_to? :specification_version then

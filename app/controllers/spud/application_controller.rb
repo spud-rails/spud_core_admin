@@ -14,6 +14,10 @@ class Spud::ApplicationController < ActionController::Base
       return @current_user if defined?(@current_user)
       @current_user = current_user_session && current_user_session.spud_user
     end
+    def current_user_permissions
+      return @current_user_permissions if defined?(@current_user_permissions)
+      @current_user_permissions = current_user.spud_admin_permissions.where(:access => true).all
+    end
     def require_user
       unless current_user
         store_location
