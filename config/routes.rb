@@ -7,7 +7,7 @@ Rails.application.routes.draw do
    			root :to => "dashboard#index"
    			resources :users
    		end
-
+         resource :sitemap,:only => [:show]
 	   	match 'setup' => 'setup#index'
    end
    
