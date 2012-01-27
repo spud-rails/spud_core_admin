@@ -1,6 +1,5 @@
 class Spud::Admin::ApplicationController < Spud::ApplicationController
-	# before_filter :require_admin_user
-	before_filter :require_user
+	before_filter :require_admin_user
 	add_breadcrumb "Dashboard", :spud_admin_root_path
 	layout 'spud/admin/application'
 	respond_to :html,:json,:xml,:js
