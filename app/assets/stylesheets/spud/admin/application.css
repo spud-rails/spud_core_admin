@@ -422,7 +422,15 @@ form h2 {
 /*.wym_skin_default .wym_section h2 {
 	display:none !important;
 }*/
-
+.wym_tools h2 {
+	display:none !important;
+}
+.wym_status {
+	display:none !important;
+}
+.wym_classes {
+	display:none !important;
+}
 /*Flash Styles*/
 div.flash {
 	padding:10px;

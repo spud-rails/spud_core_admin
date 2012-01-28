@@ -75,7 +75,10 @@ function initFormTabs(){
 function initWysiwym(selector){
   selector = (typeof(selector) == 'undefined') ? 'textarea.wysiwym' : selector;
   $(selector).wymeditor({
-    basePath:'/assets/wymeditor/'
+    basePath:'/assets/wymeditor/',
+    jQueryPath: "/assets/jquery.js",
+    wymPath: "/assets/wymeditor/jquery.wymeditor.min.js",
+    skin: 'compact'
   });
 }
 
