@@ -2,3 +2,7 @@
 
 #Gemfile's lock file
 Gemfile.lock
+
+#rvm
+.rvmrc
+.rvmrc.*
