@@ -8,6 +8,10 @@ FactoryGirl.define do
   end
   
   sequence :login do |n|
+    "john#{n}doe#{n}"
+  end
+  
+  sequence :email do |n|
     "john#{n}doe#{n}@email.com"
   end
     
@@ -15,5 +19,9 @@ FactoryGirl.define do
     first_name { Factory.next(:first_name) }
     last_name { Factory.next(:last_name) }
     login { Factory.next(:login) }
+    email { Factory.next(:email) }
+    password "password"
+    password_confirmation "password"
+    single_access_token "k3cF"
   end
 end
