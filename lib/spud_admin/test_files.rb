@@ -2,9 +2,6 @@ module Spud
   module Core
     module TestFiles
       class << self
-        def initialize
-          load_all
-        end
         def load_all
           load_specs
           load_factories
