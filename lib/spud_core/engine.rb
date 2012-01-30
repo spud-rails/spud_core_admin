@@ -7,7 +7,7 @@ require 'authlogic'
 require 'dynamic_form'
 require 'breadcrumbs_on_rails'
 require 'will_paginate'
-require 'spud_admin/belongs_to_app'
+require 'spud_core/belongs_to_app'
 module Spud
      module Core
  class Engine < Rails::Engine

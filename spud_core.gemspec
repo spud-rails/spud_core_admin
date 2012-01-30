@@ -4,12 +4,12 @@
 # -*- encoding: utf-8 -*-
 
 Gem::Specification.new do |s|
-  s.name = "spud_admin"
+  s.name = "spud_core"
   s.version = "0.2.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["David Estes"]
-  s.date = "2012-01-28"
+  s.date = "2012-01-30"
   s.email = "destes@redwindsw.com"
   s.extra_rdoc_files = [
     "README.markdown"
@@ -198,15 +198,16 @@ Gem::Specification.new do |s|
     "config/application.rb",
     "config/boot.rb",
     "config/routes.rb",
-    "lib/spud_admin.rb",
-    "lib/spud_admin/belongs_to_app.rb",
-    "lib/spud_admin/configuration.rb",
-    "lib/spud_admin/engine.rb"
+    "lib/spud_core.rb",
+    "lib/spud_core/belongs_to_app.rb",
+    "lib/spud_core/configuration.rb",
+    "lib/spud_core/engine.rb",
+    "lib/spud_core/test_files.rb"
   ]
   s.homepage = "http://github.com/davydotcom/spud_core_admin"
   s.require_paths = ["lib"]
   s.rubygems_version = "1.8.15"
-  s.summary = "Spud Admin Panel Engine"
+  s.summary = "Spud Core Engine"
 
   if s.respond_to? :specification_version then
     s.specification_version = 3

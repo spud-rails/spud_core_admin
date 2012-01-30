@@ -1,8 +1,8 @@
 begin
   require "jeweler"
     Jeweler::Tasks.new do |gem|
-        gem.name = "spud_admin"
-        gem.summary = "Spud Admin Panel Engine"
+        gem.name = "spud_core"
+        gem.summary = "Spud Core Engine"
         gem.files = Dir["{lib}/**/*", "{app}/**/*", "{config}/**/*"]
 	gem.platform = Gem::Platform::RUBY
 	gem.add_dependency "activesupport" , ">= 3.1.3"
