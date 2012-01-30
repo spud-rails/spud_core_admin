@@ -1,4 +1,4 @@
-require 'spud_admin'
+require 'spud_core'
 require 'rails'
 require 'action_controller'
 require 'rubygems'
