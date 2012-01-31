@@ -3,19 +3,19 @@ class Spud::Admin::UsersController < Spud::Admin::ApplicationController
 	belongs_to_spud_app :users
 	add_breadcrumb "Users", :spud_admin_users_path
 
-# filters
+  # filters
 	before_filter :load_user,:only => [:edit,:update,:show,:destroy]
 
 	def index
 		@users = SpudUser.order(:login).paginate :page => params[:page]
 		respond_with @users
-		
 	end
 
 	def show
-			add_breadcrumb @user.full_name, :spud_admin_user_path
-			respond_with @user
+    add_breadcrumb @user.full_name, :spud_admin_user_path
+		respond_with @user
 	end
+  
 	def new
 		@user = SpudUser.new
 		Spud::Core.admin_applications.each do |application|
@@ -24,8 +24,6 @@ class Spud::Admin::UsersController < Spud::Admin::ApplicationController
 		respond_with @user do |format|
 			format.js { render :partial => "new"}
 		end
-
-		
 	end
 
 	def create
@@ -36,14 +34,13 @@ class Spud::Admin::UsersController < Spud::Admin::ApplicationController
 		if @user.save
 			status = 200
 			flash[:notice] = "User created successfully"
-
 		else
 			flash[:error] = "There was an error while saving the user."
 			render :action => "new"
 		end
 
 		respond_to do |format|
-			format.js { render :status => status, :json => @user.to_json}
+			format.js { render :status => status, :json => @user.to_json }
 			format.html {
 				if status == 200
 					redirect_to spud_admin_users_url()
@@ -53,7 +50,6 @@ class Spud::Admin::UsersController < Spud::Admin::ApplicationController
 			}
 		end
 	end
-
 
 	def edit
 		Spud::Core.admin_applications.each do |application|
@@ -94,7 +90,6 @@ class Spud::Admin::UsersController < Spud::Admin::ApplicationController
 			format.js { render :text => nil,:status => status }
 			format.html {redirect_to spud_admin_users_url()}
 		end
-		
 	end
 
 private

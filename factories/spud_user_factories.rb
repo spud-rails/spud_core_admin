@@ -14,6 +14,10 @@ FactoryGirl.define do
   sequence :email do |n|
     "john#{n}doe#{n}@email.com"
   end
+  
+  sequence :single_access_token do |n|
+    "k3cF#{n}"
+  end
     
   factory :spud_user do
     first_name { Factory.next(:first_name) }
@@ -22,6 +26,6 @@ FactoryGirl.define do
     email { Factory.next(:email) }
     password "password"
     password_confirmation "password"
-    single_access_token "k3cF"
+    single_access_token { Factory.next(:single_access_token) }
   end
 end
