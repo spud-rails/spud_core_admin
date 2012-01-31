@@ -28,4 +28,9 @@ FactoryGirl.define do
     password_confirmation "password"
     single_access_token { Factory.next(:single_access_token) }
   end
+
+  factory :spud_admin_permission do
+    name "User"
+    access true
+  end
 end

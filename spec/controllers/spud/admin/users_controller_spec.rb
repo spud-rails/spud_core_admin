@@ -19,6 +19,27 @@ describe Spud::Admin::UsersController do
       
       assigns(:users).count.should == 1 # the currently logged in user is the only user
     end
+    it "should not allow access to users with NO permissions" do
+      SpudUserSession.create(Factory.build(:spud_user, :super_admin => false))
+      get :index
+      response.should redirect_to(root_url)   
+    end
+    it "should allow access to users with the correct permissions" do
+      u = Factory.build(:spud_user, :super_admin => false)
+      u.save
+      u.spud_admin_permissions << Factory.build(:spud_admin_permission, :name => "Users",:access => true)
+      SpudUserSession.create()
+      get :index
+      response.should be_success
+    end
+    it "should not allow access to users without permission" do
+      u = Factory.build(:spud_user, :super_admin => false)
+      u.save
+      u.spud_admin_permissions << Factory.build(:spud_admin_permission, :name => "Users",:access => false)
+      SpudUserSession.create()
+      get :index
+      response.should be_success
+    end
   end
   
   describe :show do
@@ -105,9 +126,7 @@ describe Spud::Admin::UsersController do
       end
       
     end
-    
-    it "should allow access to users with the correct permissions"
-    it "should not allow access to users without permission"
+
   end
   
   describe :update do
