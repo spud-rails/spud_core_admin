@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = "spud_core"
-  s.version = "0.4.0"
+  s.version = "0.5.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["David Estes"]
-  s.date = "2012-01-30"
+  s.date = "2012-01-31"
   s.email = "destes@redwindsw.com"
   s.extra_rdoc_files = [
     "README.markdown"
@@ -162,7 +162,6 @@ Gem::Specification.new do |s|
     "app/assets/stylesheets/spud/users.css",
     "app/controllers/spud/admin/application_controller.rb",
     "app/controllers/spud/admin/dashboard_controller.rb",
-    "app/controllers/spud/admin/settings_controller.rb",
     "app/controllers/spud/admin/users_controller.rb",
     "app/controllers/spud/application_controller.rb",
     "app/controllers/spud/setup_controller.rb",
@@ -177,7 +176,6 @@ Gem::Specification.new do |s|
     "app/helpers/spud/user_sessions_helper.rb",
     "app/helpers/spud/users_helper.rb",
     "app/models/spud_admin_permission.rb",
-    "app/models/spud_setting.rb",
     "app/models/spud_user.rb",
     "app/models/spud_user_session.rb",
     "app/views/layouts/spud/admin/application.html.erb",
@@ -188,7 +186,9 @@ Gem::Specification.new do |s|
     "app/views/spud/admin/users/_edit.html.erb",
     "app/views/spud/admin/users/_form.html.erb",
     "app/views/spud/admin/users/_new.html.erb",
+    "app/views/spud/admin/users/edit.html.erb",
     "app/views/spud/admin/users/index.html.erb",
+    "app/views/spud/admin/users/new.html.erb",
     "app/views/spud/admin/users/show.html.erb",
     "app/views/spud/setup/index.html.erb",
     "app/views/spud/sitemaps/show.xml.builder",
