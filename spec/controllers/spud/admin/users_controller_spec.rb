@@ -64,7 +64,7 @@ describe Spud::Admin::UsersController do
         lambda {
           post :create, :spud_user => Factory.attributes_for(:spud_user, :email => nil)
         }.should_not change(SpudUser, :count)
-        response.should_not be_success
+        flash[:error].should_not be_blank
       end
     end
     

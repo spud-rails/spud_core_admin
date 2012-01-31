@@ -36,10 +36,9 @@ class Spud::Admin::UsersController < Spud::Admin::ApplicationController
 			flash[:notice] = "User created successfully"
 		else
 			flash[:error] = "There was an error while saving the user."
-			render :action => "new"
 		end
 
-		respond_to do |format|
+		respond_with @user,:location => spud_admin_users_url do |format|
 			format.js { render :status => status, :json => @user.to_json }
 			format.html {
 				if status == 200
