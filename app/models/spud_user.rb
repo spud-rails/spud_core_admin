@@ -11,6 +11,11 @@ class SpudUser < ActiveRecord::Base
 		if first_name.blank? && last_name.blank?
 			return self.login
 		end
+		if self.first_name.blank?
+			return self.last_name
+		elsif self.last_name.blank?
+			return self.first_name
+		end
 		return "#{self.first_name} #{self.last_name}"
 	end
 end

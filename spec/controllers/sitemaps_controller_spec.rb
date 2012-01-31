@@ -14,7 +14,7 @@ describe Spud::SitemapsController do
     
     it "should only respond to an XML format" do
       get :show
-      response.should be_success
+      response.response_code.should == 406
     end
   end
 end
