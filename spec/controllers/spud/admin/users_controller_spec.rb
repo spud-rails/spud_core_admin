@@ -3,7 +3,7 @@ require 'spec_helper'
 describe Spud::Admin::UsersController do
   before(:each) do
     activate_authlogic
-    SpudUserSession.create(Factory.build(:spud_user, :super_admin => true))
+    @user = SpudUserSession.create(Factory.build(:spud_user, :super_admin => true))
   end
   
   describe :index do
@@ -19,25 +19,29 @@ describe Spud::Admin::UsersController do
       
       assigns(:users).count.should == 1 # the currently logged in user is the only user
     end
+    
     it "should not allow access to users with NO permissions" do
       SpudUserSession.create(Factory.build(:spud_user, :super_admin => false))
       get :index
+      
       response.should redirect_to(root_url)   
     end
+    
     it "should allow access to users with the correct permissions" do
-      u = Factory.build(:spud_user, :super_admin => false)
-      u.save
-      u.spud_admin_permissions << Factory.build(:spud_admin_permission, :name => "Users",:access => true)
+      u = Factory(:spud_user, :super_admin => false)
+      u.spud_admin_permissions << Factory.build(:spud_admin_permission, :name => "Users", :access => true)
       SpudUserSession.create()
       get :index
+      
       response.should be_success
     end
+    
     it "should not allow access to users without permission" do
-      u = Factory.build(:spud_user, :super_admin => false)
-      u.save
-      u.spud_admin_permissions << Factory.build(:spud_admin_permission, :name => "Users",:access => false)
+      u = Factory(:spud_user, :super_admin => false)
+      u.spud_admin_permissions << Factory.build(:spud_admin_permission, :name => "Users", :access => false)
       SpudUserSession.create()
       get :index
+      
       response.should be_success
     end
   end
