@@ -1,11 +1,12 @@
 module Spud::Admin::ApplicationHelper
-	def timestamp(timedate)
-			return "Never" if timedate.blank?
-			return Time.now() - timedate > 604800 ? timedate.strftime("%B %d") + ' at ' + timedate.strftime("%I:%M %p") : time_ago_in_words(timedate) + ' ago'
-	end
-    def link_to_remove_fields(name, f)
-	    f.hidden_field(:_destroy) + link_to_function(name, "remove_fields(this)")
-    end
+  def timestamp(timedate=nil)
+    return "Never" if timedate.blank?
+    return Time.now() - timedate > 604800 ? timedate.strftime("%B %d") + ' at ' + timedate.strftime("%I:%M %p") : time_ago_in_words(timedate) + ' ago'
+  end
+
+  def link_to_remove_fields(name, f)
+    f.hidden_field(:_destroy) + link_to_function(name, "remove_fields(this)")
+  end
   
   def link_to_add_fields(name, f, association)
     new_object = f.object.class.reflect_on_association(association).klass.new
