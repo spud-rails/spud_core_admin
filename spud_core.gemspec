@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = "spud_core"
-  s.version = "0.5.1"
+  s.version = "0.5.2"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["David Estes"]
-  s.date = "2012-01-31"
+  s.date = "2012-02-10"
   s.email = "destes@redwindsw.com"
   s.extra_rdoc_files = [
     "README.markdown"
@@ -202,6 +202,7 @@ Gem::Specification.new do |s|
     "lib/spud_core/belongs_to_app.rb",
     "lib/spud_core/configuration.rb",
     "lib/spud_core/engine.rb",
+    "lib/spud_core/searchable.rb",
     "lib/spud_core/test_files.rb"
   ]
   s.homepage = "http://github.com/davydotcom/spud_core_admin"

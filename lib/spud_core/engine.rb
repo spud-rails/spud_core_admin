@@ -8,6 +8,7 @@ require 'dynamic_form'
 require 'breadcrumbs_on_rails'
 require 'will_paginate'
 require 'spud_core/belongs_to_app'
+require 'spud_core/searchable'
 module Spud
      module Core
  class Engine < Rails::Engine
@@ -28,6 +29,12 @@ module Spud
      		include Spud::BelongsToApp
      	end
      end
+     initializer :model_overrides do |config| 
+      ActiveRecord::Base.class_eval do
+        include Spud::Searchable
+      end
+     end
+
      
  end
 end
