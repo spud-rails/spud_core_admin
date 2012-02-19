@@ -2,7 +2,7 @@
 
 #Gemfile's lock file
 Gemfile.lock
-
+pkg/
 #rvm
 .rvmrc
 .rvmrc.*

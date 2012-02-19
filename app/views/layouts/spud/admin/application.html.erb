@@ -24,17 +24,9 @@
 <% if flash[:warning] %>
   <div class="flash warning"><%= flash[:warning] %></div>
 <% end %>
-<% if flash[:error] || @error_object_name.nil? == false %>
+<% if flash[:error]%>
 <div class="flash error">
 	  <%= flash[:error] %>
-<%-unless @error_object_name.nil?%>
-	  <%-if @error_object_name.is_a?(Array)%>
-		 <%=error_messages_for @error_object_name[0], :header_message => @error_object_name[1], :message => @error_object_name[2]%>
-	  <%-else%>
-		 <%=error_messages_for @error_object_name%>
-    <%-end%>
- 
- <%-end%>
 </div>
 <%-end%>
 	<%= content_for?(:content) ? yield(:content) : yield %>

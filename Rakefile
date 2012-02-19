@@ -9,7 +9,6 @@ begin
   	gem.add_dependency "rails"         , ">= 3.2.0"
         gem.add_dependency 'authlogic'
         gem.add_dependency 'jquery-rails'
-        gem.add_dependency 'dynamic_form'
         gem.add_dependency 'breadcrumbs_on_rails'
         gem.add_dependency 'will_paginate'
 	gem.authors = "David Estes"

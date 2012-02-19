@@ -1,9 +1,9 @@
 <div class="login-form">
 	<h1>Spud CMS Admin</h1>
 	<%= form_for @user_session, url: spud_user_session_path do |f| %>
-	  <div>
-		  <%= f.error_messages %>
-	  </div>
+	  
+	  <%= error_messages_for(f.object) %>
+	  
 	  <div class="field-group">
 		  <%= f.label :login %>
 		  <%= f.text_field :login %>

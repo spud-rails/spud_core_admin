@@ -15,4 +15,19 @@ module Spud::Admin::ApplicationHelper
     end
     link_to_function(name, "add_fields(this, \"#{association}\", \"#{escape_javascript(fields)}\")")
   end
+
+  def error_messages_for(object)
+    content = ""
+    if object.errors.any?
+      content += "<div class='spud_admin_form_error_list'>"
+      content += "<h4>#{pluralize(object.errors.count, "error")} prohibited you from saving:</h4>"
+      content +="<ul>"
+      object.errors.full_messages.each do |msg|
+        content+="<li>#{msg}</li>"
+      end
+      content +="</ul></div>"
+    end
+    return content.html_safe
+  
+  end
 end
