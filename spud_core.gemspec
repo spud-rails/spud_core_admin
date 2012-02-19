@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = "spud_core"
-  s.version = "0.5.2"
+  s.version = "0.5.3"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["David Estes"]
-  s.date = "2012-02-10"
+  s.date = "2012-02-19"
   s.email = "destes@redwindsw.com"
   s.extra_rdoc_files = [
     "README.markdown"
@@ -169,12 +169,6 @@ Gem::Specification.new do |s|
     "app/controllers/spud/user_sessions_controller.rb",
     "app/controllers/spud/users_controller.rb",
     "app/helpers/spud/admin/application_helper.rb",
-    "app/helpers/spud/admin/settings_helper.rb",
-    "app/helpers/spud/admin/users_helper.rb",
-    "app/helpers/spud/setup_helper.rb",
-    "app/helpers/spud/sitemaps_helper.rb",
-    "app/helpers/spud/user_sessions_helper.rb",
-    "app/helpers/spud/users_helper.rb",
     "app/models/spud_admin_permission.rb",
     "app/models/spud_user.rb",
     "app/models/spud_user_session.rb",
@@ -218,7 +212,6 @@ Gem::Specification.new do |s|
       s.add_runtime_dependency(%q<rails>, [">= 3.2.0"])
       s.add_runtime_dependency(%q<authlogic>, [">= 0"])
       s.add_runtime_dependency(%q<jquery-rails>, [">= 0"])
-      s.add_runtime_dependency(%q<dynamic_form>, [">= 0"])
       s.add_runtime_dependency(%q<breadcrumbs_on_rails>, [">= 0"])
       s.add_runtime_dependency(%q<will_paginate>, [">= 0"])
     else
@@ -226,7 +219,6 @@ Gem::Specification.new do |s|
       s.add_dependency(%q<rails>, [">= 3.2.0"])
       s.add_dependency(%q<authlogic>, [">= 0"])
       s.add_dependency(%q<jquery-rails>, [">= 0"])
-      s.add_dependency(%q<dynamic_form>, [">= 0"])
       s.add_dependency(%q<breadcrumbs_on_rails>, [">= 0"])
       s.add_dependency(%q<will_paginate>, [">= 0"])
     end
@@ -235,7 +227,6 @@ Gem::Specification.new do |s|
     s.add_dependency(%q<rails>, [">= 3.2.0"])
     s.add_dependency(%q<authlogic>, [">= 0"])
     s.add_dependency(%q<jquery-rails>, [">= 0"])
-    s.add_dependency(%q<dynamic_form>, [">= 0"])
     s.add_dependency(%q<breadcrumbs_on_rails>, [">= 0"])
     s.add_dependency(%q<will_paginate>, [">= 0"])
   end
