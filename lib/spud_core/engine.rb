@@ -20,6 +20,11 @@ module Spud
            "wymeditor/lang/*", 
            "wymeditor/skins/default/*", 
            "wymeditor/skins/default/**/*",
+           "tiny_mce/plugins/**/*",
+           "tiny_mce/themes/**/*",
+           "tiny_mce/utils/*",
+           "tiny_mce/langs/*",
+           "tiny_mce/*",
            "spud/admin*"
         ]
      end
