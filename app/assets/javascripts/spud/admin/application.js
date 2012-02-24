@@ -94,7 +94,7 @@ function initTinyMCE(selector) {
       theme_advanced_buttons2 : "search,replace,|,bullist,numlist,|,outdent,indent,blockquote,|,undo,redo,|,link,unlink,anchor,image,cleanup,help,code,|,insertdate,inserttime,preview,|,forecolor,backcolor,|,tablecontrols",
       theme_advanced_buttons3 : null,
       theme_advanced_buttons4 : null,
-      relative_urls : false
+      convert_urls : false,
     });
     
 
