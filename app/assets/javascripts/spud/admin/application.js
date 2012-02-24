@@ -93,7 +93,8 @@ function initTinyMCE(selector) {
       theme_advanced_buttons1 : "bold,italic,underline,strikethrough,|,justifyleft,justifycenter,justifyright,justifyfull,|,styleselect,formatselect,fontselect,fontsizeselect,cut,copy,paste,pastetext,pasteword",
       theme_advanced_buttons2 : "search,replace,|,bullist,numlist,|,outdent,indent,blockquote,|,undo,redo,|,link,unlink,anchor,image,cleanup,help,code,|,insertdate,inserttime,preview,|,forecolor,backcolor,|,tablecontrols",
       theme_advanced_buttons3 : null,
-      theme_advanced_buttons4 : null
+      theme_advanced_buttons4 : null,
+      relative_urls : false
     });
     
 
