@@ -1,8 +1,8 @@
 .DS_Store
-
-#Gemfile's lock file
-Gemfile.lock
+.bundle/
+log/*.log
 pkg/
-#rvm
-.rvmrc
-.rvmrc.*
+test/dummy/db/*.sqlite3
+test/dummy/log/*.log
+test/dummy/tmp/
+test/dummy/.sass-cache
