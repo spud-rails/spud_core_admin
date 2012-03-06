@@ -28,7 +28,7 @@ class Spud::Admin::UsersController < Spud::Admin::ApplicationController
 
 	def create
 		status = 500
-		@user = SpudUser.new(params[:spud_user])
+		@user = SpudUser.new(params[:spud_user].select{|k,v| k.to_s != 'super_admin' && k.to_s != "id"})
 		@user.super_admin = params[:spud_user][:super_admin]
 
 		if @user.save
@@ -64,7 +64,8 @@ class Spud::Admin::UsersController < Spud::Admin::ApplicationController
 	end
 
 	def update
-		@user.attributes = params[:spud_user]
+		
+		@user.attributes = params[:spud_user].select{|k,v| k.to_s != 'super_admin' && k.to_s != "id"}
 		@user.super_admin = params[:spud_user][:super_admin]
 
 		if @user.save
