@@ -8,7 +8,7 @@ Installation/Usage
 
 1. In your Gemfile add the following
 
-		gem 'spud_core', :git => "git://github.com/davydotcom/spud_core_admin.git"
+		gem 'spud_core'
 
 2. Run bundle install
 3. Copy in database migrations to your new rails project
