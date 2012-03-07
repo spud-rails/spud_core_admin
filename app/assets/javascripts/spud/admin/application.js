@@ -95,6 +95,7 @@ function initTinyMCE(selector) {
       theme_advanced_buttons3 : null,
       theme_advanced_buttons4 : null,
       convert_urls : false,
+      height:"400"
     });
     
 
