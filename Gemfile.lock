@@ -9,7 +9,7 @@ GIT
 PATH
   remote: .
   specs:
-    spud_core (0.7.4)
+    spud_core (0.7.5)
       authlogic
       breadcrumbs_on_rails
       jquery-rails

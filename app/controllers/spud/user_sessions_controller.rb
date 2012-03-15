@@ -23,6 +23,10 @@ class Spud::UserSessionsController < Spud::ApplicationController
   def destroy
     current_user_session.destroy
     flash[:notice] = "Logout successful!"
+    if !request.referer.blank?
+      session[:return_to] = request.referer
+    end
     redirect_back_or_default new_spud_user_session_url
+    
   end
 end
