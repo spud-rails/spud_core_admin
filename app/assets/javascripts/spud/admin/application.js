@@ -43,6 +43,10 @@ $(document).ready(function() {
         console.log(data)
       });
       $('a.button').button();
+
+
+      $('input[type=submit].btn').click(function() {$(this).button('loading')});
+
     
 	  initFormTabs(); 
 } );
