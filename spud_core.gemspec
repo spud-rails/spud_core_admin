@@ -21,7 +21,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'jquery-rails'
   s.add_dependency 'breadcrumbs_on_rails'
   s.add_dependency 'will_paginate'
-  # s.add_dependency "jquery-rails"
+  s.add_dependency 'bootstrap-will_paginate'
 
   s.add_development_dependency "mysql2"
   s.add_development_dependency "rspec"
