@@ -1,25 +1,48 @@
 <%content_for :detail do%>
-	<%=form_tag "/spud/setup",:method => :post,:class=>"right_aligned_form" do %>
+	<%=form_tag "/spud/setup",:method => :post,:class=>"form-horizontal" do %>
 		<fieldset>
 			<legend>New Admin Account</legend>
-			<ol>
-				<li><%=label_tag "Login"%>
-				  <%=text_field_tag :login,nil,:title => "",:size=>25%>
-				</li>
-				<li><%=label_tag "Email"%>
-				  <%=text_field_tag :email,nil,:title => "",:size=>25%>
-				</li>
-				<li><%=label_tag "Password"%>
-				  <%=password_field_tag :password,nil,:title => "",:size=>25%>
-				</li>
-				<li><%=label_tag "Confirm"%>
-				  <%=password_field_tag :password_confirmation,nil,:title => "",:size=>25%>
-				</li>
+			
+				<div class="control-group">
+					<%=label_tag "Login",:class => "control-label"%>
+					<div class="controls">
+						<%=text_field_tag :login,nil,:title => "",:size=>25%>
+					</div>
+				</div>
+				<div class="control-group">
+					<%=label_tag "Email",:class => "control-label"%>
+					<div class="controls">
+						<%=text_field_tag :email,nil,:title => "",:size=>25%>
+					</div>
+				</div>
+				 <div class="control-group">
+				  <%=label_tag "Time Zone",:class => "control-label"%>
+				  <div class="controls">
+				    <%=time_zone_select_tag :time_zone,nil,ActiveSupport::TimeZone.us_zones,:default => Rails.application.config.time_zone%>
+				  </div>
+				</div>
+				<div class="control-group">
+					<%=label_tag "Password",:class => "control-label"%>
+					<div class="controls">
+						<%=password_field_tag :password,nil,:title => "",:size=>25%>
+						<p class="help-block">Password must be at least 8 characters</p>
+					</div>
+				</div>
+				<div class="control-group">
+					<%=label_tag "Confirm",:class => "control-label"%>
+					<div class="controls">
+						<%=password_field_tag :password_confirmation,nil,:title => "",:size=>25%>
+						<p class="help-block">Retype your password here.</p>
+					</div>
+				</div>
 				
-				  
-			</ol>
+				
+			
 		</fieldset>
-		<fieldset class="submit"><%=submit_tag "Create Admin Account"%></fieldset>
+		<div class="form-actions">
+	    	<%=submit_tag "Create Admin Account", :class=>"btn btn-primary"%>
+	    </div>
+		
 	<%end%>
-	<br/>
+	
 <%end%>
