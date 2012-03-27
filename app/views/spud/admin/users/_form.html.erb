@@ -36,7 +36,7 @@
 <div class="control-group">
   <%=f.label :time_zone,:class => "control-label"%>
   <div class="controls">
-    <%=f.time_zone_select :time_zone,TimeZone.us_zones,:default => Rails.application.config.time_zone%>
+    <%=f.time_zone_select :time_zone,ActiveSupport::TimeZone.us_zones,:default => Rails.application.config.time_zone%>
   </div>
 </div>
 
