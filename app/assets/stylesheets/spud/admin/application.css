@@ -1,12 +1,13 @@
 /* ...
-
-*= require_self
 *= require bootstrap/css/bootstrap
+*= require_self
+
 *= require spud/admin/jquery-ui
 */
 
 body {
 	background:#eee;
+	background-color:#eee;
 	margin: 0 0;
 }
 a {
@@ -163,6 +164,7 @@ div.admin_application:hover {
 }
 #details {
 	padding:0 10px;
+	clear:both;
 	overflow: hidden;
 }
 #detail_nav_wrapper {
