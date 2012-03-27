@@ -2,13 +2,11 @@
   
   <p>Fields marked with * are required and must be filled out.</p>
 
-  <%=form_for @current_user,:url => spud_user_path(),:html=>{:class=>"right_aligned_form"} do |f|%>
+  <%=form_for @current_user,:url => spud_user_path(),:html=>{:class=>"form-horizontal"} do |f|%>
     <%=render :partial => "form",:locals => {:f => f}%>
-    <fieldset class="submit"><%=f.submit "Save Settings"%> or <%=link_to "cancel",request.referer,:class => "close_dialog"%></fieldset>
+    <div class="form-actions">
+    	<%=f.submit "Save Settings", :class=>"btn btn-primary"%> or <%=link_to "cancel",request.referer,:class => "btn"%>
+    </div>
   <%end%>
 
-  <script type="text/javascript">
-  	$('input[type=submit],.close_dialog').button();
-  	
-  </script>
 
