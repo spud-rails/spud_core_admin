@@ -13,7 +13,7 @@ class Spud::UsersController < Spud::ApplicationController
 		add_breadcrumb "Settings", :spud_settings_path
 		@page_thumbnail = "spud/admin/users_thumb.png"
 		@page_name = "Settings"	
-		if @current_user.update_attributes(params[:spud_user].slice :login,:first_name,:last_name,:email,:password,:password_confirmation)
+		if @current_user.update_attributes(params[:spud_user].slice :login,:first_name,:last_name,:email,:password,:password_confirmation,:time_zone)
 			flash[:notice] = "User settings saved successfully."
 			redirect_to spud_admin_root_url()
 		else
