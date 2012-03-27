@@ -4,27 +4,27 @@
 			<legend>New Admin Account</legend>
 			
 				<div class="control-group">
-					<%=label_tag "Login",:class => "control-label"%>
+					<%=label_tag :login, "Login",:class => "control-label"%>
 					<div class="controls">
 						<%=text_field_tag :login,nil,:title => "",:size=>25%>
 					</div>
 				</div>
 				<div class="control-group">
-					<%=label_tag "Email",:class => "control-label"%>
+					<%=label_tag :email, "Email",:class => "control-label"%>
 					<div class="controls">
 						<%=text_field_tag :email,nil,:title => "",:size=>25%>
 					</div>
 				</div>
 				 
 				<div class="control-group">
-					<%=label_tag "Password",:class => "control-label"%>
+					<%=label_tag :password, "Password",:class => "control-label"%>
 					<div class="controls">
 						<%=password_field_tag :password,nil,:title => "",:size=>25%>
 						<p class="help-block">Password must be at least 8 characters</p>
 					</div>
 				</div>
 				<div class="control-group">
-					<%=label_tag "Confirm",:class => "control-label"%>
+					<%=label_tag :password_confirmation, "Confirm",:class => "control-label"%>
 					<div class="controls">
 						<%=password_field_tag :password_confirmation,nil,:title => "",:size=>25%>
 						<p class="help-block">Retype your password here.</p>
