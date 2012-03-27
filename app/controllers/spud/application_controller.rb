@@ -2,7 +2,7 @@ class Spud::ApplicationController < ActionController::Base
 	unloadable
 	protect_from_forgery
 	helper_method :current_user_session, :current_user
-	
+	before_filter :set_time_zone
 
   private
     def current_user_session
@@ -44,5 +44,9 @@ class Spud::ApplicationController < ActionController::Base
     def redirect_back_or_default(default)
       redirect_to(session[:return_to] || default)
       session[:return_to] = nil
+    end
+
+    def set_time_zone
+      Time.zone = current_user.time_zone if current_user and current_user.time_zone.blank? == false
     end
 end
