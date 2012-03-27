@@ -9,7 +9,7 @@ class Spud::SetupController < Spud::ApplicationController
 		end
 
 		if request.post?
-			@user = SpudUser.new(:login => params[:login],:email => params[:email],:password => params[:password],:password_confirmation => params[:password_confirmation],:time_zone => params[:time_zone])
+			@user = SpudUser.new(:login => params[:login],:email => params[:email],:password => params[:password],:password_confirmation => params[:password_confirmation])
 			@user.super_admin = true
 			if @user.save
 				redirect_to spud_admin_root_url() and return

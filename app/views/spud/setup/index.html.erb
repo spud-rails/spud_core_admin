@@ -15,12 +15,7 @@
 						<%=text_field_tag :email,nil,:title => "",:size=>25%>
 					</div>
 				</div>
-				 <div class="control-group">
-				  <%=label_tag "Time Zone",:class => "control-label"%>
-				  <div class="controls">
-				    <%=time_zone_select_tag :time_zone,nil,ActiveSupport::TimeZone.us_zones,:default => Rails.application.config.time_zone%>
-				  </div>
-				</div>
+				 
 				<div class="control-group">
 					<%=label_tag "Password",:class => "control-label"%>
 					<div class="controls">
