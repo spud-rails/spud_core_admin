@@ -2,7 +2,7 @@ class Spud::ApplicationController < ActionController::Base
 	unloadable
 	protect_from_forgery
 	helper_method :current_user_session, :current_user
-	before_filter :set_time_zone
+	around_filter :set_time_zone
 
   private
     def current_user_session
@@ -47,10 +47,10 @@ class Spud::ApplicationController < ActionController::Base
     end
 
     def set_time_zone
-      if current_user and current_user.time_zone.blank? == false
-        Time.zone = current_user.time_zone 
-      else
-        Time.zone = Rails.application.config.time_zone
-      end
+      old_time_zone = Time.zone
+      Time.zone = current_user.time_zone if current_user and current_user.time_zone.blank? == false
+      yield
+    ensure
+      Time.zone = old_time_zone
     end
 end
