@@ -19,13 +19,13 @@
 			<%@users.each do |user|%>
 				<tr id="row_user_<%=user.id%>">
 					
-					<td><%=link_to user.login,spud_admin_user_path(:id => user.id)%></td>
+					<td><%=link_to user.login,edit_spud_admin_user_path(:id => user.id),:class => "ajax"%></td>
 					<td><%=user.email%></td>
 					<td><%=user.first_name%>&nbsp;<%=user.last_name%></td>
 					
 					<td><%=timestamp user.last_login_at%></td>
 					<td><%=timestamp user.created_at%></td>
-					<td align="right"><%=link_to "Edit",edit_spud_admin_user_path(:id => user.id),:class => "ajax", :title => "Edit User"%>&nbsp;|&nbsp;<%=link_to "Remove",spud_admin_user_path(:id => user.id),:method => :delete,:remote => true,:confirm => "Are you sure you want to remove this user?"%></td>
+					<td align="right"><%=link_to "Remove",spud_admin_user_path(:id => user.id),:method => :delete,:remote => true,:confirm => "Are you sure you want to remove this user?",:class => "btn btn-danger"%></td>
 				</tr>
 			<%end%>
 		</tbody>

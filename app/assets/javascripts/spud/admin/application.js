@@ -47,8 +47,11 @@ $(document).ready(function() {
 
       $('input[type=submit].btn').click(function() {$(this).button('loading')});
 
-    
-	  initFormTabs(); 
+    $('#multisite_switcher select').change(function() {
+      $(this).parent().submit();
+      // alert('test');
+    });
+	  initFormTabs();
 } );
 
 

@@ -4,6 +4,10 @@ module Spud::Admin::ApplicationHelper
     return Time.now() - timedate > 604800 ? timedate.strftime("%B %d") + ' at ' + timedate.strftime("%I:%M %p") : time_ago_in_words(timedate) + ' ago'
   end
 
+  def current_site_name
+    return Spud::Core.site_name
+  end
+
   def link_to_remove_fields(name, f)
     f.hidden_field(:_destroy) + link_to_function(name, "remove_fields(this)",:class => "btn btn-danger")
   end

@@ -64,7 +64,11 @@ a:hover .ui-button-text {
 	margin:0 15px;
 	line-height:100px;
 }
-
+#header #multisite_switcher
+{
+	margin:0 15px;
+	line-height:100px;
+}
 #breadcrumbs {
 	background:#fff;
 	height:25px;

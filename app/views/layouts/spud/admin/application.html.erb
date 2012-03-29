@@ -9,23 +9,40 @@
 </head>
 <body>
 <div id="header">
-	<h1>Spud Admin</h1>
+	<h1>Spud Admin: <span class="site_name"><%=current_site_name%></span></h1>
+
 	<div id="user_meta">
 		<span class="greeting">Hello <%=@current_user.login%></span>&nbsp;|&nbsp;<%=link_to "Settings", spud_settings_path%>&nbsp;|&nbsp;<%=link_to "Logout",spud_user_session_url,:method => :delete%></a>
 	</div>
+  <%if Spud::Core.multisite_mode_enabled == true%>
+    <div id="multisite_switcher" class="right_floated">
+      <%=form_tag spud_admin_switch_url do%>
+        <%=select_tag :multisite_select,options_for_select([[Spud::Core.site_name,nil]] + Spud::Core.multisite_config.collect{|c| [c[:site_name],c[:short_name]]},session[:admin_site])%>
+      <%end%>
+    </div>
+  <%end%>
 </div>
 <div id="breadcrumbs">
 <%= render_breadcrumbs :separator => ' / ' %>
 </div>
 <div id="content">
 <% if flash[:notice] %>
-  <div class="flash notice"><%= flash[:notice] %></div>
+  <div class="alert alert-success">
+    <a class="close" data-dismiss="alert">×</a>
+    <%= flash[:notice] %>
+  </div>
 <% end %>
 <% if flash[:warning] %>
-  <div class="flash warning"><%= flash[:warning] %></div>
+  
+  <div class="alert alert-warning">
+    <a class="close" data-dismiss="alert">×</a>
+    <%= flash[:warning] %>
+  </div>
 <% end %>
 <% if flash[:error]%>
-<div class="flash error">
+
+<div class="alert alert-error">
+    <a class="close" data-dismiss="alert">×</a>
 	  <%= flash[:error] %>
 </div>
 <%-end%>
