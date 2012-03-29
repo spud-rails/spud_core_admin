@@ -76,7 +76,7 @@ a:hover .ui-button-text {
 #breadcrumbs {
 	background:#fff;
 	height:25px;
-	border-top:1px solid rgb(200,148,72);
+	/*border-top:1px solid rgb(200,148,72);*/
 	border-bottom:1px solid #999;
 	line-height:25px;
 	padding:5px 15px;

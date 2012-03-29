@@ -7,11 +7,20 @@ module Spud::Admin::ApplicationHelper
   def current_site_name
     return Spud::Core.site_name if !Spud::Core.multisite_mode_enabled || session[:admin_site].blank?
 
-    config = Spud::Core.multisite_config.select{|p| p[:short_name].to_s == session[:admin_site].to_s}
+    config = Spud::Core.multisite_config.select{|p| p[:site_id].to_i == session[:admin_site].to_i}
     return Spud::Core.site_name if config.blank?
 
     return config[0][:site_name]
 
+  end
+  def header_style
+    if !Spud::Core.multisite_mode_enabled
+      return ''
+    end
+    config = Spud::Core.multisite_config.select{|p| p[:site_id].to_i == session[:admin_site].to_i}
+    return '' if config.blank?
+
+    return config[0][:header_style]
   end
 
   def link_to_remove_fields(name, f)
