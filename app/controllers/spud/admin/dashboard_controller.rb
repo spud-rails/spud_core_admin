@@ -2,7 +2,21 @@ class Spud::Admin::DashboardController < Spud::Admin::ApplicationController
   
 	def index
 		permission_set = current_user_permissions.collect{|p| p.name}
-		@admin_applications = Spud::Core.admin_applications.select{|app| @current_user.super_admin || permission_set.include?(app[:name])}
+		@unsorted_applications = Spud::Core.admin_applications.select{|app| @current_user.super_admin || permission_set.include?(app[:name])}.sort_by{|obj| obj[:order]}
+		@admin_applications = []
+
+		@app_order = @current_user.spud_user_settings.where(:key => "app_order").first
+		if !@app_order.blank?
+			names = @app_order.value.split(",")
+			names.each do |name|
+				@app = @unsorted_applications.select{|app| app[:name] == name}
+				@unsorted_applications = @unsorted_applications.reject{|app| app[:name] == name}
+				@admin_applications += @app
+			end
+			@admin_applications += @unsorted_applications
+		else
+			@admin_applications = @unsorted_applications
+		end
 	end
 
 	def switch

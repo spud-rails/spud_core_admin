@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  spud_user_id: 1
+  key: MyString
+  value: MyString
+
+two:
+  spud_user_id: 1
+  key: MyString
+  value: MyString

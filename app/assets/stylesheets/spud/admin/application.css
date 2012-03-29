@@ -25,22 +25,22 @@ a:hover .ui-button-text {
 }
 #header {
 	height:100px;
-	background:rgb(199,90,0);
-	background-image: linear-gradient(top, rgb(199,90,0) 5%, rgb(179,72,0) 53%);
-	background-image: -o-linear-gradient(top, rgb(199,90,0) 5%, rgb(179,72,0) 53%);
-	background-image: -moz-linear-gradient(top, rgb(199,90,0) 5%, rgb(179,72,0) 53%);
-	background-image: -webkit-linear-gradient(top, rgb(199,90,0) 5%, rgb(179,72,0) 53%);
-	background-image: -ms-linear-gradient(top, rgb(199,90,0) 5%, rgb(179,72,0) 53%);
+	background:#fc862a;
+	background-image: linear-gradient(top, #fc862a 5%, #f56a0e 53%);
+	background-image: -o-linear-gradient(top, #fc862a 5%, #f56a0e 53%);
+	background-image: -moz-linear-gradient(top, #fc862a 5%, #f56a0e 53%);
+	background-image: -webkit-linear-gradient(top, #fc862a 5%, #f56a0e 53%);
+	background-image: -ms-linear-gradient(top, #fc862a 5%, #f56a0e 53%);
 
 	background-image: -webkit-gradient(
 	linear,
 	left top,
 	left bottom,
-	color-stop(0.05, rgb(199,90,0)),
-	color-stop(0.53, rgb(179,72,0))
+	color-stop(0.05, #fc862a),
+	color-stop(0.53, #f56a0e)
 	);
 
-	border-bottom:1px solid rgb(180,72,0);
+	
 	color:#fff;
 }
 #header a,
@@ -49,7 +49,7 @@ a:hover .ui-button-text {
 	font-weight:normal;	
 }
 .greeting {
-	color:#ddd;
+	color:#fff;
 }
 
 #header #user_meta {
@@ -63,6 +63,10 @@ a:hover .ui-button-text {
 	color:#fff;
 	margin:0 15px;
 	line-height:100px;
+	width:200px;
+	height:100px;
+	text-indent:-10000px;
+	background: url('/assets/spud/admin/spud_logo.png') top left no-repeat;
 }
 #header h1 .site_name {
 	color:#CCC;
@@ -80,7 +84,7 @@ a:hover .ui-button-text {
 	border-bottom:1px solid #999;
 	line-height:25px;
 	padding:5px 15px;
-	box-shadow: 0px 0px 10px #888;
+	/*box-shadow: 0px 0px 10px #888;*/
 
 }
 #breadcrumbs a,
@@ -112,6 +116,12 @@ div.admin_application {
 	border:1px solid transparent;
 	border-radius:10px;
 	margin: 0 10px 20px 10px;
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
 }
 div.admin_application:hover {
 	background:#fff;
@@ -245,7 +255,7 @@ div.field_with_errors label {
 	border-collapse:collapse;
 }
 .admin-table thead tr{
-	background:rgb(199,90,0);
+	background:#fc862a;
 	color:#fff;
 	
 	border-radius:10px 10px 0 0;
@@ -363,4 +373,39 @@ form input.full-width {
 }
 .spud_admin_pagination .pagination{
 	float: right;
+}
+
+#dashboard-editmode {
+	clear:both;
+	background:#ccc;
+	padding:10px;
+	text-align:center;
+	display:none;
+}
+/*Jiggle Animation*/
+.jiggly { 
+    -webkit-animation: jiggle 0.2s infinite; 
+    -moz-animation-duration: 0.2s; 
+    -moz-animation-name: jiggle; 
+    -moz-animation-iteration-count: infinite; 
+    -webkit-transform: rotate(-1deg); 
+    -moz-transform: rotate(-1deg); 
+} 
+
+@-moz-keyframes jiggle { 
+    0% { 
+        -moz-transform: rotate(-1deg); 
+    } 
+    50% { 
+        -moz-transform: rotate(1deg); 
+    } 
+} 
+
+@-webkit-keyframes jiggle { 
+    0% { 
+        -webkit-transform: rotate(-1deg); 
+    } 
+    50% { 
+        -webkit-transform: rotate(1deg); 
+    } 
 }

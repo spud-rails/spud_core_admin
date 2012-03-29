@@ -6,6 +6,10 @@
 //= require bootstrap/js/bootstrap
 //= require_self
 //= require_tree .
+
+Spud = (typeof(Spud) == 'undefined') ? {} : Spud;
+Spud.Admin = (typeof(Spud.Admin) == 'undefined') ? {} : Spud.Admin;
+
 $(document).ready(function() {
     $('#user_table').dataTable({
     	"bJQueryUI": true,

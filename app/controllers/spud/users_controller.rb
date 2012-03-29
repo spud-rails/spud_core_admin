@@ -21,4 +21,22 @@ class Spud::UsersController < Spud::ApplicationController
 			render :action => "settings"
 		end
 	end
+
+
+	def save_setting
+		if params[:key].blank?
+			render :status => 500,:text => nil and return
+		end
+
+		setting = @current_user.spud_user_settings.where(:key => params[:key]).first
+		if setting.blank?
+			setting = @current_user.spud_user_settings.new(:key => params[:key])
+		end
+		setting.value = params[:value]
+		if setting.save
+			render :status => 200,:text => nil and return
+		else
+			render :status => 500,:text => nil and return
+		end
+	end
 end

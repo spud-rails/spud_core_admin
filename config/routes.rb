@@ -3,6 +3,7 @@ Rails.application.routes.draw do
 	   	resource :user_session
 	   	resource :user
 	   	match 'settings' => "users#settings"
+         match 'save_key' => "users#save_setting"
    		namespace :admin do
    			root :to => "dashboard#index"
    			resources :users
