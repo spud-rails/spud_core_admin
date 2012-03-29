@@ -64,6 +64,10 @@ a:hover .ui-button-text {
 	margin:0 15px;
 	line-height:100px;
 }
+#header h1 .site_name {
+	color:#CCC;
+	font-size:.7em;
+}
 #header #multisite_switcher
 {
 	margin:0 15px;
