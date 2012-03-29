@@ -7,5 +7,14 @@ module Spud
     self.sitemap_urls = []
     self.multisite_mode_enabled = false
     self.multisite_config = []
+
+    def self.site_config_for_host(host)
+        configs = Spud::Core.multisite_config.select{|p| p[:hosts].include?(host)}
+        if configs.blank?
+          return nil
+        else
+          return configs[0]
+        end
+  	end
   end
 end

@@ -11,8 +11,8 @@ class Spud::Admin::DashboardController < Spud::Admin::ApplicationController
 			session[:admin_site] = nil
 			redirect_to request.referer and return
 		end	
-		if Spud::Core.multisite_config.select{|p| p[:short_name].to_s == params[:multisite_select].to_s}.blank? == false
-			session[:admin_site] = params[:multisite_select].to_s
+		if Spud::Core.multisite_config.select{|p| p[:site_id].to_i == params[:multisite_select].to_i}.blank? == false
+			session[:admin_site] = params[:multisite_select].to_i
 		else
 			flash[:error] = "Site does not exist."
 		end

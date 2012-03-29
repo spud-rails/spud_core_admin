@@ -30,6 +30,8 @@ module Spud
         ]
       end
 
+      
+
      initializer :controller_overrides do |config|
      	ActionController::Base.class_eval do
      		include Spud::BelongsToApp
@@ -43,5 +45,7 @@ module Spud
 
      
  end
+
+ 
 end
 end

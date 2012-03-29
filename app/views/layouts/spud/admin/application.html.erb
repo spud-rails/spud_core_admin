@@ -17,7 +17,7 @@
   <%if Spud::Core.multisite_mode_enabled == true%>
     <div id="multisite_switcher" class="right_floated">
       <%=form_tag spud_admin_switch_url do%>
-        <%=select_tag :multisite_select,options_for_select([[Spud::Core.site_name,nil]] + Spud::Core.multisite_config.collect{|c| [c[:site_name],c[:short_name]]},session[:admin_site])%>
+        <%=select_tag :multisite_select,options_for_select([[Spud::Core.site_name,nil]] + Spud::Core.multisite_config.collect{|c| [c[:site_name],c[:site_id]]},session[:admin_site])%>
       <%end%>
     </div>
   <%end%>
