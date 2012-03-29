@@ -61,12 +61,14 @@ a:hover .ui-button-text {
 #header h1 {
 	float:left;
 	color:#fff;
-	margin:0 15px;
+	margin:0 5px;
+	
 	line-height:100px;
 	width:200px;
 	height:100px;
 	text-indent:-10000px;
-	background: url('/assets/spud/admin/spud_logo.png') top left no-repeat;
+	background: url('/assets/spud/admin/spud_logo.png') center left no-repeat;
+	background-size:200px 90px;
 }
 #header h1 .site_name {
 	color:#CCC;
@@ -408,4 +410,15 @@ form input.full-width {
     50% { 
         -webkit-transform: rotate(1deg); 
     } 
+}
+
+
+/*Retina CSS*/
+@media only screen and (-webkit-min-device-pixel-ratio: 1.5),
+	only screen and (-o-min-device-pixel-ratio: 3/2),
+	only screen and (min--moz-device-pixel-ratio: 1.5),
+	only screen and (min-device-pixel-ratio: 1.5) {
+		#header h1 {
+			background: url('/assets/spud/admin/spud_logo@2x.png') top left no-repeat;
+		}
 }
