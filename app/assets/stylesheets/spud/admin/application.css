@@ -421,4 +421,7 @@ form input.full-width {
 		#header h1 {
 			background: url('/assets/spud/admin/spud_logo@2x.png') top left no-repeat;
 		}
+		.replace-2x {
+			font-size: 1px;
+		}
 }
