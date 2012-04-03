@@ -4,7 +4,7 @@ module Spud::Admin::ApplicationHelper
     return Time.now() - timedate > 604800 ? timedate.strftime("%B %d") + ' at ' + timedate.strftime("%I:%M %p") : time_ago_in_words(timedate) + ' ago'
   end
 
-  def current_site_name
+  def current_admin_site_name
     return Spud::Core.site_name if !Spud::Core.multisite_mode_enabled || session[:admin_site].blank?
 
     config = Spud::Core.multisite_config.select{|p| p[:site_id].to_i == session[:admin_site].to_i}
@@ -12,6 +12,14 @@ module Spud::Admin::ApplicationHelper
 
     return config[0][:site_name]
 
+  end
+
+  def current_site_name
+    return Spud::Core.site_name if !Spud::Core.multisite_mode_enabled
+    config = Spud::Core.site_config_for_host(request.host_with_port)
+    return Spud::Core.site_name if config.blank?
+
+    return config[:site_name]
   end
   def header_style
     if !Spud::Core.multisite_mode_enabled
