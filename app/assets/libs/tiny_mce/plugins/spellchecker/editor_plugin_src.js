@@ -167,7 +167,7 @@
 		},
 
 		_getSeparators : function() {
-			var re = '', i, str = this.editor.getParam('spellchecker_word_separator_chars', '\\s!"#$%&()*+,-./:;<=>?@[\]^_{|}§©«®±¶·¸»¼½¾¿×÷¤\u201d\u201c');
+			var re = '', i, str = this.editor.getParam('spellchecker_word_separator_chars', '\\s!"#$%&()*+,-./:;<=>?@[\]^_{|}Â§Â©Â«Â®Â±Â¶Â·Â¸Â»Â¼Â½Â¾Â¿Ã—Ã·Â¤\u201d\u201c');
 
 			// Build word separator regexp
 			for (i=0; i<str.length; i++)
@@ -208,7 +208,7 @@
 		},
 
 		_removeWords : function(w) {
-			var ed = this.editor, dom = ed.dom, se = ed.selection, r = se.getRng(true);
+			var ed = this.editor, dom = ed.dom, se = ed.selection, b = se.getBookmark();
 
 			each(dom.select('span').reverse(), function(n) {
 				if (n && (dom.hasClass(n, 'mceItemHiddenSpellWord') || dom.hasClass(n, 'mceItemHidden'))) {
@@ -217,11 +217,11 @@
 				}
 			});
 
-			se.setRng(r);
+			se.moveToBookmark(b);
 		},
 
 		_markWords : function(wl) {
-			var ed = this.editor, dom = ed.dom, doc = ed.getDoc(), se = ed.selection, r = se.getRng(true), nl = [],
+			var ed = this.editor, dom = ed.dom, doc = ed.getDoc(), se = ed.selection, b = se.getBookmark(), nl = [],
 				w = wl.join('|'), re = this._getSeparators(), rx = new RegExp('(^|[' + re + '])(' + w + ')(?=[' + re + ']|$)', 'g');
 
 			// Collect all text nodes
@@ -279,7 +279,7 @@
 				}
 			});
 
-			se.setRng(r);
+			se.moveToBookmark(b);
 		},
 
 		_showMenu : function(ed, e) {
