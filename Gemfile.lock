@@ -9,7 +9,7 @@ GIT
 PATH
   remote: .
   specs:
-    spud_core (0.8.7)
+    spud_core (0.8.8)
       authlogic
       bootstrap-will_paginate
       breadcrumbs_on_rails
