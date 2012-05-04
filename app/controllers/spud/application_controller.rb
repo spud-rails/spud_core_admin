@@ -55,17 +55,19 @@ class Spud::ApplicationController < ActionController::Base
     end
 
     def multisite_caching
-      yield and return if !Spud::Core.multisite_mode_enabled
-      old_cache_directory = Rails.application.config.action_controller.page_cache_directory
-      if(old_cache_directory.blank?)
-        old_cache_directory = Rails.application.config.action_controller.page_cache_directory = File.join(Rails.root,'public')
+      if Spud::Core.multisite_mode_enabled
+        old_cache_directory = Rails.application.config.action_controller.page_cache_directory
+        if(old_cache_directory.blank?)
+          old_cache_directory = Rails.application.config.action_controller.page_cache_directory = File.join(Rails.root,'public')
+        end
+        site_config = Spud::Core.site_config_for_host request.host_with_port
+        if !site_config.blank?
+          Rails.application.config.action_controller.page_cache_directory = File.join(old_cache_directory.to_s,site_config[:short_name].to_s)
+        else
+          Rails.application.config.action_controller.page_cache_directory = File.join(old_cache_directory.to_s,"main")
+        end
       end
-      site_config = Spud::Core.site_config_for_host request.host_with_port
-      if !site_config.blank?
-        Rails.application.config.action_controller.page_cache_directory = File.join(old_cache_directory.to_s,site_config[:short_name].to_s)
-      else
-        Rails.application.config.action_controller.page_cache_directory = File.join(old_cache_directory.to_s,"main")
-      end
+      
       yield
 
     ensure

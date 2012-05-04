@@ -3,7 +3,8 @@ class Spud::UserSessionsController < Spud::ApplicationController
   before_filter :require_user, :only => :destroy
   layout 'spud/login/application'
   def new
-    if SpudUser.count == 0
+    if SpudUser.all.count == 0
+      logger.debug "NO USERS!"
       redirect_to spud_setup_url() and return
     end
 
