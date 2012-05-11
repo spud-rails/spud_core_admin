@@ -4,7 +4,13 @@ class Spud::ApplicationController < ActionController::Base
 	helper_method :current_user_session, :current_user
 	around_filter :set_time_zone
   around_filter :multisite_caching
+  before_filter :to
+  
+
   private
+    def to
+      ActionMailer::Base.default_url_options = {:host => request.host_with_port}
+    end
     def current_user_session
       return @current_user_session if defined?(@current_user_session)
       @current_user_session = SpudUserSession.find

@@ -10,6 +10,7 @@ Rails.application.routes.draw do
             match 'switch' => "dashboard#switch"
    		end
          resource :sitemap,:only => [:show]
+         resources :password_resets
 	   	match 'setup' => 'setup#index'
    end
    

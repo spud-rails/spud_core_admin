@@ -1,0 +1,14 @@
+<div class="login-form">
+	<h1>Forgot Password</h1>
+	<%= form_tag spud_password_resets_path do  %>
+	  	  
+	  <div class="field-group">
+		  <%= label_tag :email %>
+		  <%= text_field_tag :email %>
+	  </div>
+
+	  <div class="field-group">
+	  	<%= submit_tag "Send Reset Instructions" %>
+	  </div>
+	<% end %>
+</div>
