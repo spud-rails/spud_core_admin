@@ -13,6 +13,15 @@ module Spud
     class Engine < ::Rails::Engine
       require 'spud_core/belongs_to_app'
       require 'spud_core/searchable'
+
+      def self.require_model(model_name)
+        require "#{root}/app/models/#{model_name}"
+      end
+
+      def self.require_controller(controller_name)
+        require "#{root}/app/controllers/#{controller_name}"
+      end
+      
       engine_name :spud_core
       initializer :assets do |config| 
       	Rails.application.config.assets.precompile += [ 
