@@ -11,8 +11,8 @@ require 'will_paginate'
 module Spud
   module Core
     class Engine < ::Rails::Engine
-      require 'spud_core/belongs_to_app'
-      require 'spud_core/searchable'
+      require "#{root}/lib/spud_core/belongs_to_app"
+      require "#{root}/lib/spud_core/searchable"
 
       def self.require_model(model_name)
         require "#{root}/app/models/#{model_name}"

@@ -5,10 +5,8 @@ source "http://rubygems.org"
 # development dependencies will be added by default to the :development group.
 group :development, :test do
   gem 'mysql2', '0.3.11'
-  gem 'rspec-rails', '2.8.1'
-end
-group :test do
   gem 'rspec', '2.8.0'
+  gem 'rspec-rails', '2.8.1'
   gem 'shoulda', :git => 'git://github.com/3den/shoulda.git' # gem 'shoulda', '2.11.3' # gem needs updated for rails 3.2 from pending pull requests.
   gem 'factory_girl', '2.5.0'
   gem 'mocha', '0.10.3'

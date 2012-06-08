@@ -8,9 +8,7 @@ class Spud::Admin::ApplicationController < Spud::ApplicationController
 
 	private
 	def require_admin_user
-		puts "Checking for Admin"
 		return false if !require_user
-		puts "user found, verifying permissions"
 		if !@current_user.super_admin && current_user_permissions.count == 0
 			flash[:error] = "User must be an administrator to view this area."
 			redirect_to root_url() and return false
