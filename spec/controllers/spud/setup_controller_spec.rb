@@ -28,11 +28,11 @@ describe Spud::SetupController do
       flash[:error].should_not be_blank
     end
     
-    it "should redirect to the admin root when there is already a user" do
+    it "should redirect to the admin login form when there is already a user" do
       SpudUser.stubs(:count).returns(1)
       get :index
       
-      response.should redirect_to(root_url)
+      response.should redirect_to(new_spud_user_session_url)
     end
     
     it "should create a new user" do
@@ -41,10 +41,10 @@ describe Spud::SetupController do
       }.should change(SpudUser, :count).by(1)
     end
     
-    it "should redirect to the admin root" do
+    it "should redirect to the admin login form when first admin user has been created" do
       post :index, Factory.attributes_for(:spud_user)
       
-      response.should redirect_to(spud_admin_root_url)
+      response.should redirect_to(new_spud_user_session_url)
     end
     
     it "should display an error if the user is invalid" do
