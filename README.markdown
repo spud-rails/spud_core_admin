@@ -49,6 +49,7 @@ Spud uses RSpec for testing. Get the tests running with a few short commands:
 3. Run the tests with RSpec
     > rspec spec
 
+After the tests have completed the current code coverage stats is available by opening ```/coverage/index.html``` in a browser.
 
 
 
