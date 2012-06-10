@@ -5,6 +5,12 @@ source "http://rubygems.org"
 # development dependencies will be added by default to the :development group.
 group :test do
   gem 'mysql2', '0.3.11'
+  gem 'rspec', '2.8.0'
+  gem 'shoulda', '~> 3.0.1'
+  gem 'factory_girl', '2.5.0'
+  gem 'mocha', '0.10.3'
+  gem "database_cleaner", "0.7.1"
+  gem 'spud_permalinks'
 end
 
 gemspec
