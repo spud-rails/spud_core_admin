@@ -30,20 +30,39 @@ describe Spud::Admin::UsersController do
     it "should allow access to users with the correct permissions" do
       u = Factory(:spud_user, :super_admin => false)
       u.spud_admin_permissions << Factory.build(:spud_admin_permission, :name => "Users", :access => true)
-      SpudUserSession.create()
+      SpudUserSession.create(u)
       get :index
       
       response.should be_success
     end
-    
-    it "should not allow access to users without permission" do
+
+    it "should not allow access to users without permission and redirect to root_url if the user has no permissions" do
       u = Factory(:spud_user, :super_admin => false)
-      # u.spud_admin_permissions << Factory.build(:spud_admin_permission, :name => "Users", :access => false)
-      # u.spud_admin_permissions = []
-      u.spud_admin_permissions.each do |permission|
-        permission.destroy
-      end
-      SpudUserSession.create()
+      u.spud_admin_permissions << []
+      SpudUserSession.create(u)
+      get :index
+      
+      response.should redirect_to(root_url)
+    end
+
+    it "should not allow access to users without permission and redirect to root_url if the users has no other admin modules" do
+      u = Factory(:spud_user, :super_admin => false)
+      u.spud_admin_permissions << [
+        Factory.build(:spud_admin_permission, :name => "Users", :access => false)
+      ]
+      SpudUserSession.create(u)
+      get :index
+      
+      response.should redirect_to(root_url)
+    end
+    
+    it "should not allow access to users without permission and redirect to admin_root if the users has other admin modules" do
+      u = Factory(:spud_user, :super_admin => false)
+      u.spud_admin_permissions << [
+        Factory.build(:spud_admin_permission, :name => "Users", :access => false),
+        Factory.build(:spud_admin_permission, :name => "App2", :access => true)
+      ]
+      SpudUserSession.create(u)
       get :index
       
       response.should redirect_to(spud_admin_root_url)
