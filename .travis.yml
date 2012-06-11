@@ -1,0 +1,7 @@
+language: ruby
+rvm:
+  - 1.9.2
+before_script:
+  - "mysql -e 'create database spud_core_test;'"
+  - "bundle exec rake db:schema:load"
+  - "bundle exec rake app:db:test:prepare"
