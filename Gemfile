@@ -11,6 +11,7 @@ group :test do
   gem 'mocha', '0.10.3'
   gem "database_cleaner", "0.7.1"
   gem 'spud_permalinks'
+  gem 'rake'
 end
 
 gemspec

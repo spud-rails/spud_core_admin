@@ -142,6 +142,7 @@ DEPENDENCIES
   jquery-rails
   mocha (= 0.10.3)
   mysql2 (= 0.3.11)
+  rake
   rspec (= 2.8.0)
   rspec-rails (= 2.8.1)
   shoulda (~> 3.0.1)
