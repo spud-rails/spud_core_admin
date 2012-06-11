@@ -14,14 +14,7 @@ module Spud::Admin::ApplicationHelper
 
   end
 
-  def current_site_name
-    puts "request.host_with_port = #{request.host_with_port}"
-    return Spud::Core.site_name if !Spud::Core.multisite_mode_enabled
-    config = Spud::Core.site_config_for_host(request.host_with_port)
-    return Spud::Core.site_name if config.blank?
 
-    return config[:site_name]
-  end
   def header_style
     if !Spud::Core.multisite_mode_enabled
       return ''

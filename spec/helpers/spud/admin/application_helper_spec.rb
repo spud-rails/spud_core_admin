@@ -23,33 +23,6 @@ describe Spud::Admin::ApplicationHelper do
     end
     
   end
-  describe :current_site_name do
-    it "should return config site name if multisite is disabled" do
-      Spud::Core.configure do |config|
-        config.site_name = "Test Site"
-      end
-      current_site_name.should == 'Test Site'
-    end
 
-    it "should return config site name if multisite is enabled but multisite name is blank" do
-      Spud::Core.configure do |config|
-        config.site_name = "Test Site"
-        config.multisite_enabled = true
-      end
-      current_site_name.should == 'Test Site'
-    end
-
-    it "should return multisite name if multisite is enabled" do
-      Spud::Core.configure do |config|
-        config.site_name = "Test Site"
-        config.multisite_enabled = true
-        config.multisite_config += [{:host => "example.com",:site_name =>"Site B"}]
-      end
-      helper.request = {:host_with_port => "example.com"}
-      
-      current_site_name.should == 'Site B'
-    end
-    
-  end
 
 end
