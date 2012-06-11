@@ -139,3 +139,33 @@ ActionController::RoutingError (uninitialized constant PagesController):
 
 
   Rendered /Users/ddeyoung/.rvm/gems/ruby-1.9.2-p290@spud/gems/actionpack-3.2.2/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (7.1ms)
+  [1m[36m (0.7ms)[0m  [1mSELECT `schema_migrations`.`version` FROM `schema_migrations` [0m
+  [1m[36m (0.4ms)[0m  [1mSELECT `schema_migrations`.`version` FROM `schema_migrations` [0m
+Migrating to CreateSpudAdminPermissions (20111214161011)
+Migrating to CreateSpudUsers (20111214161146)
+Migrating to AddTimeZoneToSpudUser (20120327124229)
+  [1m[35m (191.5ms)[0m  ALTER TABLE `spud_users` ADD `time_zone` varchar(255)
+  [1m[36m (0.8ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20120327124229')[0m
+Migrating to AddScopeToSpudAdminPermissions (20120328235431)
+  [1m[35m (179.7ms)[0m  ALTER TABLE `spud_admin_permissions` ADD `scope` varchar(255)
+  [1m[36m (0.5ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20120328235431')[0m
+Migrating to CreateSpudUserSettings (20120329174000)
+  [1m[35m (151.7ms)[0m  CREATE TABLE `spud_user_settings` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `spud_user_id` int(11), `key` varchar(255), `value` varchar(255), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB
+  [1m[36m (1.2ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20120329174000')[0m
+  [1m[35m (0.1ms)[0m  SELECT `schema_migrations`.`version` FROM `schema_migrations` 
+  [1m[36m (0.2ms)[0m  [1mSELECT `schema_migrations`.`version` FROM `schema_migrations` [0m
+  [1m[35m (143.2ms)[0m  DROP DATABASE IF EXISTS `spud_core_test`
+  [1m[36m (0.9ms)[0m  [1mCREATE DATABASE `spud_core_test` DEFAULT CHARACTER SET `utf8` COLLATE `utf8_unicode_ci`[0m
+  [1m[35m (120.0ms)[0m  CREATE TABLE `spud_admin_permissions` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `user_id` int(11), `name` varchar(255), `access` tinyint(1), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL, `scope` varchar(255)) ENGINE=InnoDB
+  [1m[36m (240.5ms)[0m  [1mCREATE TABLE `spud_user_settings` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `spud_user_id` int(11), `key` varchar(255), `value` varchar(255), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB[0m
+  [1m[35m (151.5ms)[0m  CREATE TABLE `spud_users` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `first_name` varchar(255), `last_name` varchar(255), `super_admin` tinyint(1), `login` varchar(255) NOT NULL, `email` varchar(255) NOT NULL, `crypted_password` varchar(255) NOT NULL, `password_salt` varchar(255) NOT NULL, `persistence_token` varchar(255) NOT NULL, `single_access_token` varchar(255) NOT NULL, `perishable_token` varchar(255) NOT NULL, `login_count` int(11) DEFAULT 0 NOT NULL, `failed_login_count` int(11) DEFAULT 0 NOT NULL, `last_request_at` datetime, `current_login_at` datetime, `last_login_at` datetime, `current_login_ip` varchar(255), `last_login_ip` varchar(255), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL, `time_zone` varchar(255)) ENGINE=InnoDB
+  [1m[36m (247.7ms)[0m  [1mCREATE INDEX `index_spud_users_on_email` ON `spud_users` (`email`)[0m
+  [1m[35m (145.9ms)[0m  CREATE INDEX `index_spud_users_on_login` ON `spud_users` (`login`)
+  [1m[36m (182.0ms)[0m  [1mCREATE TABLE `schema_migrations` (`version` varchar(255) NOT NULL) ENGINE=InnoDB[0m
+  [1m[35m (252.8ms)[0m  CREATE UNIQUE INDEX `unique_schema_migrations` ON `schema_migrations` (`version`)
+  [1m[36m (0.3ms)[0m  [1mSELECT version FROM `schema_migrations`[0m
+  [1m[35m (0.4ms)[0m  INSERT INTO `schema_migrations` (version) VALUES ('20120329174000')
+  [1m[36m (0.3ms)[0m  [1mINSERT INTO `schema_migrations` (version) VALUES ('20111214161011')[0m
+  [1m[35m (0.3ms)[0m  INSERT INTO `schema_migrations` (version) VALUES ('20111214161146')
+  [1m[36m (0.3ms)[0m  [1mINSERT INTO `schema_migrations` (version) VALUES ('20120327124229')[0m
+  [1m[35m (0.3ms)[0m  INSERT INTO `schema_migrations` (version) VALUES ('20120328235431')

@@ -38,11 +38,15 @@ describe Spud::Admin::UsersController do
     
     it "should not allow access to users without permission" do
       u = Factory(:spud_user, :super_admin => false)
-      u.spud_admin_permissions << Factory.build(:spud_admin_permission, :name => "Users", :access => false)
+      # u.spud_admin_permissions << Factory.build(:spud_admin_permission, :name => "Users", :access => false)
+      # u.spud_admin_permissions = []
+      u.spud_admin_permissions.each do |permission|
+        permission.destroy
+      end
       SpudUserSession.create()
       get :index
       
-      response.should be_success
+      response.should redirect_to(spud_admin_root_url)
     end
   end
   
