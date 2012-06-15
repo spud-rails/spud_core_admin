@@ -9,6 +9,7 @@ module Spud
     self.multisite_config = []
     self.from_address = "no-reply@spudengine.com"
     def self.site_config_for_host(host)
+      
         configs = Spud::Core.multisite_config.select{|p| p[:hosts].include?(host)}
         if configs.blank?
           return nil

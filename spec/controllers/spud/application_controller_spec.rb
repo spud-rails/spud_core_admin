@@ -27,7 +27,7 @@ describe Spud::ApplicationController do
     it "should return config site name if multisite is enabled but multisite name is blank" do
       Spud::Core.configure do |config|
         config.site_name = "Test Site"
-        config.multisite_enabled = true
+        config.multisite_mode_enabled = true
       end
       @controller.current_site_name.should == 'Test Site'
     end
@@ -35,12 +35,13 @@ describe Spud::ApplicationController do
     it "should return multisite name if multisite is enabled" do
       Spud::Core.configure do |config|
         config.site_name = "Test Site"
-        config.multisite_enabled = true
-        config.multisite_config += [{:host => "example.com",:site_name =>"Site B"}]
+        config.multisite_mode_enabled = true
+        config.multisite_config += [{:hosts => ["test.host"],:site_name =>"Site B"}]
       end
-      request.host_with_port = "example.com"
+
+      # puts request.host_with_port
       # helper.request = {:host_with_port => "example.com"}
-      
+      @controller.request = request
       @controller.current_site_name.should == 'Site B'
     end
     
