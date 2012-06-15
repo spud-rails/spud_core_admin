@@ -38,13 +38,23 @@ describe Spud::Admin::DashboardController do
       assigns(:admin_applications).collect{|app| app[:name] }.should_not include(:settings)
     end
     
-    it "shoudl display all the applications despite the users permissions given the current user is a super admin" do
+    it "should display all the applications despite the users permissions given the current user is a super admin" do
       @user.super_admin = true
       @user.spud_admin_permissions.build(FactoryGirl.attributes_for(:spud_admin_permission, :name => "Blog", :access => true))
       @user.save
       get :index
 
       assigns(:admin_applications).collect{|app| app[:name] }.should =~ Spud::Core.admin_applications.collect{|app| app[:name] }
+    end
+
+    it "should display applications in order of user preference if available" do
+      @user.super_admin = true
+      @user.save
+      @user.spud_user_settings.create(:key => "app_order",:value => "Pages,Settings")
+      get :index
+
+      assigns(:admin_applications).collect{|app| app[:name] }.should =~ ["Pages","Settings","Blog"] 
+
     end
   end
 end

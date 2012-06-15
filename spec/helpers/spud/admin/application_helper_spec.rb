@@ -24,5 +24,11 @@ describe Spud::Admin::ApplicationHelper do
     
   end
 
+  describe :error_messages_for do
+    it "should return blank when no errors exist" do
+      u = FactoryGirl.create(:spud_user)
+      error_messages_for(u).should == ''
+    end
 
+  end
 end
