@@ -1,22 +1,22 @@
 require 'spec_helper'
 
 describe Spud::ApplicationController do
-  class TestSpudController < Spud::ApplicationController
-    def index
-      render :nothing => true
-    end
-  end
+
   
   before :each do
-    @controller = TestSpudController.new
     activate_authlogic
-    @user = Factory(:spud_user)
+    @user = FactoryGirl.create(:spud_user)
     @session = SpudUserSession.create(@user)
   end
   
 
 
     describe :current_site_name do
+      controller(Spud::ApplicationController) do
+        def index
+          render :nothing => true
+        end
+      end
     it "should return config site name if multisite is disabled" do
       Spud::Core.configure do |config|
         config.site_name = "Test Site"

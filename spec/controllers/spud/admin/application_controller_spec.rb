@@ -1,20 +1,20 @@
 require 'spec_helper'
 
 describe Spud::Admin::ApplicationController do
-  class TestController < Spud::Admin::ApplicationController
-    def index
-      render :nothing => true
-    end
-  end
+  
   
   before :each do
-    @controller = TestController.new
     activate_authlogic
-    @user = Factory(:spud_user)
+    @user = FactoryGirl.create(:spud_user)
     @session = SpudUserSession.create(@user)
   end
   
   describe :require_admin_user do
+    controller(Spud::Admin::ApplicationController) do
+      def index
+        render :nothing => true
+      end
+    end
     it "should respond successfully if the current user is a super admin" do
       @user.update_attribute(:super_admin, true)
       get :index

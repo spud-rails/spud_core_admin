@@ -37,18 +37,18 @@ describe Spud::SetupController do
     
     it "should create a new user" do
       lambda {
-        post :index, Factory.attributes_for(:spud_user)
+        post :index, FactoryGirl.attributes_for(:spud_user)
       }.should change(SpudUser, :count).by(1)
     end
     
     it "should redirect to the admin login form when first admin user has been created" do
-      post :index, Factory.attributes_for(:spud_user)
+      post :index, FactoryGirl.attributes_for(:spud_user)
       
       response.should redirect_to(new_spud_user_session_url)
     end
     
     it "should display an error if the user is invalid" do
-      post :index, Factory.attributes_for(:spud_user, :email => nil)
+      post :index, FactoryGirl.attributes_for(:spud_user, :email => nil)
       
       flash[:error].should_not be_blank
     end

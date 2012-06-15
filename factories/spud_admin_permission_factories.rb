@@ -4,7 +4,7 @@ FactoryGirl.define do
   end
   
   factory :spud_admin_permission do
-    name { Factory.next(:permission_name) }
+    name { FactoryGirl.generate(:permission_name) }
     access true
   end
 end

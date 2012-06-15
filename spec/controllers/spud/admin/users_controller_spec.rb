@@ -3,12 +3,12 @@ require 'spec_helper'
 describe Spud::Admin::UsersController do
   before(:each) do
     activate_authlogic
-    @user = SpudUserSession.create(Factory.build(:spud_user, :super_admin => true))
+    @user = SpudUserSession.create(FactoryGirl.build(:spud_user, :super_admin => true))
   end
   
   describe :index do
     it "should return an array of users" do
-      2.times {|x| Factory(:spud_user) }
+      2.times {|x| FactoryGirl.create(:spud_user) }
       get :index
       
       assigns(:users).count.should be > 1
@@ -21,15 +21,15 @@ describe Spud::Admin::UsersController do
     end
     
     it "should not allow access to users with NO permissions" do
-      SpudUserSession.create(Factory.build(:spud_user, :super_admin => false))
+      SpudUserSession.create(FactoryGirl.build(:spud_user, :super_admin => false))
       get :index
       
       response.should redirect_to(root_url)   
     end
     
     it "should allow access to users with the correct permissions" do
-      u = Factory(:spud_user, :super_admin => false)
-      u.spud_admin_permissions << Factory.build(:spud_admin_permission, :name => "Users", :access => true)
+      u = FactoryGirl.create(:spud_user, :super_admin => false)
+      u.spud_admin_permissions << FactoryGirl.build(:spud_admin_permission, :name => "Users", :access => true)
       SpudUserSession.create(u)
       get :index
       
@@ -37,7 +37,7 @@ describe Spud::Admin::UsersController do
     end
 
     it "should not allow access to users without permission and redirect to root_url if the user has no permissions" do
-      u = Factory(:spud_user, :super_admin => false)
+      u = FactoryGirl.create(:spud_user, :super_admin => false)
       u.spud_admin_permissions << []
       SpudUserSession.create(u)
       get :index
@@ -46,9 +46,9 @@ describe Spud::Admin::UsersController do
     end
 
     it "should not allow access to users without permission and redirect to root_url if the users has no other admin modules" do
-      u = Factory(:spud_user, :super_admin => false)
+      u = FactoryGirl.create(:spud_user, :super_admin => false)
       u.spud_admin_permissions << [
-        Factory.build(:spud_admin_permission, :name => "Users", :access => false)
+        FactoryGirl.build(:spud_admin_permission, :name => "Users", :access => false)
       ]
       SpudUserSession.create(u)
       get :index
@@ -57,10 +57,10 @@ describe Spud::Admin::UsersController do
     end
     
     it "should not allow access to users without permission and redirect to admin_root if the users has other admin modules" do
-      u = Factory(:spud_user, :super_admin => false)
+      u = FactoryGirl.create(:spud_user, :super_admin => false)
       u.spud_admin_permissions << [
-        Factory.build(:spud_admin_permission, :name => "Users", :access => false),
-        Factory.build(:spud_admin_permission, :name => "App2", :access => true)
+        FactoryGirl.build(:spud_admin_permission, :name => "Users", :access => false),
+        FactoryGirl.build(:spud_admin_permission, :name => "App2", :access => true)
       ]
       SpudUserSession.create(u)
       get :index
@@ -71,14 +71,14 @@ describe Spud::Admin::UsersController do
   
   describe :show do
     it "should respond successfully" do
-      user = Factory(:spud_user)
+      user = FactoryGirl.create(:spud_user)
       get :show, :id => user.id
       
       response.should be_success
     end
     
     it "should show the user" do
-      user = Factory(:spud_user)
+      user = FactoryGirl.create(:spud_user)
       get :show, :id => user.id
       
       assigns(:user).id.should == user.id
@@ -103,14 +103,14 @@ describe Spud::Admin::UsersController do
     context "HTML format" do
       it "should create a new user with a valid form submission" do
         lambda {
-          post :create, :spud_user => Factory.attributes_for(:spud_user)
+          post :create, :spud_user => FactoryGirl.attributes_for(:spud_user)
         }.should change(SpudUser, :count).by(1)
         response.should be_redirect
       end
     
       it "should not create a user with an invalid form entry" do
         lambda {
-          post :create, :spud_user => Factory.attributes_for(:spud_user, :email => nil)
+          post :create, :spud_user => FactoryGirl.attributes_for(:spud_user, :email => nil)
         }.should_not change(SpudUser, :count)
         flash[:error].should_not be_blank
       end
@@ -119,14 +119,14 @@ describe Spud::Admin::UsersController do
     context "JS format" do
       it "should create a new user with a valid form submission" do
         lambda {
-          post :create, :spud_user => Factory.attributes_for(:spud_user), :format => :js
+          post :create, :spud_user => FactoryGirl.attributes_for(:spud_user), :format => :js
         }.should change(SpudUser, :count).by(1)
         response.should be_success
       end
     
       it "should not create a user with an invalid form entry" do
         lambda {
-          post :create, :spud_user => Factory.attributes_for(:spud_user, :email => nil), :format => :js
+          post :create, :spud_user => FactoryGirl.attributes_for(:spud_user, :email => nil), :format => :js
         }.should_not change(SpudUser, :count)
         response.should_not be_success
       end
@@ -137,7 +137,7 @@ describe Spud::Admin::UsersController do
   describe :edit do
     context "HTML format" do
       it "should load the correct user for the edit form" do
-        user = Factory(:spud_user)
+        user = FactoryGirl.create(:spud_user)
         get :edit, :id => user.id
       
         assigns(:user).id.should == user.id
@@ -146,7 +146,7 @@ describe Spud::Admin::UsersController do
 
     context "JS format" do
       it "should load the correct user for the edit form" do
-        user = Factory(:spud_user)
+        user = FactoryGirl.create(:spud_user)
         get :edit, :id => user.id, :format => :js
       
         assigns(:user).id.should == user.id
@@ -158,7 +158,7 @@ describe Spud::Admin::UsersController do
   
   describe :update do
     it "should update the email when the first name attribute is changed" do
-      user = Factory(:spud_user)
+      user = FactoryGirl.create(:spud_user)
       new_name = "Adam"
       lambda {
         put :update, :id => user.id, :spud_user => user.attributes.merge!(:first_name => new_name)
@@ -167,7 +167,7 @@ describe Spud::Admin::UsersController do
     end
     
     it "should redirect to the admin users after a successful update" do
-      user = Factory(:spud_user)
+      user = FactoryGirl.create(:spud_user)
       put :update, :id => user.id, :spud_user => user.attributes.merge!(:first_name => "Adam")
       
       response.should redirect_to(spud_admin_users_url)
@@ -176,7 +176,7 @@ describe Spud::Admin::UsersController do
   
   describe :destroy do
     it "should destroy the user" do
-      user = Factory(:spud_user)
+      user = FactoryGirl.create(:spud_user)
       lambda {
         delete :destroy, :id => user.id
       }.should change(SpudUser, :count).by(-1)
@@ -184,7 +184,7 @@ describe Spud::Admin::UsersController do
     end
     
     it "should destroy the user with the wrong id" do
-      user = Factory(:spud_user)
+      user = FactoryGirl.create(:spud_user)
       lambda {
         delete :destroy, :id => "23532"
       }.should_not change(SpudUser, :count)

@@ -3,7 +3,7 @@ require 'spec_helper'
 describe Spud::UsersController do
   before(:each) do
     activate_authlogic
-    SpudUserSession.create(Factory.build(:spud_user))
+    SpudUserSession.create(FactoryGirl.build(:spud_user))
   end
   
   describe :settings do

@@ -13,15 +13,15 @@ describe Spud::Admin::DashboardController do
 
   before(:each) do
     activate_authlogic
-    @user = Factory(:spud_user)
+    @user = FactoryGirl.create(:spud_user)
     SpudUserSession.create(@user)
   end
   
   describe :index do
     it "should display applications the current user has access to given that the current user is not a super admin" do
       @user.super_admin = false
-      @user.spud_admin_permissions.build(Factory.attributes_for(:spud_admin_permission, :name => "Blog", :access => true))
-      @user.spud_admin_permissions.build(Factory.attributes_for(:spud_admin_permission, :name => "Pages", :access => true))
+      @user.spud_admin_permissions.build(FactoryGirl.attributes_for(:spud_admin_permission, :name => "Blog", :access => true))
+      @user.spud_admin_permissions.build(FactoryGirl.attributes_for(:spud_admin_permission, :name => "Pages", :access => true))
       @user.save
       get :index
 
@@ -30,8 +30,8 @@ describe Spud::Admin::DashboardController do
     
     it "should not display applications the current user does not have access to given that the current user is not a super admin" do
       @user.super_admin = false
-      @user.spud_admin_permissions.build(Factory.attributes_for(:spud_admin_permission, :name => "Blog", :access => true))
-      @user.spud_admin_permissions.build(Factory.attributes_for(:spud_admin_permission, :name => "Pages", :access => true))
+      @user.spud_admin_permissions.build(FactoryGirl.attributes_for(:spud_admin_permission, :name => "Blog", :access => true))
+      @user.spud_admin_permissions.build(FactoryGirl.attributes_for(:spud_admin_permission, :name => "Pages", :access => true))
       @user.save
       get :index
 
@@ -40,7 +40,7 @@ describe Spud::Admin::DashboardController do
     
     it "shoudl display all the applications despite the users permissions given the current user is a super admin" do
       @user.super_admin = true
-      @user.spud_admin_permissions.build(Factory.attributes_for(:spud_admin_permission, :name => "Blog", :access => true))
+      @user.spud_admin_permissions.build(FactoryGirl.attributes_for(:spud_admin_permission, :name => "Blog", :access => true))
       @user.save
       get :index
 

@@ -27,7 +27,7 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'rspec', '2.8.0'
   s.add_development_dependency 'rspec-rails', '2.8.1'
   s.add_development_dependency 'shoulda', '~> 3.0.1'
-  s.add_development_dependency 'factory_girl', '2.5.0'
+  s.add_development_dependency 'factory_girl', '~> 3.0'
   s.add_development_dependency 'mocha', '0.10.3'
   s.add_development_dependency 'database_cleaner', '0.7.1'
   s.add_development_dependency 'simplecov', '~> 0.6.4'

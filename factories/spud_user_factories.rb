@@ -20,12 +20,12 @@ FactoryGirl.define do
   end
     
   factory :spud_user do
-    first_name { Factory.next(:first_name) }
-    last_name { Factory.next(:last_name) }
-    login { Factory.next(:login) }
-    email { Factory.next(:email) }
+    first_name { FactoryGirl.generate(:first_name) }
+    last_name { FactoryGirl.generate(:last_name) }
+    login { FactoryGirl.generate(:login) }
+    email { FactoryGirl.generate(:email) }
     password "password"
     password_confirmation "password"
-    single_access_token { Factory.next(:single_access_token) }
+    single_access_token { FactoryGirl.generate(:single_access_token) }
   end
 end
