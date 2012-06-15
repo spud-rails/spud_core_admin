@@ -34,11 +34,18 @@ describe Spud::UserSessionsController do
   end
 
   describe :destroy do
-  	it "should redirect to login after logout" do
+  	it "should redirect to login after logout when no referer" do
   		activate_authlogic
 	    SpudUserSession.create(FactoryGirl.build(:spud_user))
 	    delete :destroy
 	    response.should redirect_to(new_spud_user_session_url)
+  	end
+  	it "should redirect to previous page after logout" do
+        request.env["HTTP_REFERER"] = "/"
+        activate_authlogic
+	    SpudUserSession.create(FactoryGirl.build(:spud_user))
+	    delete :destroy
+	    response.should redirect_to("/")
   	end
   end
 
