@@ -1,3 +1,5 @@
+[![Build Status](https://secure.travis-ci.org/davydotcom/spud_core_admin.png)](http://travis-ci.org/davydotcom/spud_core_admin)
+
 Spud Core Admin
 ===============
 
