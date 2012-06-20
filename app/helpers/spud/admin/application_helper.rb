@@ -5,15 +5,13 @@ module Spud::Admin::ApplicationHelper
   end
 
   def current_admin_site_name
-    return Spud::Core.site_name if !Spud::Core.multisite_mode_enabled || session[:admin_site].blank?
-
-    config = Spud::Core.multisite_config.select{|p| p[:site_id].to_i == session[:admin_site].to_i}
-    return Spud::Core.site_name if config.blank?
-
-    return config[0][:site_name]
-
+    site_name = Spud::Core.site_name
+    if Spud::Core.multisite_mode_enabled && !session[:admin_site].blank?
+      config = Spud::Core.multisite_config.select{|p| p[:site_id].to_i == session[:admin_site].to_i}
+      site_name = config[0][:site_name] if !config.blank?
+    end
+    return site_name
   end
-
 
   def header_style
     if !Spud::Core.multisite_mode_enabled
@@ -28,7 +26,7 @@ module Spud::Admin::ApplicationHelper
   def link_to_remove_fields(name, f)
     f.hidden_field(:_destroy) + link_to_function(name, "remove_fields(this)",:class => "btn btn-danger")
   end
-  
+
   def link_to_add_fields(name, f, association)
     new_object = f.object.class.reflect_on_association(association).klass.new
     fields = f.fields_for(association, new_object, :child_index => "new_#{association}") do |builder|
@@ -49,6 +47,6 @@ module Spud::Admin::ApplicationHelper
       content +="</ul></div>"
     end
     return content.html_safe
-  
+
   end
 end

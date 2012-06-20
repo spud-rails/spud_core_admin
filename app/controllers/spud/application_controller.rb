@@ -1,11 +1,11 @@
 class Spud::ApplicationController < ActionController::Base
 	unloadable
 	protect_from_forgery
-	helper_method :current_user_session, :current_user,:current_site_name
+	helper_method :current_user_session, :current_user, :current_site_name
 	around_filter :set_time_zone
   around_filter :multisite_caching
   before_filter :to
-  
+
 
   def current_site_name
     # puts "request.host_with_port = #{request.host_with_port}"
@@ -15,10 +15,13 @@ class Spud::ApplicationController < ActionController::Base
 
     return config[:site_name]
   end
+
   private
+
     def to
       ActionMailer::Base.default_url_options = {:host => request.host_with_port}
     end
+
     def current_user_session
       return @current_user_session if defined?(@current_user_session)
       @current_user_session = SpudUserSession.find
@@ -28,10 +31,12 @@ class Spud::ApplicationController < ActionController::Base
       return @current_user if defined?(@current_user)
       @current_user = current_user_session && current_user_session.spud_user
     end
+
     def current_user_permissions
       return @current_user_permissions if defined?(@current_user_permissions)
       @current_user_permissions = current_user.spud_admin_permissions.where(:access => true).all
     end
+
     def require_user
       unless current_user
         store_location
@@ -51,12 +56,10 @@ class Spud::ApplicationController < ActionController::Base
       end
     end
 
-
-    
     def store_location
       session[:return_to] = request.url
     end
-    
+
     def redirect_back_or_default(default)
       redirect_to(session[:return_to] || default)
       session[:return_to] = nil
@@ -83,7 +86,7 @@ class Spud::ApplicationController < ActionController::Base
           Rails.application.config.action_controller.page_cache_directory = File.join(old_cache_directory.to_s,"main")
         end
       end
-      
+
       yield
 
     ensure
