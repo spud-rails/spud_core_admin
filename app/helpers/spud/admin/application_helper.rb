@@ -14,13 +14,12 @@ module Spud::Admin::ApplicationHelper
   end
 
   def header_style
-    if !Spud::Core.multisite_mode_enabled
-      return ''
+    style_str = ''
+    if Spud::Core.multisite_mode_enabled
+      config = Spud::Core.multisite_config.select{|p| p[:site_id].to_i == session[:admin_site].to_i}
+      style_str = config[0][:header_style] if !config.blank? && config[0].has_key?(:header_style)
     end
-    config = Spud::Core.multisite_config.select{|p| p[:site_id].to_i == session[:admin_site].to_i}
-    return '' if config.blank?
-
-    return config[0][:header_style]
+    return style_str
   end
 
   def link_to_remove_fields(name, f)

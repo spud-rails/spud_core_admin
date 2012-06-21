@@ -74,6 +74,52 @@ describe Spud::Admin::ApplicationHelper do
     end
   end
 
+  describe :header_style do
+    let(:style_string) { 'Big' }
+
+    context "with multisite mode enabled" do
+      before(:each) do
+        Spud::Core.stubs(:multisite_mode_enabled).returns(true)
+      end
+
+      context "and an admin site is selected" do
+        before(:each) do
+          controller.stubs(:session).returns({:admin_site => 1})
+        end
+
+        it "should return a style string if the site is configured" do
+          Spud::Core.stubs(:multisite_config).returns([{:site_id => 1, :header_style => style_string}])
+          helper.header_style.should == style_string
+        end
+
+        it "should return an empty string if the site is not configured" do
+           Spud::Core.stubs(:multisite_config).returns([])
+           helper.header_style.should == ''
+        end
+      end
+
+      context "and an admin site is not selected" do
+        before(:each) do
+          controller.stubs(:session).returns({:admin_site => nil})
+        end
+
+        it "should return an empty string" do
+          helper.header_style.should == ''
+        end
+      end
+    end
+
+    context "with multisite mode disabled" do
+      before(:each) do
+        Spud::Core.stubs(:multisite_mode_enabled).returns(false)
+      end
+
+      it "should return an empty string" do
+        helper.header_style.should == ''
+      end
+    end
+  end
+
   describe :error_messages_for do
     it "should return blank when no errors exist" do
       u = FactoryGirl.create(:spud_user)
