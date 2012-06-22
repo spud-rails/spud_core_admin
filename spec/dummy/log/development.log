@@ -169,3 +169,4 @@ Migrating to CreateSpudUserSettings (20120329174000)
   [1m[35m (0.3ms)[0m  INSERT INTO `schema_migrations` (version) VALUES ('20111214161146')
   [1m[36m (0.3ms)[0m  [1mINSERT INTO `schema_migrations` (version) VALUES ('20120327124229')[0m
   [1m[35m (0.3ms)[0m  INSERT INTO `schema_migrations` (version) VALUES ('20120328235431')
+Connecting to database specified by database.yml

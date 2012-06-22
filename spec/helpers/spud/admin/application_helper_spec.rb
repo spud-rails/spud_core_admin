@@ -121,9 +121,30 @@ describe Spud::Admin::ApplicationHelper do
   end
 
   describe :error_messages_for do
+    before(:each) do
+      @user = FactoryGirl.create(:spud_user)
+    end
+
     it "should return blank when no errors exist" do
-      u = FactoryGirl.create(:spud_user)
-      error_messages_for(u).should == ''
+      helper.error_messages_for(@user).should == ''
+    end
+
+    it "should display 1 error when the subject has 2 errors" do
+      @user.errors[:base] << "error 1"
+      helper.error_messages_for(@user).should include("1 error")
+    end
+
+    (1..3).each do |error_count|
+      it "should display #{error_count} errors when the subject has #{error_count} errors" do
+        error_count.times {|x| @user.errors[:base] << "error #{x}" }
+        helper.error_messages_for(@user).should include("#{@user.errors[:base].size} error")
+      end
+    end
+
+    it "should display the error" do
+      error = "You're invalid"
+      @user.errors[:base] << error
+      helper.error_messages_for(@user).should include(error)
     end
   end
 end
