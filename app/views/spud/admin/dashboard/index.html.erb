@@ -3,7 +3,7 @@
 <%@admin_applications.each do |admin_application|%>
 
 	<div class="admin_application" id="application_name_<%=admin_application[:name]%>"><a href="<%=admin_application[:url]%>">
-		<div class="image_wrapper"><%=image_tag(admin_application[:thumbnail],:class=>"#{admin_application[:retina] == true ? 'replace-2x' : ''}")%></div>
+		<div class="image_wrapper"><%=image_tag(admin_application[:thumbnail],:hidpi_src=>hidpi_asset(admin_application[:thumbnail]))%></div>
 		<span class="application_name"><%=admin_application[:name]%></span>
 		</a>
 	</div>

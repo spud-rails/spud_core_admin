@@ -5,11 +5,11 @@
 		</span>
 		<h2>
 			<%if @page_thumbnail%>
-				<span class="thumb_wrapper"><%=image_tag(@page_thumbnail)%></span>
+				<span class="thumb_wrapper"><%=image_tag(@page_thumbnail,:hidpi_src => asset_path(@page_thumbnail.gsub(/\.png/,"@2x.png")))%></span>
 			<%end%>
 			<%=@page_name%>
 		</h2>
-		
+
 		<div id="details">
 			<%if content_for?(:detail_nav)%>
 				<div id="detail_nav_wrapper">

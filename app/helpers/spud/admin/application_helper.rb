@@ -1,4 +1,12 @@
 module Spud::Admin::ApplicationHelper
+
+  def hidpi_asset(path)
+    begin
+      return asset_path(path.gsub(/\.png/,"@2x.png"))
+    rescue
+      return nil
+    end
+  end
   def timestamp(timedate=nil)
     return "Never" if timedate.blank?
     return Time.now() - timedate > 604800 ? timedate.strftime("%B %d") + ' at ' + timedate.strftime("%I:%M %p") : time_ago_in_words(timedate) + ' ago'
