@@ -61,8 +61,13 @@ class Spud::ApplicationController < ActionController::Base
     end
 
     def redirect_back_or_default(default)
-      redirect_to(session[:return_to] || default)
+      redirect_to(back_or_default(default))
+    end
+
+    def back_or_default(default)
+      result = !session[:return_to].blank? ? session[:return_to] : default
       session[:return_to] = nil
+      return result
     end
 
     def set_time_zone
