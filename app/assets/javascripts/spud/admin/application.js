@@ -113,8 +113,6 @@ function initDatePicker(selector){
 }
 
 function highdpi_init() {
-  console.log("testing hidpi");
-  console.log(window.devicePixelRatio);
   if(window.devicePixelRatio > 1)
   {
 
@@ -142,8 +140,6 @@ function highdpi_init() {
           element: els[i],
           url: hiDpiSrc,
           success: function(message) {
-            console.log("Found");
-            console.log(this.element);
             this.element.src = this.url;
           }
         });
