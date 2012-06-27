@@ -2,7 +2,9 @@ module Spud::Admin::ApplicationHelper
 
   def hidpi_asset(path)
     begin
-      return asset_path(path.gsub(/\.png/,"@2x.png"))
+      return nil if Rails.application.assets.find_asset(path.gsub(/\.png/,"@2x.png")).nil?
+      asset_path = asset_path(path.gsub(/\.png/,"@2x.png"))
+      return asset_path
     rescue
       return nil
     end

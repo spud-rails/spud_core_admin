@@ -11,7 +11,6 @@ Spud = (typeof(Spud) == 'undefined') ? {} : Spud;
 Spud.Admin = (typeof(Spud.Admin) == 'undefined') ? {} : Spud.Admin;
 
 $(document).ready(function() {
-  console.log("HELLO!");
     $('#user_table').dataTable({
       "bJQueryUI": true,
       "sPaginationType": "full_numbers"
@@ -134,15 +133,16 @@ function highdpi_init() {
       }
 
       if(hiDpiSrc) {
-        $.ajax({
-          type: 'HEAD',
-          async: true,
-          element: els[i],
-          url: hiDpiSrc,
-          success: function(message) {
-            this.element.src = this.url;
-          }
-        });
+        els[i].src = hiDpiSrc;
+        // $.ajax({
+        //   type: 'HEAD',
+        //   async: true,
+        //   element: els[i],
+        //   url: hiDpiSrc,
+        //   success: function(message) {
+        //     this.element.src = this.url;
+        //   }
+        // });
       }
 
 
