@@ -22,6 +22,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'breadcrumbs_on_rails'
   s.add_dependency 'will_paginate'
   s.add_dependency 'bootstrap-will_paginate'
+  s.add_dependency 'retina_tag'
 
   s.add_development_dependency 'mysql2', '0.3.11'
   s.add_development_dependency 'rspec', '2.8.0'
