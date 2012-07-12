@@ -59,4 +59,5 @@ Spud uses RSpec for testing. Get the tests running with a few short commands:
 After the tests have completed the current code coverage stats is available by opening ```/coverage/index.html``` in a browser.
 
 
+NOTE: Spud Core is Retina Resolution Compatible Now
 
