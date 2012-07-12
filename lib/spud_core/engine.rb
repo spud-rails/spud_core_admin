@@ -3,6 +3,7 @@
 # require 'action_controller'
 # require 'rubygems'
 require 'jquery-rails'
+require 'retina_tag'
 require 'authlogic'
 # require 'dynamic_form'
 require 'breadcrumbs_on_rails'
@@ -21,14 +22,14 @@ module Spud
       def self.require_controller(controller_name)
         require "#{root}/app/controllers/#{controller_name}"
       end
-      
+
       engine_name :spud_core
-      initializer :assets do |config| 
-      	Rails.application.config.assets.precompile += [ 
+      initializer :assets do |config|
+      	Rails.application.config.assets.precompile += [
          "jquery.wymeditor.pack.js",
-           "wymeditor/*", 
-           "wymeditor/lang/*", 
-           "wymeditor/skins/default/*", 
+           "wymeditor/*",
+           "wymeditor/lang/*",
+           "wymeditor/skins/default/*",
            "wymeditor/skins/default/**/*",
            "tiny_mce/plugins/**/*",
            "tiny_mce/themes/**/*",
@@ -39,22 +40,22 @@ module Spud
         ]
       end
 
-      
+
 
      initializer :controller_overrides do |config|
      	ActionController::Base.class_eval do
      		include Spud::BelongsToApp
      	end
      end
-     initializer :model_overrides do |config| 
+     initializer :model_overrides do |config|
       ActiveRecord::Base.class_eval do
         include Spud::Searchable
       end
      end
 
-     
+
  end
 
- 
+
 end
 end
