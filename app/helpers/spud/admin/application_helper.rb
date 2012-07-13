@@ -1,14 +1,5 @@
 module Spud::Admin::ApplicationHelper
 
-  def hidpi_asset(path)
-    begin
-      return nil if Rails.application.assets.find_asset(path.gsub(/\.png/,"@2x.png")).nil?
-      asset_path = asset_path(path.gsub(/\.png/,"@2x.png"))
-      return asset_path
-    rescue
-      return nil
-    end
-  end
   def timestamp(timedate=nil)
     return "Never" if timedate.blank?
     return Time.now() - timedate > 604800 ? timedate.strftime("%B %d") + ' at ' + timedate.strftime("%I:%M %p") : time_ago_in_words(timedate) + ' ago'
