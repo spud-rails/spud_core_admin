@@ -14,11 +14,11 @@ module Spud
     def self.site_config_for_host(host)
       configs = Spud::Core.multisite_config.select{|p| p[:hosts].include?(host)}
       if configs.blank?
-        return nil
+        return default_site_config
       else
         return configs[0]
       end
-  	end
+    end
 
     def self.site_config_for_id(id)
       if(id == Spud::Core.config.site_id)
