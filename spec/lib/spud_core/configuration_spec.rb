@@ -14,7 +14,6 @@ describe Spud::Core do
 
   describe :site_config_for_id do
     it "should should return the default site config" do
-      puts "testing site config for id"
       config = Spud::Core.site_config_for_id(0)
       config.should == {:site_name =>"Default Site", :short_name => 'default', :site_id => 0}
     end
@@ -27,7 +26,6 @@ describe Spud::Core do
 
   describe :default_site_config do
     it "should return the default site config" do 
-      puts "testing default site config"
       config = Spud::Core.default_site_config
       config.should == {:site_name =>"Default Site", :short_name => 'default', :site_id => 0}
     end
