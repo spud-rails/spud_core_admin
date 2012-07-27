@@ -5,7 +5,7 @@
 		</span>
 		<h2>
 			<%if @page_thumbnail%>
-				<span class="thumb_wrapper"><%=image_tag(@page_thumbnail,:hidpi_src => hidpi_asset(@page_thumbnail))%></span>
+				<span class="thumb_wrapper"><%=image_tag(@page_thumbnail)%></span>
 			<%end%>
 			<%=@page_name%>
 		</h2>
