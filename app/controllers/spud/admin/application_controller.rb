@@ -1,5 +1,6 @@
 class Spud::Admin::ApplicationController < Spud::ApplicationController
 	before_filter :require_admin_user
+	before_filter :verify_site_mode
 	add_breadcrumb "Dashboard", :spud_admin_root_path
 	layout 'spud/admin/application'
 	respond_to :html,:json,:xml,:js
@@ -14,5 +15,12 @@ class Spud::Admin::ApplicationController < Spud::ApplicationController
 			redirect_to root_url() and return false
 		end
 		return true
+	end
+
+	def verify_site_mode
+		if(Spud::Core.multisite_mode_enabled && session[:admin_site] == nil)
+	    session[:admin_site] = 0
+		end
+
 	end
 end
