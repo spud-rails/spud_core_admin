@@ -40,13 +40,13 @@ a:hover .ui-button-text {
 	color-stop(0.53, #f56a0e)
 	);
 
-	
+
 	color:#fff;
 }
 #header a,
 #header a:visited {
 	color:#eee;
-	font-weight:normal;	
+	font-weight:normal;
 }
 .greeting {
 	color:#fff;
@@ -62,7 +62,7 @@ a:hover .ui-button-text {
 	float:left;
 	color:#fff;
 	margin:0 5px;
-	
+
 	line-height:100px;
 	width:200px;
 	height:100px;
@@ -110,10 +110,10 @@ a:hover .ui-button-text {
 
 div.admin_application {
 	width:150px;
-	background:#fff;	
+	background:#fff;
 	/*height:150px;*/
 	float:left;
-	
+
 	text-align:center;
 	border:1px solid transparent;
 	border-radius:10px;
@@ -128,7 +128,7 @@ div.admin_application {
 div.admin_application:hover {
 	background:#fff;
 	border:1px solid #ccc;
-	
+
 }
 .admin_application a,
 .admin_application a:visited {
@@ -153,7 +153,7 @@ div.admin_application:hover {
 }
 #detail_wrapper h2
 {
-	
+
 	display:block;
 	line-height:50px;
 	color:#333;
@@ -163,13 +163,13 @@ div.admin_application:hover {
 	width:100px;
 	height:100px;
 	float:left;
-	
+
 	margin:-50px 10px 10px 10px;
 }
 #detail_wrapper h2 img {
-	
+
 	width:100px;
-	
+
 
 }
 .data_controls {
@@ -224,7 +224,7 @@ div.admin_application:hover {
 }
 .dataTables_paginate .ui-button {
 	padding:2px 5px;
-	
+
 	margin:0 5px;
 }
 .data-table .css_right {
@@ -259,7 +259,7 @@ div.field_with_errors label {
 .admin-table thead tr{
 	background:#fc862a;
 	color:#fff;
-	
+
 	border-radius:10px 10px 0 0;
 }
 .admin-table th {
@@ -338,7 +338,7 @@ div.field_with_errors label {
 	height:200px;
 }
 form h2 {
-	line-height:20px !important; 
+	line-height:20px !important;
 	height:20px;
 }
 
@@ -370,7 +370,7 @@ form input.full-width {
 /* Pagination
 --------------- */
 .spud_admin_pagination{
-	margin: 10px 0;	
+	margin: 10px 0;
 	overflow: hidden;
 }
 .spud_admin_pagination .pagination{
@@ -385,31 +385,31 @@ form input.full-width {
 	display:none;
 }
 /*Jiggle Animation*/
-.jiggly { 
-    -webkit-animation: jiggle 0.2s infinite; 
-    -moz-animation-duration: 0.2s; 
-    -moz-animation-name: jiggle; 
-    -moz-animation-iteration-count: infinite; 
-    -webkit-transform: rotate(-1deg); 
-    -moz-transform: rotate(-1deg); 
-} 
+.jiggly {
+    -webkit-animation: jiggle 0.2s infinite;
+    -moz-animation-duration: 0.2s;
+    -moz-animation-name: jiggle;
+    -moz-animation-iteration-count: infinite;
+    -webkit-transform: rotate(-1deg);
+    -moz-transform: rotate(-1deg);
+}
 
-@-moz-keyframes jiggle { 
-    0% { 
-        -moz-transform: rotate(-1deg); 
-    } 
-    50% { 
-        -moz-transform: rotate(1deg); 
-    } 
-} 
+@-moz-keyframes jiggle {
+    0% {
+        -moz-transform: rotate(-1deg);
+    }
+    50% {
+        -moz-transform: rotate(1deg);
+    }
+}
 
-@-webkit-keyframes jiggle { 
-    0% { 
-        -webkit-transform: rotate(-1deg); 
-    } 
-    50% { 
-        -webkit-transform: rotate(1deg); 
-    } 
+@-webkit-keyframes jiggle {
+    0% {
+        -webkit-transform: rotate(-1deg);
+    }
+    50% {
+        -webkit-transform: rotate(1deg);
+    }
 }
 
 
@@ -420,6 +420,8 @@ form input.full-width {
 	only screen and (min-device-pixel-ratio: 1.5) {
 		#header h1 {
 			background: url('/assets/spud/admin/spud_logo@2x.png') top left no-repeat;
+			background-size:200px 90px;
+
 		}
 		.replace-2x {
 			font-size: 1px;
