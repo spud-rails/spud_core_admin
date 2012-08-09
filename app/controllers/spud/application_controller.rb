@@ -1,24 +1,11 @@
 class Spud::ApplicationController < ActionController::Base
 	unloadable
 	protect_from_forgery
-	helper_method :current_user_session, :current_user, :current_site_name, :current_site_id
+	helper_method :current_user_session, :current_user
 	around_filter :set_time_zone
   around_filter :multisite_caching
   before_filter :to
 
-  def current_site_name
-    # puts "request.host_with_port = #{request.host_with_port}"
-    return Spud::Core.site_name if !Spud::Core.multisite_mode_enabled
-    config = Spud::Core.site_config_for_host(request.host_with_port)
-    return Spud::Core.site_name if config.blank?
-
-    return config[:site_name]
-  end
-
-  def current_site_id
-    config = Spud::Core.site_config_for_host(request.host_with_port)
-    return config[:site_id] unless config.blank?
-  end
 
   private
 
