@@ -1,3 +1,3 @@
 class SpudUserSession < Authlogic::Session::Base
-  # configuration here, see documentation for sub modules of Authlogic::Session
+  generalize_credentials_error_messages true
 end
