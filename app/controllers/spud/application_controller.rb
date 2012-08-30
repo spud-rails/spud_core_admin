@@ -3,7 +3,10 @@ class Spud::ApplicationController < ActionController::Base
 	protect_from_forgery
 	helper_method :current_user_session, :current_user
 	around_filter :set_time_zone
-  around_filter :multisite_caching
+
+  if Spud::Core.multisite_mode_enabled
+    before_filter :multisite_caching
+  end
   include Spud::ApplicationHelper
   before_filter :to
 
@@ -72,20 +75,15 @@ class Spud::ApplicationController < ActionController::Base
 
     def multisite_caching
       if Spud::Core.multisite_mode_enabled
-        old_cache_directory = Rails.application.config.action_controller.page_cache_directory
-        if(old_cache_directory.blank?)
-          old_cache_directory = Rails.application.config.action_controller.page_cache_directory = File.join(Rails.root,'public')
+        @old_cache_directory = Rails.application.config.action_controller.page_cache_directory
+        if(@old_cache_directory.blank?)
+          @old_cache_directory = Rails.application.config.action_controller.page_cache_directory = File.join(Rails.root,'public')
         end
         site_config = Spud::Core.site_config_for_host request.host_with_port
 
-        Rails.application.config.action_controller.page_cache_directory = File.join(old_cache_directory.to_s,site_config[:short_name].to_s.downcase)
-
+        self.class.page_cache_directory = File.join(@old_cache_directory.to_s,site_config[:short_name].to_s.downcase)
+        logger.debug "Cache directory set to: #{Rails.application.config.action_controller.page_cache_directory}"
       end
-
-      yield
-
-    ensure
-      Rails.application.config.action_controller.page_cache_directory = old_cache_directory
-
     end
+
 end

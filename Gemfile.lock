@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    spud_core (0.8.25)
+    spud_core (0.8.26)
       authlogic
       bootstrap-will_paginate
       breadcrumbs_on_rails
@@ -44,7 +44,7 @@ GEM
     authlogic (3.1.3)
       activerecord (>= 3.0.0)
       activesupport (>= 3.0.0)
-    bootstrap-will_paginate (0.0.7)
+    bootstrap-will_paginate (0.0.8)
       will_paginate
     breadcrumbs_on_rails (2.2.0)
     builder (3.0.0)
