@@ -30,9 +30,12 @@ class Spud::Admin::ApplicationController < Spud::ApplicationController
       if(@old_cache_directory.blank?)
         @old_cache_directory = Rails.application.config.action_controller.page_cache_directory = File.join(Rails.root,'public')
       end
-      site_config = Spud::Core.site_config_for_id session[:admin_site]	
-
-      self.class.page_cache_directory = File.join(@old_cache_directory.to_s,site_config[:short_name].to_s.downcase)
+      if session && session[:admin_site]
+        site_config = Spud::Core.site_config_for_id(session[:admin_site])
+      else
+        site_config = Spud::Core.site_config_for_host(request.host_with_port)
+      end
+      self.class.page_cache_directory = File.join(@old_cache_directory.to_s, site_config[:short_name].to_s.downcase)
       logger.debug "Cache directory set to: #{Rails.application.config.action_controller.page_cache_directory}"
     end
   end
