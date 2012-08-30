@@ -60,6 +60,10 @@ describe Spud::Admin::DashboardController do
 
   describe :switch do
     before(:each) do
+      Spud::Core.configure do |config|
+        config.site_name = "Test Site"
+        config.multisite_mode_enabled = true
+      end
       @user.super_admin = true
       @user.spud_admin_permissions.build(FactoryGirl.attributes_for(:spud_admin_permission, :name => "Blog", :access => true))
       @user.save
@@ -68,7 +72,7 @@ describe Spud::Admin::DashboardController do
     context "when multisite select is not set" do
       it "should clear the session admin site" do
         get :switch, :multisite_select => nil
-        session[:admin_site].should be_blank
+        session[:admin_site].should == 0
       end
 
       it "should redirect to the referer" do
@@ -80,12 +84,19 @@ describe Spud::Admin::DashboardController do
     context "when multisite select is set" do
       context "and the selected site is configured" do
         before(:each) do
-          Spud::Core.stubs(:multisite_config).returns([{:site_id => 1}])
+          Spud::Core.configure do |config|
+            config.site_name = "Test Site"
+            config.multisite_mode_enabled = true
+            config.multisite_config = [{:hosts => ["test.host"], :site_name =>"Site B", :site_id => 1}]
+
+          end
+          # Spud::Core.stubs(:multisite_config).returns([{:site_id => 1}])
         end
 
         it "should set the session's admin site" do
           get :switch, :multisite_select => 1
           session[:admin_site].should == 1
+
         end
 
         it "should redirect" do
@@ -96,7 +107,11 @@ describe Spud::Admin::DashboardController do
 
       context "and the selected site is not configured" do
         before(:each) do
-          Spud::Core.stubs(:multisite_config).returns([{:site_id => 2}])
+          Spud::Core.configure do |config|
+            config.site_name = "Test Site"
+            config.multisite_mode_enabled = true
+            config.multisite_config = []
+          end
         end
 
         it "should set a flash error" do

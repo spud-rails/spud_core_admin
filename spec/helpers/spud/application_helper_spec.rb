@@ -11,7 +11,9 @@ describe Spud::ApplicationHelper do
 
     it "should return config site name if multisite is disabled" do
       Spud::Core.configure do |config|
+        config.multisite_mode_enabled = false
         config.site_name = "Test Site"
+        config.multisite_config += []
       end
       helper.current_site_name.should == 'Test Site'
     end
@@ -20,6 +22,8 @@ describe Spud::ApplicationHelper do
       Spud::Core.configure do |config|
         config.site_name = "Test Site"
         config.multisite_mode_enabled = true
+        config.multisite_config += []
+
       end
 
       helper.current_site_name.should == 'Test Site'
