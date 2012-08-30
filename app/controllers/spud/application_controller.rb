@@ -4,6 +4,7 @@ class Spud::ApplicationController < ActionController::Base
 	helper_method :current_user_session, :current_user
 	around_filter :set_time_zone
   around_filter :multisite_caching
+  include Spud::ApplicationHelper
   before_filter :to
 
 
