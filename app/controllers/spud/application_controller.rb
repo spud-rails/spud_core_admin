@@ -76,11 +76,9 @@ class Spud::ApplicationController < ActionController::Base
           old_cache_directory = Rails.application.config.action_controller.page_cache_directory = File.join(Rails.root,'public')
         end
         site_config = Spud::Core.site_config_for_host request.host_with_port
-        if !site_config.blank?
-          Rails.application.config.action_controller.page_cache_directory = File.join(old_cache_directory.to_s,site_config[:short_name].to_s)
-        else
-          Rails.application.config.action_controller.page_cache_directory = File.join(old_cache_directory.to_s,"main")
-        end
+
+        Rails.application.config.action_controller.page_cache_directory = File.join(old_cache_directory.to_s,site_config[:short_name].to_s.downcase)
+
       end
 
       yield
