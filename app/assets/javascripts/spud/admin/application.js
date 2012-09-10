@@ -18,23 +18,23 @@ $(document).ready(function() {
     });
 
     $('a.ajax').live('click', function() {
-    	var url = this.href;
-    	var title = this.title;
-    	var dialog = $("#dialog");
-    	if(dialog.length == 0)
-    	{
-    		dialog = $('<div id="dialog" style="display:hidden;"></div>').appendTo('body');
-    	}
-    	dialog.load(url + ".js",null,
-    	function(responseText, textStatus, XMLHttpRequest) {
-    		dialog.dialog({width:500,modal:true,height:500,title:title});
-    	})
-    	return false;
+      var url = this.href;
+      var title = this.title;
+      var dialog = $("#dialog");
+      if(dialog.length == 0)
+      {
+        dialog = $('<div id="dialog" style="display:hidden;"></div>').appendTo('body');
+      }
+      dialog.load(url + ".js",
+      function(responseText, textStatus, XMLHttpRequest) {
+        dialog.dialog({width:500,modal:true,height:500,title:title});
+      });
+      return false;
     });
 
     $('a.close_dialog').live('click', function() {
-    	$('#dialog').dialog('close');
-    })
+      $('#dialog').dialog('close');
+    });
 
     $('a[data-method="delete"]').live('ajax:success',
       function(data, textStatus, jqXHR){
