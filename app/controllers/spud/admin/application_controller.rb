@@ -6,6 +6,14 @@ class Spud::Admin::ApplicationController < Spud::ApplicationController
 	respond_to :html,:json,:xml,:js
 	unloadable
 
+  def current_admin_site
+    if(session[:admin_site] == nil)
+      return 0
+    else
+      return session[:admin_site]
+    end
+
+  end
 
 	private
 	def require_admin_user
@@ -18,7 +26,7 @@ class Spud::Admin::ApplicationController < Spud::ApplicationController
 	end
 
 	def verify_site_mode
-		if(Spud::Core.multisite_mode_enabled && session[:admin_site] == nil)
+		if(session[:admin_site] == nil)
 	    session[:admin_site] = 0
 		end
 
