@@ -17,10 +17,11 @@ class Spud::Admin::ApplicationController < Spud::ApplicationController
 
 	private
 	def require_admin_user
-		return false if !require_user
-		if !@current_user.super_admin && current_user_permissions.count == 0
+    return false if !require_user
+    if !@current_user.super_admin && current_user_permissions.count == 0
+      store_location
 			flash[:error] = "User must be an administrator to view this area."
-			redirect_to root_url() and return false
+			redirect_to root_url
 		end
 		return true
 	end
