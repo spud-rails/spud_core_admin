@@ -15,7 +15,7 @@ class Spud::Admin::UsersController < Spud::Admin::ApplicationController
     add_breadcrumb @user.full_name, :spud_admin_user_path
 		respond_with @user
 	end
-  
+
 	def new
 		@user = SpudUser.new
 		Spud::Core.admin_applications.each do |application|
@@ -28,8 +28,7 @@ class Spud::Admin::UsersController < Spud::Admin::ApplicationController
 
 	def create
 		status = 500
-		@user = SpudUser.new(params[:spud_user].select{|k,v| k.to_s != 'super_admin' && k.to_s != "id"})
-		@user.super_admin = params[:spud_user][:super_admin]
+		@user = SpudUser.new(params[:spud_user],:as => :admin)
 
 		if @user.save
 			status = 200
@@ -45,7 +44,7 @@ class Spud::Admin::UsersController < Spud::Admin::ApplicationController
 					redirect_to spud_admin_users_url()
 				else
 					render :action => "new"
-				end		
+				end
 			}
 		end
 	end
@@ -64,11 +63,7 @@ class Spud::Admin::UsersController < Spud::Admin::ApplicationController
 	end
 
 	def update
-		
-		@user.attributes = params[:spud_user].select{|k,v| k.to_s != 'super_admin' && k.to_s != "id"}
-		@user.super_admin = params[:spud_user][:super_admin]
-
-		if @user.save
+		if @user.update_attributes(params[:spud_user], :as => :admin)
 			flash[:notice] = "User saved successfully."
 			redirect_to spud_admin_users_url()
 		else

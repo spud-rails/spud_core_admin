@@ -1,6 +1,5 @@
 //= require jquery
 //= require jquery_ujs
-//= require jquery-ui
 //= require tiny_mce/jquery.tinymce.js
 //= require spud/admin/jquery.dataTables.min
 //= require bootstrap/js/bootstrap
@@ -17,18 +16,25 @@ $(document).ready(function() {
       "sPaginationType": "full_numbers"
     });
 
+    $("#modal_window .modal-footer .form-submit").bind('click', function() {
+      $("#modal_window .modal-body form").submit();
+    });
+
     $('a.ajax').live('click', function() {
       var url = this.href;
       var title = this.title;
-      var dialog = $("#dialog");
-      if(dialog.length == 0)
-      {
-        dialog = $('<div id="dialog" style="display:hidden;"></div>').appendTo('body');
-      }
-      dialog.load(url + ".js",
-      function(responseText, textStatus, XMLHttpRequest) {
-        dialog.dialog({width:500,modal:true,height:500,title:title});
-      });
+      var dialog = $("#modal_window");
+
+      $("#modal_window .modal-title").text(title);
+      dialog.modal({
+        remote: url +".js",
+        show:true
+      })
+
+      // dialog.load(url + ".js",
+      // function(responseText, textStatus, XMLHttpRequest) {
+      //   dialog.dialog({width:500,modal:true,height:500,title:title});
+      // });
       return false;
     });
 
@@ -72,17 +78,25 @@ function add_fields(link, association, content) {
 
 function initFormTabs(){
    var tabNames = [];
+
    $('.formtabs .formtab').each(function(tabind) {
-       this.id = 'tab-' + tabind;
-       tabNames.push($('.tab_name',this).first().val());
+      if(tabind === 0) {
+        $(this).addClass('active');
+      }
+      this.id = 'tab-' + tabind;
+      tabNames.push($('.tab_name',this).first().val());
    });
    var tabButtons = $('.formtabs .formtab_buttons').first();
    for(var x=0;x<tabNames.length;x++)
    {
-       tabButtons.append($('<li><a href="#tab-' + x + '">' + tabNames[x] + '</a></li>'));
+      var tabButton = $('<li><a href="#tab-' + x + '" data-toggle="tab">' + tabNames[x] + '</a></li>');
+      if(x == 0) {
+        tabButton.addClass('active');
+      }
+       tabButtons.append(tabButton);
    }
 
-   $('.formtabs').tabs();
+   // $('.formtabs').tabs();
 }
 
 

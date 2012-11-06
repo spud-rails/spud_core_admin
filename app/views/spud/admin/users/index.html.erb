@@ -5,11 +5,11 @@
 	<table class="admin-table data-table" id="usertable">
 		<thead>
 			<tr>
-				
+
 				<th>Login</th>
 				<th>Email</th>
 				<th>Name</th>
-				
+
 				<th>Last Login</th>
 				<th>Date Created</th>
 				<th></th>
@@ -18,11 +18,11 @@
 		<tbody>
 			<%@users.each do |user|%>
 				<tr id="row_user_<%=user.id%>">
-					
-					<td><%=link_to user.login,edit_spud_admin_user_path(:id => user.id),:class => "ajax"%></td>
+
+					<td><%=link_to user.login,edit_spud_admin_user_path(:id => user.id),:class => "ajax", :title => "Edit #{user.login}"%></td>
 					<td><%=user.email%></td>
 					<td><%=user.first_name%>&nbsp;<%=user.last_name%></td>
-					
+
 					<td><%=timestamp user.last_login_at%></td>
 					<td><%=timestamp user.created_at%></td>
 					<td align="right"><%=link_to "Remove",spud_admin_user_path(:id => user.id),:method => :delete,:remote => true,:confirm => "Are you sure you want to remove this user?",:class => "btn btn-danger"%></td>
@@ -37,5 +37,6 @@
 			</tr>
 		</tfoot>
 	</table>
+
 
 <%end%>

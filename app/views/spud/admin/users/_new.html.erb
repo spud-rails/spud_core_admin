@@ -1,13 +1,11 @@
 
-  
+
   <p> Fill in all information pertaining to the new user you wish to create. Fields marked with * are required and must be filled out.</p>
 
   <%=form_for @user,:url => spud_admin_users_path(),:html=>{:class=>"form-horizontal"} do |f|%>
     <%=render :partial => "form",:locals => {:f => f}%>
-    <div class="form-actions">
-    	<%=f.submit "Create User", :class=>"btn btn-primary"%> or <%=link_to "cancel","#",:class => "close_dialog btn"%>
-    </div>
+
   <%end%>
 
-  
+
 

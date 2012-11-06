@@ -1,8 +1,6 @@
 /* ...
 *= require bootstrap/css/bootstrap
 *= require_self
-
-*= require spud/admin/jquery-ui
 */
 
 body {
@@ -333,8 +331,15 @@ div.field_with_errors label {
 	float:none;
 	margin:0;
 }
+.formtab {
+	width:910px;
+	padding: 0 0 !important;
+	overflow-y:visible;
+}
 .formtab textarea {
-	width:100%;
+	width:910px;
+
+	margin: 0 0;
 	height:200px;
 }
 form h2 {

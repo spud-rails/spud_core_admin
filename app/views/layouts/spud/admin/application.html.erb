@@ -33,7 +33,7 @@
   </div>
 <% end %>
 <% if flash[:warning] %>
-  
+
   <div class="alert alert-warning">
     <a class="close" data-dismiss="alert">×</a>
     <%= flash[:warning] %>
@@ -49,5 +49,19 @@
 	<%= content_for?(:content) ? yield(:content) : yield %>
 </div>
 
+
+<div id="modal_window" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3 class="modal-title"></h3>
+  </div>
+  <div class="modal-body">
+    <p>One fine body…</p>
+  </div>
+  <div class="modal-footer">
+    <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+    <button class="btn btn-primary form-submit">Save changes</button>
+  </div>
+</div>
 </body>
 </html>
