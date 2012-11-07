@@ -1,3 +1,4 @@
+
 //= require jquery
 //= require jquery_ujs
 //= require tiny_mce/jquery.tinymce.js
@@ -20,6 +21,11 @@ $(document).ready(function() {
       $("#modal_window .modal-body form").submit();
     });
 
+    $("#modal_window ").on('hidden', function(){
+      $(this).find('.modal-footer-additional').remove();
+      $(this).find('.modal-footer-default').show();
+    });
+
     $('a.ajax').live('click', function() {
       var url = this.href;
       var title = this.title;
@@ -29,7 +35,7 @@ $(document).ready(function() {
       dialog.modal({
         remote: url +".js",
         show:true
-      })
+      });
 
       // dialog.load(url + ".js",
       // function(responseText, textStatus, XMLHttpRequest) {
@@ -101,22 +107,20 @@ function initFormTabs(){
 
 
 function initTinyMCE(selector) {
-    selector = (typeof(selector) == 'undefined') ? 'textarea.tinymce' : selector;
-    // Location of TinyMCE script
-    $(selector).tinymce({
-      script_url : '/assets/tiny_mce/tiny_mce.js',
-      theme: "advanced",
-      plugins: "autolink,lists,pagebreak,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,paste",
-      theme_advanced_toolbar_location: "top",
-      theme_advanced_buttons1 : "bold,italic,underline,strikethrough,|,justifyleft,justifycenter,justifyright,justifyfull,|,styleselect,formatselect,fontselect,fontsizeselect,cut,copy,paste,pastetext,pasteword,|,bullist,numlist",
-      theme_advanced_buttons2 : "outdent,indent,blockquote,|,undo,redo,|,link,unlink,anchor,image,cleanup,help,code,|,insertdate,inserttime,preview,|,forecolor,backcolor,|,tablecontrols",
-      theme_advanced_buttons3 : null,
-      theme_advanced_buttons4 : null,
-      convert_urls : false,
-      height:"400"
-    });
-
-
+  selector = (typeof(selector) == 'undefined') ? 'textarea.tinymce' : selector;
+  // Location of TinyMCE script
+  $(selector).tinymce({
+    script_url : '/assets/tiny_mce/tiny_mce.js',
+    theme: "advanced",
+    plugins: "autolink,lists,pagebreak,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,paste",
+    theme_advanced_toolbar_location: "top",
+    theme_advanced_buttons1 : "bold,italic,underline,strikethrough,|,justifyleft,justifycenter,justifyright,justifyfull,|,styleselect,formatselect,fontselect,fontsizeselect,cut,copy,paste,pastetext,pasteword,|,bullist,numlist",
+    theme_advanced_buttons2 : "outdent,indent,blockquote,|,undo,redo,|,link,unlink,anchor,image,cleanup,help,code,|,insertdate,inserttime,preview,|,forecolor,backcolor,|,tablecontrols",
+    theme_advanced_buttons3 : null,
+    theme_advanced_buttons4 : null,
+    convert_urls : false,
+    height:"400"
+  });
 }
 
 function initDatePicker(selector){
@@ -126,4 +130,32 @@ function initDatePicker(selector){
   });
 }
 
+function displayModalDialogWithOptions(options){
+  var modal = $('#modal_window');
+  if(options.title){
+    modal.find('.modal-title').text(options.title);
+  }
+  if(options.html){
+    modal.find('.modal-body').html(options.html);
+  }
+  var defaultFooter = modal.find('.modal-footer-default');
+  if(options.buttons){
+    var newFooter = defaultFooter.clone();
+    newFooter.addClass('modal-footer-additional');
+    newFooter.find('.form-submit').remove();
+    for(var key in options.buttons){
+      newFooter.append('<button class="btn '+key+'">'+options.buttons[key]+'</button>');
+    }
+    defaultFooter.hide();
+    modal.append(newFooter);
+  }
+  else{
+    defaultFooter.show();
+  }
+  modal.modal('show');
+}
 
+function hideModalDialog(){
+  var modal = $('#modal_window');
+  modal.modal('hide');
+}
