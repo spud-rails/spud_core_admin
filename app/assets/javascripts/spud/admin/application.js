@@ -4,6 +4,7 @@
 //= require tiny_mce/jquery.tinymce.js
 //= require spud/admin/jquery.dataTables.min
 //= require bootstrap/js/bootstrap
+//= require jquery-ui/js/jquery-ui-1.9.1.custom
 //= require_self
 //= require_tree .
 //= require retina_tag
