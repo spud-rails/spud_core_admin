@@ -4,6 +4,7 @@
 //= require tiny_mce/jquery.tinymce.js
 //= require spud/admin/jquery.dataTables.min
 //= require bootstrap/js/bootstrap
+//= require datepicker/js/bootstrap-datepicker
 //= require jquery-ui/js/jquery-ui-1.9.1.custom
 //= require_self
 //= require_tree .
@@ -127,7 +128,8 @@ function initTinyMCE(selector) {
 function initDatePicker(selector){
   selector = (typeof(selector) == 'undefined') ? '.spud_form_date_picker' : selector;
   $(selector).datepicker({
-    dateFormat: 'yy-mm-dd'
+    'format': 'yyyy-mm-dd',
+    'autoclose': true
   });
 }
 
