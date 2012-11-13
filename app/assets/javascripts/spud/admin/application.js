@@ -57,9 +57,9 @@ $(document).ready(function() {
 
       $('form[data-remote="true"]').live('ajax:success',
       function(data, textStatus, jqXHR){
-        var dialog = $(this).closest('#dialog');
-        if(dialog) {
-          dialog.dialog('close');
+        var dialogWindow = $(this).closest('#dialog');
+        if(dialogWindow) {
+          $(dialogWindow).dialog('close');
         }
 
       });
