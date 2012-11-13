@@ -46,23 +46,14 @@ $(document).ready(function() {
       return false;
     });
 
-    $('a.close_dialog').live('click', function() {
-      $('#dialog').dialog('close');
-    });
+
 
     $('a[data-method="delete"]').live('ajax:success',
       function(data, textStatus, jqXHR){
         $(this).closest('tr').fadeOut();
       });
 
-      $('form[data-remote="true"]').live('ajax:success',
-      function(data, textStatus, jqXHR){
-        var dialogWindow = $(this).closest('#dialog');
-        if(dialogWindow) {
-          $(dialogWindow).dialog('close');
-        }
 
-      });
       $('a.button').button();
 
 
