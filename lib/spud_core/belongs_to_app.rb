@@ -12,8 +12,8 @@ module Spud::BelongsToApp
     # 	end
     # end
 	module ClassMethods
-		def belongs_to_spud_app(name=nil)
-			
+		def belongs_to_spud_app(name=nil,options={})
+			@page_title = options[:page_title]
 			Spud::Core.admin_applications.each do |app|
 					if app[:name].parameterize.underscore.to_sym == name
 						@page_application = app
@@ -24,7 +24,7 @@ module Spud::BelongsToApp
 
 				before_filter { |controller|
 					@page_thumbnail = self.class.page_application[:thumbnail]
-					@page_name = self.class.page_application[:name]
+					@page_name = self.class.page_title
 
 					if current_user.super_admin == false
 						permission = current_user_permissions.select{|perm| perm.name == @page_name}
@@ -43,12 +43,15 @@ module Spud::BelongsToApp
 					end
 
 				}
-					
+
 			end
 
 		end
 		def page_application
 		      @page_application || self.superclass.instance_variable_get('@page_application')
-	    end
+    end
+    def page_title
+    	@page_title || self.superclass.instance_variable_get('@page_title') || page_application[:name]
+    end
 	end
 end

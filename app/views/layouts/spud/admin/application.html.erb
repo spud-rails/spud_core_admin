@@ -9,10 +9,12 @@
 </head>
 <body>
 <div id="header" style="<%=header_style%>">
-	<h1>Spud Admin</h1>
+	<%=link_to spud_admin_root_url do%>
+    <h1>Spud Admin</h1>
+  <%end%>
 
 	<div id="user_meta">
-		<span class="greeting">Hello <%=@current_user.login%></span>&nbsp;|&nbsp;<%=link_to "Settings", spud_settings_path%>&nbsp;|&nbsp;<%=link_to "Logout",spud_user_session_url,:method => :delete%></a>
+		<span class="greeting">Hello <%=@current_user.full_name%></span>&nbsp;|&nbsp;<%=link_to "Settings", spud_settings_path%>&nbsp;|&nbsp;<%=link_to "Logout",spud_user_session_url,:method => :delete%></a>
 	</div>
   <%if Spud::Core.multisite_mode_enabled == true%>
     <div id="multisite_switcher" class="right_floated">
@@ -47,6 +49,10 @@
 </div>
 <%-end%>
 	<%= content_for?(:content) ? yield(:content) : yield %>
+</div>
+
+<div class="footer">
+  Powered by Spud - v<%=Spud::Core::VERSION%>
 </div>
 
 

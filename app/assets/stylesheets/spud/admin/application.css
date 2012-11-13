@@ -257,7 +257,7 @@ div.field_with_errors label {
 	border-collapse:collapse;
 }
 .admin-table thead tr{
-	background:#fc862a;
+  background:#424242;
 	color:#fff;
 
 	border-radius:10px 10px 0 0;
@@ -433,4 +433,15 @@ form input.full-width {
 		.replace-2x {
 			font-size: 1px;
 		}
+}
+
+.footer {
+	clear:both;
+	margin-top:10px;
+	position:absolute;
+	text-align:right;
+	font-size:.8em;
+	right:10px;
+	height:10px;
+	bottom:10px;
 }
