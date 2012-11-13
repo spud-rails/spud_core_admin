@@ -57,7 +57,11 @@ $(document).ready(function() {
 
       $('form[data-remote="true"]').live('ajax:success',
       function(data, textStatus, jqXHR){
-        $(this).closest('#dialog').dialog('close');
+        var dialog = $(this).closest('#dialog');
+        if(dialog) {
+          dialog.dialog('close');
+        }
+
       });
       $('a.button').button();
 
