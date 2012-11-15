@@ -14,6 +14,15 @@
 spud = {admin:{}};
 
 $(document).ready(function() {
+
+  if(typeof(window.console) == 'undefined'){
+    window.console = {
+      log:function(){},
+      warn:function(){},
+      error:function(){}
+    };
+  }
+
     $('#user_table').dataTable({
       "bJQueryUI": true,
       "sPaginationType": "full_numbers"
