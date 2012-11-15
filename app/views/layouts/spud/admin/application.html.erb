@@ -51,9 +51,7 @@
 	<%= content_for?(:content) ? yield(:content) : yield %>
 </div>
 
-<div class="footer">
-  Powered by Spud - v<%=Spud::Core::VERSION%>
-</div>
+
 
 
 <div id="modal_window" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -69,5 +67,6 @@
     <button class="btn btn-primary form-submit">Save changes</button>
   </div>
 </div>
+  <!-- Powered by Spud - v<%=Spud::Core::VERSION%> -->
 </body>
 </html>
