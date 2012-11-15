@@ -2,8 +2,8 @@
 <html>
 <head>
   <title>Spud Admin</title>
-  <%= stylesheet_link_tag    "spud/admin/application" %>
-  <%= javascript_include_tag "spud/admin/application" %>
+  <%= stylesheet_link_tag *Spud::Core.config.admin_stylesheets %>
+  <%= javascript_include_tag *Spud::Core.config.admin_javascripts %>
   <%= csrf_meta_tags %>
   <%=yield :head%>
 </head>

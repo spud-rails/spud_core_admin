@@ -2,6 +2,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require tiny_mce/jquery.tinymce.js
+//= require tiny_mce/tiny_mce_src.js
 //= require spud/admin/jquery.dataTables.min
 //= require bootstrap/js/bootstrap
 //= require datepicker/js/bootstrap-datepicker
@@ -10,8 +11,7 @@
 //= require_tree .
 //= require retina_tag
 
-Spud = (typeof(Spud) == 'undefined') ? {} : Spud;
-Spud.Admin = (typeof(Spud.Admin) == 'undefined') ? {} : Spud.Admin;
+spud = {admin:{}};
 
 $(document).ready(function() {
     $('#user_table').dataTable({
@@ -109,20 +109,8 @@ function initFormTabs(){
 
 
 function initTinyMCE(selector) {
-  selector = (typeof(selector) == 'undefined') ? 'textarea.tinymce' : selector;
-  // Location of TinyMCE script
-  $(selector).tinymce({
-    script_url : '/assets/tiny_mce/tiny_mce.js',
-    theme: "advanced",
-    plugins: "autolink,lists,pagebreak,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,paste",
-    theme_advanced_toolbar_location: "top",
-    theme_advanced_buttons1 : "bold,italic,underline,strikethrough,|,justifyleft,justifycenter,justifyright,justifyfull,|,styleselect,formatselect,fontselect,fontsizeselect,cut,copy,paste,pastetext,pasteword,|,bullist,numlist",
-    theme_advanced_buttons2 : "outdent,indent,blockquote,|,undo,redo,|,link,unlink,anchor,image,cleanup,help,code,|,insertdate,inserttime,preview,|,forecolor,backcolor,|,tablecontrols",
-    theme_advanced_buttons3 : null,
-    theme_advanced_buttons4 : null,
-    convert_urls : false,
-    height:"400"
-  });
+  console.warn('Deprecation Notice: `initTinyMCE()` is depcreated, please use `spud.admin.editor.init()` instead.');
+  spud.admin.editor.init();
 }
 
 function initDatePicker(selector){
