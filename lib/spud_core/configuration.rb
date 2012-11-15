@@ -1,7 +1,7 @@
 module Spud
   module Core
     include ActiveSupport::Configurable
-    config_accessor :site_name,:admin_applications,:sitemap_urls,:multisite_mode_enabled,:multisite_config,:from_address,:site_id,:short_name, :javascripts,:stylesheets
+    config_accessor :site_name,:admin_applications,:sitemap_urls,:multisite_mode_enabled,:multisite_config,:from_address,:site_id,:short_name, :javascripts,:stylesheets, :admin_javascripts, :admin_stylesheets
     self.admin_applications = [{:name => "Users",:thumbnail => "spud/admin/users_thumb.png",:url => "/spud/admin/users",:order => 100}]
     self.site_name = "Company Name"
     self.site_id = 0
@@ -12,6 +12,9 @@ module Spud
     self.multisite_mode_enabled = false
     self.multisite_config = []
     self.from_address = "no-reply@spudengine.com"
+
+    self.admin_javascripts = ['spud/admin/application']
+    self.admin_stylesheets = ['spud/admin/application']
 
     def self.site_config_for_host(host)
       configs = Spud::Core.multisite_config.select{|p| p[:hosts].include?(host)}
@@ -34,5 +37,22 @@ module Spud
     def self.default_site_config
       return {:site_id => Spud::Core.config.site_id, :site_name => Spud::Core.config.site_name, :short_name => Spud::Core.config.short_name}
     end
+
+    def self.append_admin_javascripts(*args)
+      if args[0].class == Array
+        Spud::Core.config.admin_javascripts += args[0]
+      else
+        Spud::Core.config.admin_javascripts += args
+      end
+    end
+
+    def self.append_admin_stylesheets(*args)
+      if args[0].class == Array
+        Spud::Core.config.admin_stylesheets += args[0]
+      else
+        Spud::Core.config.admin_stylesheets += args
+      end
+    end
+
   end
 end
