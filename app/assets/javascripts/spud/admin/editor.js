@@ -10,7 +10,7 @@ spud.admin.editor = {};
   ];
 
   var registeredButtons = [
-    ['bold','italic','underline','strikethrough','|','justifyleft','justifycenter','justifyright','justifyfull','|','formatselect','cut','copy','paste','pastetext','pasteword','|','bullist','numlist','outdent','indent','|','tableDropdown','|','link','unlink','anchor','image','code'],
+    ['bold','italic','underline','strikethrough','|','justifyleft','justifycenter','justifyright','justifyfull','|','formatselect','cut','copy','paste','pastetext','|','bullist','numlist','outdent','indent','|','tableDropdown','|','link','unlink','anchor','image','code'],
     [],
     [],
     []
