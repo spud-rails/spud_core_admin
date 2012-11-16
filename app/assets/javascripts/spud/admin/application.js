@@ -24,10 +24,12 @@ $(document).ready(function() {
     };
   }
 
-    $('#user_table').dataTable({
-      "bJQueryUI": true,
-      "sPaginationType": "full_numbers"
-    });
+  spud.admin.editor.init();
+
+    // $('#user_table').dataTable({
+    //   "bJQueryUI": true,
+    //   "sPaginationType": "full_numbers"
+    // });
 
     $("#modal_window .modal-footer .form-submit").bind('click', function() {
       $("#modal_window .modal-body form").submit();
@@ -71,9 +73,7 @@ $(document).ready(function() {
 
     $('#multisite_switcher select').change(function() {
       $(this).parent().submit();
-      // alert('test');
     });
-    initFormTabs();
 
 } );
 
@@ -89,28 +89,7 @@ function add_fields(link, association, content) {
   $(link).parent().before(content.replace(regexp, new_id));
 }
 
-function initFormTabs(){
-   var tabNames = [];
 
-   $('.formtabs .formtab').each(function(tabind) {
-      if(tabind === 0) {
-        $(this).addClass('active');
-      }
-      this.id = 'tab-' + tabind;
-      tabNames.push($('.tab_name',this).first().val());
-   });
-   var tabButtons = $('.formtabs .formtab_buttons').first();
-   for(var x=0;x<tabNames.length;x++)
-   {
-      var tabButton = $('<li><a href="#tab-' + x + '" data-toggle="tab">' + tabNames[x] + '</a></li>');
-      if(x == 0) {
-        tabButton.addClass('active');
-      }
-       tabButtons.append(tabButton);
-   }
-
-   // $('.formtabs').tabs();
-}
 
 
 function initTinyMCE(selector) {

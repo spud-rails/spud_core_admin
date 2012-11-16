@@ -38,6 +38,9 @@ spud.admin.editor = {};
     "q[cite],samp,select[disabled|multiple|name|size],small," +
     "textarea[cols|rows|disabled|name|readonly],tt,var,big";
 
+  var validFormats = "p,h1,h2,h3,h4,h5,h6";
+
+  theme_advanced_blockformats :
   editor.init = function(){
     editor.initWithOptions({});
   };
@@ -46,8 +49,8 @@ spud.admin.editor = {};
     var selector = options.selector || 'textarea.tinymce';
     var theme = options.theme || 'advanced';
     var height = options.height || 400;
-    //var alignment:
-    $(selector).tinymce({
+    $(selector).each(function() {
+      $(this).tinymce({
       theme: theme,
       plugins: registeredPlugins.join(','),
       theme_advanced_toolbar_location: "top",
@@ -56,10 +59,20 @@ spud.admin.editor = {};
       theme_advanced_buttons3: registeredButtons[2].join(','),
       theme_advanced_buttons4: registeredButtons[3].join(','),
       theme_advanced_toolbar_align: 'left',
+      theme_advanced_blockformats: validFormats,
       convert_urls: false,
       valid_elements: validElements,
+      width: $(this).width(),
       height: height
+      });
     });
+
+  };
+
+  editor.unload = function(selectorOptional) {
+    var selector = selectorOptional || 'textarea.tinymce';
+    $(selector).each(function() {$(this).tinymce().execCommand('mceRemoveControl',false,this.id);});
+
   };
 
   editor.registerPlugin = function(pluginName){
