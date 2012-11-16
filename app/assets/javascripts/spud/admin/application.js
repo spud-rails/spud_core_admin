@@ -93,16 +93,14 @@ function add_fields(link, association, content) {
 
 
 function initTinyMCE(selector) {
-  console.warn('Deprecation Notice: `initTinyMCE()` is depcreated, please use `spud.admin.editor.init()` instead.');
+  console.warn('Deprecation Notice: `initTinyMCE()` is deprecated, please use `spud.admin.editor.init()` instead.');
   spud.admin.editor.init();
 }
 
 function initDatePicker(selector){
-  selector = (typeof(selector) == 'undefined') ? '.spud_form_date_picker' : selector;
-  $(selector).datepicker({
-    'format': 'yyyy-mm-dd',
-    'autoclose': true
-  });
+  console.warn('Deprecation Notice: `initDatePicker()` is deprecated, please use `spud.admin.date_picker.init()` instead.');
+  spud.admin.date_picker.init();
+
 }
 
 function displayModalDialogWithOptions(options){

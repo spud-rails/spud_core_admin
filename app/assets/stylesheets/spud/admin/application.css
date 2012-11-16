@@ -401,6 +401,10 @@ form input.full-width {
     -moz-transform: rotate(-1deg);
 }
 
+.time_select select {
+	width:auto;
+}
+
 @-moz-keyframes jiggle {
     0% {
         -moz-transform: rotate(-1deg);
