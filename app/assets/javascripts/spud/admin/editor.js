@@ -45,9 +45,9 @@ spud.admin.editor = {};
     var selector = options.selector || 'textarea.tinymce';
     var theme = options.theme || 'advanced';
     var height = options.height || 400;
-    //var alignment: 
+    //var alignment:
     $(selector).tinymce({
-      //script_url : '/assets/tiny_mce/tiny_mce.js',
+      script_url : '/assets/tiny_mce/tiny_mce.js',
       theme: theme,
       plugins: registeredPlugins.join(','),
       theme_advanced_toolbar_location: "top",
