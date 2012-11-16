@@ -6,12 +6,12 @@ spud.admin.editor = {};
   var editor = spud.admin.editor;
 
   var registeredPlugins = [
-    'autolink','lists','layer','table','advhr','advimage','advlink','iespell','inlinepopups','media','paste'
+    'autolink','lists','layer','table','tableDropdown','advhr','advimage','advlink','iespell','inlinepopups','media','paste'
   ];
 
   var registeredButtons = [
-    ['bold','italic','underline','strikethrough','forecolor','backcolor','|','justifyleft','justifycenter','justifyright','justifyfull','|','formatselect','fontsizeselect','cut','copy','paste','pastetext','pasteword','|','bullist','numlist','outdent','indent'],
-    ['tablecontrols','|','link','unlink','anchor','image','code'],
+    ['bold','italic','underline','strikethrough','|','justifyleft','justifycenter','justifyright','justifyfull','|','formatselect','cut','copy','paste','pastetext','pasteword','|','bullist','numlist','outdent','indent','|','tableDropdown','|','link','unlink','anchor','image','code'],
+    [],
     [],
     []
   ];
@@ -80,7 +80,7 @@ spud.admin.editor = {};
   };
 
   editor.registerButton = function(buttonNameOrArray, rowNum){
-    rowNum = rowNum || 1;
+    rowNum = rowNum || 0;
     if(typeof(buttonNameOrArray) == 'object'){
       registeredButtons[rowNum].concat(buttonNameOrArray);
     }
