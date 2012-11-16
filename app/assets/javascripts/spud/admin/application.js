@@ -1,6 +1,7 @@
 
 //= require jquery
 //= require jquery_ujs
+//= require spud/admin/preinit
 //= require tiny_mce/jquery.tinymce.js
 //= require tiny_mce/tiny_mce_src.js
 //= require spud/admin/jquery.dataTables.min

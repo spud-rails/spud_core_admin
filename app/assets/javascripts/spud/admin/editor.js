@@ -1,3 +1,4 @@
+
 spud.admin.editor = {};
 
 (function(){
@@ -47,7 +48,6 @@ spud.admin.editor = {};
     var height = options.height || 400;
     //var alignment:
     $(selector).tinymce({
-      script_url : '/assets/tiny_mce/tiny_mce.js',
       theme: theme,
       plugins: registeredPlugins.join(','),
       theme_advanced_toolbar_location: "top",
