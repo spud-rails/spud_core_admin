@@ -285,6 +285,28 @@ div.field_with_errors label {
 	background: #FAE7D9;
 }
 
+.admin-table th .current {
+  padding-right: 12px;
+  background-repeat: no-repeat;
+  background-position: right center;
+}
+.admin-table th a, .admin-table th a:visited {
+	color:#fff;
+}
+
+.admin-table th a:hover {
+	text-decoration: none;
+}
+
+.admin-table th .asc {
+  background-image: url(/assets/spud/admin/up_arrow.gif);
+}
+
+.admin-table th .desc {
+  background-image: url(/assets/spud/admin/down_arrow.gif);
+}
+
+
 .info_card {
 	width:400px;
 	padding:0 10px;

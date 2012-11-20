@@ -49,4 +49,6 @@ module Spud::Admin::ApplicationHelper
     return content.html_safe
 
   end
+
+
 end

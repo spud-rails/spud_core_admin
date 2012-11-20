@@ -6,12 +6,12 @@
 		<thead>
 			<tr>
 
-				<th>Login</th>
-				<th>Email</th>
-				<th>Name</th>
+				<th><%= sortable "login"%></th>
+				<th><%= sortable "email"%></th>
+				<th><%= sortable "first_name", "Name"%></th>
 
-				<th>Last Login</th>
-				<th>Date Created</th>
+				<th><%= sortable "last_login_at", "Last Login"%></th>
+				<th><%= sortable "created_at", "Date Created"%></th>
 				<th></th>
 			</tr>
 		</thead>

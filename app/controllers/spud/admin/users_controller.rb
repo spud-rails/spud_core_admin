@@ -7,7 +7,15 @@ class Spud::Admin::UsersController < Spud::Admin::ApplicationController
 	before_filter :load_user,:only => [:edit,:update,:show,:destroy]
 
 	def index
-		@users = SpudUser.order(:login).paginate :page => params[:page]
+		sort_order = "login asc"
+		if sort_column
+			if sort_column == 'first_name'
+				sort_order = "first_name #{sort_direction}, last_name #{sort_direction}"
+			else
+				sort_order = "#{sort_column} #{sort_direction}"
+			end
+		end
+		@users = SpudUser.order(sort_order).paginate :page => params[:page]
 		respond_with @users
 	end
 

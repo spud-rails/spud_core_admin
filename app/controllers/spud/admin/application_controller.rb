@@ -4,6 +4,7 @@ class Spud::Admin::ApplicationController < Spud::ApplicationController
 	add_breadcrumb "Dashboard", :spud_admin_root_path
 	layout 'spud/admin/application'
 	respond_to :html,:json,:xml,:js
+  helper_method :sort_column, :sort_direction
 	unloadable
 
   def current_admin_site
@@ -15,7 +16,16 @@ class Spud::Admin::ApplicationController < Spud::ApplicationController
 
   end
 
-	private
+private
+
+  def sort_column
+    params[:sort]
+  end
+
+  def sort_direction
+    %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
+  end
+
 	def require_admin_user
     return false if !require_user
     if !@current_user.super_admin && current_user_permissions.count == 0
