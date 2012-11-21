@@ -36,7 +36,7 @@ class Spud::ApplicationController < ActionController::Base
       unless current_user
         store_location
         flash[:notice] = "You must be logged in to access this page"
-        redirect_to new_spud_user_session_url
+        redirect_to spud_core.new_user_session_url
         return false
       end
       return true
@@ -46,7 +46,7 @@ class Spud::ApplicationController < ActionController::Base
       if current_user
         store_location
         flash[:notice] = "You must be logged out to access this page"
-        redirect_to root_url
+        redirect_to main_app.root_url
         return false
       end
     end

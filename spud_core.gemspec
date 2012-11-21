@@ -19,7 +19,6 @@ Gem::Specification.new do |s|
   s.add_dependency "rails", "~> 3.2.2"
   s.add_dependency 'authlogic'
   s.add_dependency 'jquery-rails'
-  s.add_dependency 'breadcrumbs_on_rails'
   s.add_dependency 'will_paginate'
   s.add_dependency 'bootstrap-will_paginate'
   s.add_dependency 'retina_tag'

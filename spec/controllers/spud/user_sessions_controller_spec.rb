@@ -38,7 +38,7 @@ describe Spud::UserSessionsController do
   		activate_authlogic
 	    SpudUserSession.create(FactoryGirl.build(:spud_user))
 	    delete :destroy
-	    response.should redirect_to(new_spud_user_session_url)
+	    response.should redirect_to(spud_core.new_user_session_url)
   	end
   	it "should redirect to previous page after logout" do
         request.env["HTTP_REFERER"] = "/"

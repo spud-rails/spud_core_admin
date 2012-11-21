@@ -9,23 +9,24 @@
 </head>
 <body>
 <div id="header" style="<%=header_style%>">
-	<%=link_to spud_admin_root_url do%>
+	<%=link_to spud_core.admin_root_url do%>
     <h1>Spud Admin</h1>
   <%end%>
 
 	<div id="user_meta">
-		<span class="greeting">Hello <%=@current_user.full_name%></span>&nbsp;|&nbsp;<%=link_to "Settings", spud_settings_path%>&nbsp;|&nbsp;<%=link_to "Logout",spud_user_session_url,:method => :delete%></a>
+		<span class="greeting">Hello <%=@current_user.full_name%></span>&nbsp;|&nbsp;<%=link_to "Settings", spud_core.settings_path%>&nbsp;|&nbsp;<%=link_to "Logout",spud_core.user_session_url,:method => :delete%></a>
 	</div>
   <%if Spud::Core.multisite_mode_enabled == true%>
     <div id="multisite_switcher" class="right_floated">
-      <%=form_tag spud_admin_switch_url do%>
+      <%=form_tag spud_core.admin_switch_url do%>
         <%=select_tag :multisite_select,options_for_select([[Spud::Core.site_name,nil]] + Spud::Core.multisite_config.collect{|c| [c[:site_name],c[:site_id]]},session[:admin_site])%>
       <%end%>
     </div>
   <%end%>
 </div>
 <div id="breadcrumbs">
-<%= render_breadcrumbs :separator => ' / ' %>
+  <%= breadcrumbs(" / ") %>
+
 </div>
 <div id="content">
 <% if flash[:notice] %>

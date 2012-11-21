@@ -30,7 +30,7 @@ describe Spud::PasswordResetsController do
 
         it "should redirect to the login form" do
           get :edit, :id => user.id
-          response.should redirect_to(new_spud_user_session_url)
+          response.should redirect_to(spud_core.new_user_session_url)
         end
       end
     end
@@ -52,7 +52,7 @@ describe Spud::PasswordResetsController do
 
         it "should redirect to the login form" do
           post :create, :email => user.email
-          response.should redirect_to(new_spud_user_session_url)
+          response.should redirect_to(spud_core.new_user_session_url)
         end
       end
 
@@ -78,7 +78,7 @@ describe Spud::PasswordResetsController do
       context "with valid password entry" do
         it "should save and redirect to the login form" do
           post :update, valid_data
-          response.should redirect_to(new_spud_user_session_url)
+          response.should redirect_to(spud_core.new_user_session_url)
         end
       end
 

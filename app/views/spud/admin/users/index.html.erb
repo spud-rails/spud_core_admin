@@ -1,5 +1,5 @@
 <%=content_for :data_controls do%>
-<%=link_to "New User",new_spud_admin_user_path(),:class => "ajax btn btn-primary",:title => "New User"%>
+<%=link_to "New User",spud_core.new_admin_user_path(),:class => "ajax btn btn-primary",:title => "New User"%>
 <%end%>
 <%=content_for :detail do%>
 	<table class="admin-table data-table" id="usertable">
@@ -19,13 +19,13 @@
 			<%@users.each do |user|%>
 				<tr id="row_user_<%=user.id%>">
 
-					<td><%=link_to user.login,edit_spud_admin_user_path(:id => user.id),:class => "ajax", :title => "Edit #{user.login}"%></td>
+					<td><%=link_to user.login,spud_core.edit_admin_user_path(:id => user.id),:class => "ajax", :title => "Edit #{user.login}"%></td>
 					<td><%=user.email%></td>
 					<td><%=user.first_name%>&nbsp;<%=user.last_name%></td>
 
 					<td><%=timestamp user.last_login_at%></td>
 					<td><%=timestamp user.created_at%></td>
-					<td align="right"><%=link_to "Remove",spud_admin_user_path(:id => user.id),:method => :delete,:remote => true,:confirm => "Are you sure you want to remove this user?",:class => "btn btn-danger"%></td>
+					<td align="right"><%=link_to "Remove",spud_core.admin_user_path(:id => user.id),:method => :delete,:remote => true,:confirm => "Are you sure you want to remove this user?",:class => "btn btn-danger"%></td>
 				</tr>
 			<%end%>
 		</tbody>

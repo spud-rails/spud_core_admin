@@ -1,6 +1,6 @@
 <div class="login-form">
 	<h1>Spud CMS Admin</h1>
-	<%= form_for @user, url: spud_password_reset_path(:id => @user.perishable_token) do |f| %>
+	<%= form_for @user, url: spud_core.password_reset_path(:id => @user.perishable_token) do |f| %>
 	  <% if flash[:notice] %>
 	  <div class="alert alert-success">
 	    <%= flash[:notice] %>

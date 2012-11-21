@@ -2,7 +2,7 @@
 
   <p> Fill in all information pertaining to the new user you wish to create. Fields marked with * are required and must be filled out.</p>
 
-  <%=form_for @user,:url => spud_admin_users_path(),:html=>{:class=>"form-horizontal"} do |f|%>
+  <%=form_for @user,:url => spud_core.admin_users_path(),:html=>{:class=>"form-horizontal"} do |f|%>
     <%=render :partial => "form",:locals => {:f => f}%>
 
   <%end%>

@@ -1,19 +1,15 @@
-# require 'spud_core'
-# require 'rails'
-# require 'action_controller'
-# require 'rubygems'
 require 'jquery-rails'
 require 'retina_tag'
 require 'authlogic'
-# require 'dynamic_form'
-require 'breadcrumbs_on_rails'
 require 'will_paginate'
 
 module Spud
   module Core
     class Engine < ::Rails::Engine
+      require "#{root}/lib/spud_core/breadcrumbs"
       require "#{root}/lib/spud_core/belongs_to_app"
       require "#{root}/lib/spud_core/searchable"
+
 
       def self.require_model(model_name)
         require "#{root}/app/models/#{model_name}"
@@ -28,11 +24,9 @@ module Spud
       initializer :assets do |config|
         Rails.application.config.assets.precompile += [
           "tiny_mce/plugins/**/*",
-          "tiny_mce/themes/**/*",
+          "tiny_mce/themes/advanced/*",
           "tiny_mce/utils/*",
-          "tiny_mce/langs/*",
-          "tiny_mce/*",
-          "spud/admin*"
+          "tiny_mce/langs/*"
         ]
       end
 

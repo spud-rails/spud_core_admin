@@ -1,7 +1,7 @@
 class Spud::Admin::UsersController < Spud::Admin::ApplicationController
 	layout 'spud/admin/detail'
 	belongs_to_spud_app :users
-	add_breadcrumb "Users", :spud_admin_users_path
+	add_breadcrumb "Users", {:action => :index}
 
   # filters
 	before_filter :load_user,:only => [:edit,:update,:show,:destroy]
@@ -20,7 +20,7 @@ class Spud::Admin::UsersController < Spud::Admin::ApplicationController
 	end
 
 	def show
-    add_breadcrumb @user.full_name, :spud_admin_user_path
+    add_breadcrumb @user.full_name, 'spud_core.admin_user_path'
 		respond_with @user
 	end
 
@@ -45,11 +45,11 @@ class Spud::Admin::UsersController < Spud::Admin::ApplicationController
 			flash[:error] = "There was an error while saving the user."
 		end
 
-		respond_with @user,:location => spud_admin_users_url do |format|
+		respond_with @user,:location => spud_core.admin_users_url do |format|
 			format.js { render :status => status, :json => @user.to_json }
 			format.html {
 				if status == 200
-					redirect_to spud_admin_users_url()
+					redirect_to spud_core.admin_users_url()
 				else
 					render :action => "new"
 				end
@@ -73,7 +73,7 @@ class Spud::Admin::UsersController < Spud::Admin::ApplicationController
 	def update
 		if @user.update_attributes(params[:spud_user], :as => :admin)
 			flash[:notice] = "User saved successfully."
-			redirect_to spud_admin_users_url()
+			redirect_to spud_core.admin_users_url()
 		else
 			flash[:error] = "There was an error while saving the user."
 			render :action => "edit"
@@ -91,7 +91,7 @@ class Spud::Admin::UsersController < Spud::Admin::ApplicationController
 
 		respond_to do |format|
 			format.js { render :text => nil,:status => status }
-			format.html {redirect_to spud_admin_users_url()}
+			format.html {redirect_to spud_core.admin_users_url()}
 		end
 	end
 
@@ -101,7 +101,7 @@ private
 		@user = SpudUser.where(:id => params[:id]).first
 		if @user.blank?
 			flash[:error] = "User not found!"
-			redirect_to spud_admin_users_url() and return false
+			redirect_to spud_core.admin_users_url() and return false
 		end
 		return true
 	end

@@ -1,7 +1,7 @@
 class Spud::Admin::ApplicationController < Spud::ApplicationController
 	before_filter :require_admin_user
 	before_filter :verify_site_mode
-	add_breadcrumb "Dashboard", :spud_admin_root_path
+	add_breadcrumb "Dashboard", {:controller => "/spud/admin/dashboard",:action => :index}
 	layout 'spud/admin/application'
 	respond_to :html,:json,:xml,:js
   helper_method :sort_column, :sort_direction

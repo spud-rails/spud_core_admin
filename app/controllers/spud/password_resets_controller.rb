@@ -14,7 +14,7 @@ class Spud::PasswordResetsController < Spud::ApplicationController
 			Spud::CoreMailer.forgot_password_notification(@user).deliver
 			flash[:notice] = "Instructions to reset your password have been emailed to you. " +
 			"Please check your email."
-			redirect_to new_spud_user_session_url
+			redirect_to spud_core.new_user_session_url
 		else
 			flash[:notice] = "No user was found with that email address"
 			render :action => :new
@@ -30,7 +30,7 @@ class Spud::PasswordResetsController < Spud::ApplicationController
 		@user.password_confirmation = params[:spud_user][:password_confirmation]
 		if @user.save
 			flash[:notice] = "Password successfully updated"
-			redirect_to new_spud_user_session_url
+			redirect_to spud_core.new_user_session_url
 		else
 			render :action => :edit
 		end
@@ -44,7 +44,7 @@ private
 			"If you are having issues try copying and pasting the URL " +
 			"from your email into your browser or restarting the " +
 			"reset password process."
-			redirect_to new_spud_user_session_url
+			redirect_to spud_core.new_user_session_url
 		end
 	end
 end

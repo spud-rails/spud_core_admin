@@ -1,5 +1,5 @@
 <%=content_for :data_controls do%>
-<%=link_to "Edit",edit_spud_admin_user_path(:id => @user.id),:class => "ajax",:title => "Edit User"%> | <%=link_to "Remove",spud_admin_user_path(:id => @user.id),:method => :delete,:title => "Remove User",:confirm => "Are you sure you wish to remove this user?"%>
+<%=link_to "Edit",spud_core.edit_admin_user_path(:id => @user.id),:class => "ajax",:title => "Edit User"%> | <%=link_to "Remove",spud_core.admin_user_path(:id => @user.id),:method => :delete,:title => "Remove User",:confirm => "Are you sure you wish to remove this user?"%>
 <%end%>
 
 <%=content_for :detail do%>
