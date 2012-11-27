@@ -1,4 +1,4 @@
-[![Build Status](https://secure.travis-ci.org/davydotcom/spud_core_admin.png)](http://travis-ci.org/davydotcom/spud_core_admin)
+[![Build Status](https://secure.travis-ci.org/spud-rails/spud_core_admin.png)](http://travis-ci.org/davydotcom/spud_core_admin)
 
 Spud Core Admin
 ===============
@@ -44,7 +44,7 @@ Testing
 Spud uses RSpec for testing. Get the tests running with a few short commands:
 
 1. Create and migrate the databases:
-   
+
 		rake db:create
 		rake db:migrate
 

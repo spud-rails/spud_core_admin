@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
   s.version     = Spud::Core::VERSION
   s.authors     = ["David Estes"]
   s.email       = ["destes@redwindsw.com"]
-  s.homepage    = "http://github.com/davydotcom/spud_core_admin"
+  s.homepage    = "http://github.com/spud-rails/spud_core_admin"
   s.summary     = "Spud Core Engine"
   s.description = "Spud Core Engine"
 
