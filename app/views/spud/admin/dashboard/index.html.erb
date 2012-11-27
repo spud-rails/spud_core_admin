@@ -2,7 +2,7 @@
 <div class="sortable">
 <%@admin_applications.each do |admin_application|%>
 
-	<div class="admin_application" id="application_name_<%=admin_application[:name]%>"><a href="<%=admin_application[:url]%>">
+	<div class="admin_application" id="application_name_<%=admin_application[:name]%>"><a href="<%=spud_core.url_for(admin_application[:url])%>">
 		<div class="image_wrapper"><%=image_tag(admin_application[:thumbnail])%></div>
 		<span class="application_name"><%=admin_application[:name]%></span>
 		</a>

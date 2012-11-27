@@ -4,7 +4,7 @@ module Spud
     config_accessor :site_name,:admin_applications,:sitemap_urls,:multisite_mode_enabled,:multisite_config,:from_address,:site_id,:short_name, :admin_javascripts, :admin_stylesheets, :user_model, :automount
     self.user_model = "SpudUser"
     self.automount = true
-    self.admin_applications = [{:name => "Users",:thumbnail => "spud/admin/users_thumb.png",:url => "/spud/admin/users",:order => 100}]
+    self.admin_applications = [{:name => "Users",:thumbnail => "spud/admin/users_thumb.png",:url => {:controller => "/spud/admin/users"},:order => 100}]
     self.site_name = "Company Name"
     self.site_id = 0
     self.short_name = 'default'

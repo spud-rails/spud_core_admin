@@ -8,7 +8,7 @@ describe Spud::UserSessionsController do
   describe :new do
   	it "should redirect to setup url if no users exist" do
   		get :new
-		response.should redirect_to(spud_setup_url)
+		response.should redirect_to(setup_url)
   	end
 
   	it "should render login form if users do exist" do
@@ -29,7 +29,7 @@ describe Spud::UserSessionsController do
   		u.save
   		user_session = {:login => "testuser", :password => "password"}
   		post :create,:spud_user_session => user_session
-  	  	response.should redirect_to(root_url)
+  	  	response.should redirect_to(main_app.root_url)
   	end
   end
 
@@ -38,7 +38,7 @@ describe Spud::UserSessionsController do
   		activate_authlogic
 	    SpudUserSession.create(FactoryGirl.build(:spud_user))
 	    delete :destroy
-	    response.should redirect_to(spud_core.new_user_session_url)
+	    response.should redirect_to(new_user_session_url)
   	end
   	it "should redirect to previous page after logout" do
         request.env["HTTP_REFERER"] = "/"

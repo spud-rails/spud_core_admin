@@ -21,4 +21,8 @@ class SpudUser < ActiveRecord::Base
 		end
 		return "#{self.first_name} #{self.last_name}"
 	end
+
+	def to_s
+		return full_name
+	end
 end

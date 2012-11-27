@@ -32,7 +32,7 @@ describe Spud::SetupController do
       SpudUser.stubs(:count).returns(1)
       get :index
 
-      response.should redirect_to(spud_core.new_user_session_url)
+      response.should redirect_to(new_user_session_url)
     end
 
     it "should create a new user" do
@@ -44,7 +44,7 @@ describe Spud::SetupController do
     it "should redirect to the admin login form when first admin user has been created" do
       post :index, FactoryGirl.attributes_for(:spud_user)
 
-      response.should redirect_to(spud_core.new_user_session_url)
+      response.should redirect_to(new_user_session_url)
     end
 
     it "should display an error if the user is invalid" do

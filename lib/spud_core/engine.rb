@@ -19,6 +19,10 @@ module Spud
         require "#{root}/app/controllers/#{controller_name}"
       end
 
+      def self.user_model()
+        Kernel.const_get(Spud::Core.config.user_model)
+      end
+
       engine_name :spud_core
 
       initializer :assets do |config|

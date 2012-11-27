@@ -3,7 +3,7 @@ class Spud::SetupController < Spud::ApplicationController
 	def index
 		@page_thumbnail = "spud/admin/users_thumb.png"
 		@page_name = "First Time Setup"
-		if SpudUser.count != 0
+		if Spud::Core::Engine.user_model.count != 0
 				flash[:error] = "Access Denied! This wizard may only be executed when the database is empty."
 				redirect_to spud_core.new_user_session_url and return
 		end

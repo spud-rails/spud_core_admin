@@ -3,7 +3,7 @@ class Spud::UserSessionsController < Spud::ApplicationController
   before_filter :require_user, :only => :destroy
   layout 'spud/login/application'
   def new
-    if SpudUser.all.count == 0
+    if Spud::Core::Engine.user_model.count == 0
       logger.debug "NO USERS!"
       redirect_to spud_core.setup_url() and return
     end
@@ -15,7 +15,7 @@ class Spud::UserSessionsController < Spud::ApplicationController
     @user_session = SpudUserSession.new(params[:spud_user_session])
     if @user_session.save
       flash[:notice] = "Login successful!"
-      redirect_back_or_default main_app.root_url
+      redirect_back_or_default "/"
     else
       render :action => :new
     end

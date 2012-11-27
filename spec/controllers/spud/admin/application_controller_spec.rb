@@ -33,7 +33,7 @@ describe Spud::Admin::ApplicationController do
       @session.destroy
       get :index
 
-      response.should redirect_to(spud_core.new_user_session_url)
+      response.should redirect_to(new_user_session_url)
     end
 
     it "should redirect to the root for a user without administrative priviledges" do
