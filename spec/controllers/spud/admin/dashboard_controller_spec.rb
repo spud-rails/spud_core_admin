@@ -23,7 +23,7 @@ describe Spud::Admin::DashboardController do
       @user.spud_admin_permissions.build(FactoryGirl.attributes_for(:spud_admin_permission, :name => "Blog", :access => true))
       @user.spud_admin_permissions.build(FactoryGirl.attributes_for(:spud_admin_permission, :name => "Pages", :access => true))
       @user.save
-      get :index
+      get :index, {:use_route => :spud_core}
 
       assigns(:admin_applications).collect{|app| app[:name] }.should =~ @user.spud_admin_permissions.collect{|permission| permission.name }
     end
@@ -33,7 +33,7 @@ describe Spud::Admin::DashboardController do
       @user.spud_admin_permissions.build(FactoryGirl.attributes_for(:spud_admin_permission, :name => "Blog", :access => true))
       @user.spud_admin_permissions.build(FactoryGirl.attributes_for(:spud_admin_permission, :name => "Pages", :access => true))
       @user.save
-      get :index
+      get :index, {:use_route => :spud_core}
 
       assigns(:admin_applications).collect{|app| app[:name] }.should_not include(:settings)
     end
@@ -42,7 +42,7 @@ describe Spud::Admin::DashboardController do
       @user.super_admin = true
       @user.spud_admin_permissions.build(FactoryGirl.attributes_for(:spud_admin_permission, :name => "Blog", :access => true))
       @user.save
-      get :index
+      get :index, {:use_route => :spud_core}
 
       assigns(:admin_applications).collect{|app| app[:name] }.should =~ Spud::Core.admin_applications.collect{|app| app[:name] }
     end
@@ -51,7 +51,7 @@ describe Spud::Admin::DashboardController do
       @user.super_admin = true
       @user.save
       @user.spud_user_settings.create(:key => "app_order",:value => "Pages,Settings")
-      get :index
+      get :index, {:use_route => :spud_core}
 
       assigns(:admin_applications).collect{|app| app[:name] }.should =~ ["Pages","Settings","Blog"]
 
@@ -71,12 +71,12 @@ describe Spud::Admin::DashboardController do
 
     context "when multisite select is not set" do
       it "should clear the session admin site" do
-        get :switch, :multisite_select => nil
+        get :switch, :multisite_select => nil, :use_route => :spud_core
         session[:admin_site].should == 0
       end
 
       it "should redirect to the referer" do
-        get :switch, :multisite_select => nil
+        get :switch, :multisite_select => nil, :use_route => :spud_core
         response.should be_redirect
       end
     end
@@ -94,13 +94,13 @@ describe Spud::Admin::DashboardController do
         end
 
         it "should set the session's admin site" do
-          get :switch, :multisite_select => 1
+          get :switch, :multisite_select => 1, :use_route => :spud_core
           session[:admin_site].should == 1
 
         end
 
         it "should redirect" do
-          get :switch, :multisite_select => 1
+          get :switch, :multisite_select => 1, :use_route => :spud_core
           response.should be_redirect
         end
       end
@@ -115,12 +115,12 @@ describe Spud::Admin::DashboardController do
         end
 
         it "should set a flash error" do
-          get :switch, :multisite_select => 1
+          get :switch, :multisite_select => 1, :use_route => :spud_core
           flash[:error].should_not be_blank
         end
 
         it "should redirect" do
-          get :switch, :multisite_select => 1
+          get :switch, :multisite_select => 1, :use_route => :spud_core
           response.should be_redirect
         end
       end

@@ -30,7 +30,7 @@ module Spud::BelongsToApp
 						permission = current_user_permissions.select{|perm| perm.name == @page_name}
 						if permission.blank?
 							flash[:error] = "You do not have access to this area."
-							redirect_to spud_admin_root_url and return
+							redirect_to spud_core.admin_root_url and return
 						end
 					end
 

@@ -6,7 +6,7 @@ describe Spud::PasswordResetsController do
   context :get do
     describe :new do
       it "should return success" do
-        get :new
+        get :new, :use_route => :spud_core
         response.should be_success
       end
     end
@@ -18,7 +18,7 @@ describe Spud::PasswordResetsController do
         end
 
         it "should render the edit form" do
-          get :edit, :id => 1
+          get :edit, :id => 1, :use_route => :spud_core
           response.should be_success
         end
       end
@@ -29,7 +29,7 @@ describe Spud::PasswordResetsController do
         end
 
         it "should redirect to the login form" do
-          get :edit, :id => user.id
+          get :edit, :id => user.id, :use_route => :spud_core
           response.should redirect_to(new_user_session_url)
         end
       end
@@ -47,11 +47,11 @@ describe Spud::PasswordResetsController do
 
         it "should trigger the password notificiation" do
           Spud::CoreMailer.expects(:forgot_password_notification).returns(stub(:deliver))
-          post :create, :email => user.email
+          post :create, :email => user.email, :use_route => :spud_core
         end
 
         it "should redirect to the login form" do
-          post :create, :email => user.email
+          post :create, :email => user.email, :use_route => :spud_core
           response.should redirect_to(new_user_session_url)
         end
       end
@@ -61,15 +61,15 @@ describe Spud::PasswordResetsController do
           SpudUser.stubs(:find_by_email).returns(nil)
         end
         it "should re-render the password reset form" do
-          post :create, :email => "invalid@email.com"
+          post :create, :email => "invalid@email.com", :use_route => :spud_core
           response.should render_template("new")
         end
       end
     end
 
     describe :update do
-      let(:valid_data) { {:id => user.id, :spud_user => {:password => "password", :password_confirmation => "password"}}}
-      let(:invalid_data) { {:id => user.id, :spud_user => {:password => "password", :password_confirmation => "drowssap"}}}
+      let(:valid_data) { {:id => user.id, :spud_user => {:password => "password", :password_confirmation => "password"}, :use_route => :spud_core}}
+      let(:invalid_data) { {:id => user.id, :spud_user => {:password => "password", :password_confirmation => "drowssap"}, :use_route => :spud_core}}
 
       before(:each) do
         SpudUser.stubs(:find_using_perishable_token).returns(user)

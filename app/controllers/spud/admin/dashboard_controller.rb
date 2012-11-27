@@ -29,6 +29,6 @@ class Spud::Admin::DashboardController < Spud::Admin::ApplicationController
     else
       session[:admin_site] = 0
     end
-    redirect_to(back_or_default(!request.referer.blank? ? request.referer : spud_admin_root_path)) and return
+    redirect_to(back_or_default(!request.referer.blank? ? request.referer : spud_core.admin_root_path)) and return
   end
 end
