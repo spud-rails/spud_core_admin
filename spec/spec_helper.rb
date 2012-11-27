@@ -24,7 +24,7 @@ RSpec.configure do |config|
   config.mock_with :mocha
   config.use_transactional_fixtures = true
   config.infer_base_class_for_anonymous_controllers = false
-  config.include Spud::Core::Engine.routes.url_helpers#, :type => :integration
+  config.include Spud::Core::Engine.routes.url_helpers
   config.before(:suite) do
     DatabaseCleaner.strategy = :transaction
     DatabaseCleaner.clean_with(:truncation)
@@ -37,4 +37,10 @@ RSpec.configure do |config|
   config.after(:each) do
     DatabaseCleaner.clean
   end
+end
+
+Spud::Core::Engine.routes.draw do
+    default_url_options :host => "test.host"
+
+    # ... snip ...
 end
