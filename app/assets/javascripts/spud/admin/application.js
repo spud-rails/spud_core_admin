@@ -38,6 +38,7 @@ $(document).ready(function() {
     $("#modal_window ").on('hidden', function(){
       $(this).find('.modal-footer-additional').remove();
       $(this).find('.modal-footer-default').show();
+      $(this).removeData('modal');
     });
 
     $('a.ajax').live('click', function() {
