@@ -5,6 +5,10 @@
   <%=form_for @user,:url => spud_admin_users_path(),:html=>{:class=>"form-horizontal"} do |f|%>
     <%=render :partial => "form",:locals => {:f => f}%>
 
+    <div class="form-actions form-actions-no-modal">
+      <%=f.submit "Save User", :class=>"btn btn-primary"%> or <%=link_to "cancel",request.referer,:class => "btn"%>
+    </div>
+
   <%end%>
 
 
