@@ -10,6 +10,10 @@ class SpudUser < ActiveRecord::Base
     # c.my_config_option = my_value # for available options see documentation in: Authlogic::ActsAsAuthentic
 	end # block optional
 
+	def has_admin_rights?
+		return self.super_admin || self.spud_admin_permissions.count > 0
+	end
+
 	def full_name
 		if first_name.blank? && last_name.blank?
 			return self.login
