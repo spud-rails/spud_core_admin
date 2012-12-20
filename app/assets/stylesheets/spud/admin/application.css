@@ -3,6 +3,7 @@
 *= require datepicker/css/datepicker
 *= require jquery-ui/css/flick/jquery-ui-1.9.1.custom
 *= require_self
+*= require spud/admin/responsive
 */
 
 body {

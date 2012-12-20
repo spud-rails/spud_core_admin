@@ -5,8 +5,13 @@
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
+  <%if @body_class == "responsive"%>
+  <meta name="HandheldFriendly" content="true" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width"/>
+  <%end%>
 </head>
-<body>
+<body class="<%=@body_class%>">
 
 <%= yield %>
 

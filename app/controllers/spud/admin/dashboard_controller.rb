@@ -1,4 +1,5 @@
 class Spud::Admin::DashboardController < Spud::Admin::ApplicationController
+  before_filter :enable_responsive_layout
 
 	def index
 		permission_set = current_user_permissions.collect{|p| p.name}

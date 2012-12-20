@@ -5,6 +5,7 @@ class Spud::Admin::UsersController < Spud::Admin::ApplicationController
 
   # filters
 	before_filter :load_user,:only => [:edit,:update,:show,:destroy]
+  before_filter :enable_responsive_layout
 
 	def index
 		sort_order = "login asc"

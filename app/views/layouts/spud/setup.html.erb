@@ -10,10 +10,9 @@
 <body>
 <div id="header">
 	<h1>Spud First Time Setup</h1>
-	
+
 </div>
 <div id="breadcrumbs">
-<%= render_breadcrumbs :separator => ' / ' %>
 </div>
 <div id="content">
 <div id="detail_wrapper">
@@ -23,13 +22,13 @@
 			<%end%>
 			<%=@page_name%>
 		</h2>
-		
+
 		<div id="details">
 			<%if content_for?(:detail_nav)%>
 				<div id="detail_nav_wrapper">
 					<div id="detail_nav">
 					<%= yield(:detail_nav)%></div>
-					
+
 				</div>
 				<div id="detail_main_wrapper">
 					<div id="detail_main">

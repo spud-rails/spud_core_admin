@@ -1,5 +1,5 @@
 
-<div class="sortable">
+<div class="sortable dashboard">
 <%@admin_applications.each do |admin_application|%>
 
 	<div class="admin_application" id="application_name_<%=admin_application[:name]%>"><a href="<%=spud_core.url_for(admin_application[:url])%>">

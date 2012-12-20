@@ -40,8 +40,11 @@ private
 		if(session[:admin_site] == nil)
 	    session[:admin_site] = 0
 		end
-
 	end
+
+  def enable_responsive_layout
+    @body_class = "responsive"
+  end
 
 	def multisite_caching
     if Spud::Core.multisite_mode_enabled

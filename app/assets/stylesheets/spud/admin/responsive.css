@@ -1,0 +1,92 @@
+@media only screen and (max-width: 959px) {
+  .responsive #detail_wrapper {
+    width:720px;
+  }
+
+}
+
+@media only screen and (max-width: 550px) {
+  .responsive #header h1 {
+    width:100px;
+    height:50px;
+    background-size:100px 45px;
+  }
+  .responsive #header {
+    height:50px;
+  }
+  .responsive #header #user_meta {
+    line-height:50px;
+  }
+  .responsive .greeting {
+    display:none;
+  }
+  .responsive #breadcrumbs {
+    font-size:12px;
+  }
+  /*Dashboard*/
+  .responsive .admin_application {
+    width:70px;
+    background:transparent;
+    border-radius:5px;
+    margin: 4px 2px 4px 2px;
+  }
+  .responsive .admin_application img{
+    width:57px;
+    height:57px;
+  }
+  .responsive .admin_application a,
+  .responsive .admin_application a:visited {
+    padding:2px 2px;
+    font-size:10px;
+    overflow:hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  #content {
+    padding:0 0;
+  }
+  /*Detail Layout*/
+  .responsive #detail_wrapper {
+    width:100%;
+    border-radius:0;
+    margin:0px auto 0px auto;
+
+  }
+  .responsive #detail_wrapper .thumb_wrapper {
+    width:57px;
+    height:57px;
+    margin:2px 5px 5px 5px;
+
+  }
+  #detail_wrapper h2 {
+    margin:0px;
+    line-height:65px;
+    font-size:1.5em;
+  }
+  /*button.btn
+  input[type="submit"].btn {
+  *padding-top: 1px;
+  *padding-bottom: 1px;
+  }*/
+  .responsive .btn .label,
+  .responsive .btn .badge {
+    top: 0;
+  }
+  .responsive .btn [class^="icon-"],
+  .responsive .btn [class*=" icon-"] {
+    margin-top: -1px;
+  }
+
+  .responsive .btn {
+    padding: 0 6px;
+    font-size: 10.5px;
+    -webkit-border-radius: 3px;
+       -moz-border-radius: 3px;
+            border-radius: 3px;
+  }
+
+  .responsive .page_row {
+  font-size:12px;
+  padding-left:2px;
+  }
+}

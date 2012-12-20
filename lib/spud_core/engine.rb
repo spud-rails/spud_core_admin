@@ -1,3 +1,4 @@
+require 'action_pack'
 require 'jquery-rails'
 require 'retina_tag'
 require 'authlogic'
