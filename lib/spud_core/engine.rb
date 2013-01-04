@@ -31,7 +31,8 @@ module Spud
           "tiny_mce/plugins/**/*",
           "tiny_mce/themes/advanced/*",
           "tiny_mce/utils/*",
-          "tiny_mce/langs/*"
+          "tiny_mce/langs/*",
+          'tiny_mce/tiny_mce_popup.js'
         ]
       end
 
