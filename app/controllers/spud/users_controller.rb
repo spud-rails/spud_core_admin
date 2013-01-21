@@ -3,6 +3,9 @@ class Spud::UsersController < Spud::ApplicationController
 	layout 'spud/admin/detail'
 
 	def settings
+		if current_user.has_admin_rights?
+			add_breadcrumb "Dashboard", :spud_admin_root_path
+		end
 		add_breadcrumb "Settings", :spud_settings_path
 		@page_thumbnail = "spud/admin/users_thumb.png"
 		@page_name = "Settings"	

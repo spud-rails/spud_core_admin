@@ -472,3 +472,9 @@ form input.full-width {
 	height:10px;
 	bottom:10px;
 }
+
+/* Modal Dialogs
+---------------*/
+#modal_window .form-actions-no-modal{
+	display: none;
+}
