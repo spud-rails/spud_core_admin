@@ -23,6 +23,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'will_paginate'
   s.add_dependency 'bootstrap-will_paginate'
   s.add_dependency 'retina_tag'
+  s.add_dependency 'codemirror-rails'
 
 
 

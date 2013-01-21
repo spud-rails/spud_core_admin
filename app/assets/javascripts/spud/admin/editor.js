@@ -1,3 +1,5 @@
+//= require codemirror
+//= require codemirror/modes/markdown
 
 spud.admin.editor = {};
 
@@ -40,40 +42,92 @@ spud.admin.editor = {};
 
   var validFormats = "p,h1,h2,h3,h4,h5,h6";
 
-  theme_advanced_blockformats :
-  editor.init = function(){
-    editor.initWithOptions({});
-  };
 
-  editor.initWithOptions = function(options){
+  editor.init = function(options) {
+    editor.monitorFormatters();
+    options = options || {};
     var selector = options.selector || 'textarea.tinymce';
-    var theme = options.theme || 'advanced';
-    var height = options.height || 400;
     $(selector).each(function() {
-      $(this).tinymce({
-      theme: theme,
-      plugins: registeredPlugins.join(','),
-      theme_advanced_toolbar_location: "top",
-      theme_advanced_buttons1: registeredButtons[0].join(','),
-      theme_advanced_buttons2: registeredButtons[1].join(','),
-      theme_advanced_buttons3: registeredButtons[2].join(','),
-      theme_advanced_buttons4: registeredButtons[3].join(','),
-      theme_advanced_toolbar_align: 'left',
-      theme_advanced_blockformats: validFormats,
-      convert_urls: false,
-      valid_elements: validElements,
-      width: $(this).width(),
-      height: height
-      });
+      var $this = $(this);
+      var dataFormat = $this.attr('data-format');
+      switch(dataFormat) {
+        case 'Markdown':
+          editor.initCodeMirrorWithOptions(this,'markdown', options || {});
+          break;
+        case 'HTML':
+        default:
+          editor.initMCEWithOptions(this, options || {});
+      };
+
+
     });
 
   };
 
-  editor.unload = function(selectorOptional) {
-    var selector = selectorOptional || 'textarea.tinymce';
-    $(selector).each(function() {$(this).tinymce().execCommand('mceRemoveControl',false,this.id);});
+  editor.monitorFormatters = function() {
+    $('select[data-formatter]').off('onchange');
+    $('select[data-formatter]').change(editor.formatterChanged);
+  };
+
+  editor.formatterChanged = function() {
+    var formatId = $(this).attr('data-formatter');
+    editor.unload('#' + formatId);
+    $('#' + formatId).attr('data-format',$(this).val());
+    editor.init({selector: '#' + formatId});
+  };
+
+  editor.initMCEWithOptions = function(element, options){
+
+    var theme = options.theme || 'advanced';
+    var height = options.height || 400;
+
+    $(element).tinymce({
+    theme: theme,
+    plugins: registeredPlugins.join(','),
+    theme_advanced_toolbar_location: "top",
+    theme_advanced_buttons1: registeredButtons[0].join(','),
+    theme_advanced_buttons2: registeredButtons[1].join(','),
+    theme_advanced_buttons3: registeredButtons[2].join(','),
+    theme_advanced_buttons4: registeredButtons[3].join(','),
+    theme_advanced_toolbar_align: 'left',
+    theme_advanced_blockformats: validFormats,
+    convert_urls: false,
+    valid_elements: validElements,
+    width: $(element).width(),
+    height: height
+    });
+
 
   };
+
+  var codeMirrors = [];
+  editor.initCodeMirrorWithOptions = function(element, format, options) {
+    var editor = CodeMirror.fromTextArea(element, {
+        mode: 'markdown',
+        lineNumbers: true,
+        theme: "default",
+        extraKeys: {"Enter": "newlineAndIndentContinueMarkdownList"}
+      });
+    codeMirrors.push(editor);
+
+    $(element).attr('code-mirror-id',codeMirrors.length-1);
+  };
+
+  editor.unload = function(selectorOptional) {
+    var selector = selectorOptional || 'textarea.tinymce';
+    $(selector).each(function() {
+      var $this = $(this);
+      if($this.attr('code-mirror-id')) {
+        codeMirrors[parseInt($this.attr('code-mirror-id'),10)].toTextArea();
+        codeMirrors[parseInt($this.attr('code-mirror-id'),10)] = null;
+        $this.removeAttr('code-mirror-id');
+      }
+        tinyMCE.execCommand('mceRemoveControl',false,this.id);
+    });
+
+  };
+
+
 
   editor.registerPlugin = function(pluginName){
     if($.inArray(registeredPlugins, pluginName) < 0){
