@@ -105,6 +105,7 @@ spud.admin.editor = {};
     var editor = CodeMirror.fromTextArea(element, {
         mode: 'markdown',
         lineNumbers: true,
+        lineWrapping: true,
         theme: "default",
         extraKeys: {"Enter": "newlineAndIndentContinueMarkdownList"}
       });
