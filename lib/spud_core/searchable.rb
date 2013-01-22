@@ -4,7 +4,7 @@ module Spud::Searchable
 		extend ClassMethods
 	end
 	module ClassMethods
-		def searchable
+		def spud_searchable
 			# puts "Place Holder For #{self.name}"
 		end
 	end
