@@ -41,7 +41,7 @@ $(document).ready(function() {
       $(this).removeData('modal');
     });
 
-    $('a.ajax').live('click', function() {
+    $('body').on('click', 'a.ajax', function() {
       var url = this.href;
       var title = this.title;
       var dialog = $("#modal_window");
@@ -60,11 +60,10 @@ $(document).ready(function() {
     });
 
 
-
-    $('a[data-method="delete"]').live('ajax:success',
+    $('body').on('ajax:success', 'a[data-method="delete"]',
       function(data, textStatus, jqXHR){
         $(this).closest('tr').fadeOut();
-      });
+    });
 
 
       $('a.button').button();
