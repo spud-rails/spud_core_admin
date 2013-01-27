@@ -8,6 +8,7 @@ require 'authlogic'
 # require 'dynamic_form'
 require 'breadcrumbs_on_rails'
 require 'will_paginate'
+require 'codemirror-rails'
 
 module Spud
   module Core
