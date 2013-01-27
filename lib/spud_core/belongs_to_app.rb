@@ -27,7 +27,7 @@ module Spud::BelongsToApp
 					@page_name = self.class.page_title
 
 					if current_user.super_admin == false
-						permission = current_user_permissions.select{|perm| perm.name == @page_name}
+						permission = current_user_permissions.select{|perm| perm.name == @page_application}
 						if permission.blank?
 							flash[:error] = "You do not have access to this area."
 							redirect_to spud_admin_root_url and return
@@ -48,8 +48,9 @@ module Spud::BelongsToApp
 
 		end
 		def page_application
-		      @page_application || self.superclass.instance_variable_get('@page_application')
+      @page_application || self.superclass.instance_variable_get('@page_application')
     end
+
     def page_title
     	@page_title || self.superclass.instance_variable_get('@page_title') || page_application[:name]
     end
