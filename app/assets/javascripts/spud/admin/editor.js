@@ -40,6 +40,8 @@ spud.admin.editor = {};
     "q[cite],samp,select[disabled|multiple|name|size],small," +
     "textarea[cols|rows|disabled|name|readonly],tt,var,big";
 
+  var extendedValidElements = [];
+
   var validFormats = "p,h1,h2,h3,h4,h5,h6";
 
 
@@ -93,6 +95,7 @@ spud.admin.editor = {};
     theme_advanced_blockformats: validFormats,
     convert_urls: false,
     valid_elements: validElements,
+    extended_valid_elements: extendedValidElements.join(","),
     width: $(element).width(),
     height: height
     });
@@ -145,6 +148,10 @@ spud.admin.editor = {};
       }
       i++;
     }
+  };
+
+  editor.appendValidElement = function(element) {
+    extendedValidElements.push(element);
   };
 
   editor.registerButton = function(buttonNameOrArray, rowNum){
