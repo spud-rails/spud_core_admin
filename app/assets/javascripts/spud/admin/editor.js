@@ -95,6 +95,7 @@ spud.admin.editor = {};
     theme_advanced_blockformats: validFormats,
     convert_urls: false,
     valid_elements: validElements,
+    media_strict: false,
     extended_valid_elements: extendedValidElements.join(","),
     width: $(element).width(),
     height: height
