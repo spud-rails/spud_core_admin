@@ -60,21 +60,3 @@ After the tests have completed the current code coverage stats is available by o
 
 
 NOTE: Spud Core is Retina Resolution Compatible Now
-
-Customizing Authentication
----------------------------
-
-Authentication resides in an `ActiveSupport::Concern` module called `SpudAuthentication`. This allows you to override the base authlogic configuration or potentially swap it out for another authentication library.
-
-To override the base authentication, create a file at `models/concerns/spud_authentication.rb`. Here is an example concern that would configure authlogic to allow users with duplicate email addresses. 
-
-		module Concerns
-		  module SpudAuthentication
-		    extend ActiveSupport::Concern
-		    included do
-		      acts_as_authentic do |c|
-		        c.validate_email_field = false
-		      end
-		    end
-		  end
-		end
