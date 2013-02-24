@@ -1,0 +1,22 @@
+class <%=module_name_formatted.camelize%>Controller < ApplicationController
+
+  before_filter :load_<%=module_name_formatted.singularize%>, :only => [:show]
+
+  def index
+    @<%=module_name_formatted%> = <%=module_name_formatted.singularize.camelize%>.paginate :page => params[:page]
+
+    respond_with @<%=module_name_formatted%>
+  end
+
+  def show
+  end
+
+private
+  def load_<%=module_name_formatted.singularize%>
+    @<%=module_name_formatted.singularize%> = <%=module_name_formatted.singularize.camelize%>.where(:id => params[:id]).first
+    if @<%=module_name_formatted.singularize%>.blank?
+      flash[:error] = "Whoops, this record does not exist."
+      redirect_to <%=module_name_formatted%>_url and return false
+    end
+  end
+end

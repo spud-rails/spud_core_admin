@@ -1,0 +1,45 @@
+class Spud::Admin::<%=module_name_formatted.camelize%>Controller < Spud::Admin::ApplicationController
+  layout 'spud/admin/detail'
+  belongs_to_spud_app :<%=module_name_formatted%>
+  before_filter :load_<%=module_name_formatted.singularize%>, :only => [:show, :edit, :update, :destroy]
+  add_breadcrumb "<%=module_name_formatted.humanize.titlecase%>", :spud_admin_<%=module_name_formatted%>_path
+
+  def index
+    @<%=module_name_formatted%> = <%=module_name_formatted.singularize.camelize%>.paginate :page => params[:page]
+
+    respond_with @<%=module_name_formatted%>
+  end
+
+  def new
+    @<%=module_name_formatted.singularize%> = <%=module_name_formatted.singularize.camelize%>.new
+    respond_with @<%=module_name_formatted.singularize%>
+  end
+
+  def create
+    @<%=module_name_formatted.singularize%> = <%=module_name_formatted.singularize.camelize%>.create(params[:<%=module_name_formatted.singularize%>])
+    respond_with @<%=module_name_formatted.singularize%>, :location => spud_admin_<%=module_name_formatted%>_url
+  end
+
+  def edit
+    respond_with @<%=module_name_formatted.singularize%>
+  end
+
+  def update
+    @<%=module_name_formatted.singularize%>.update_attributes(params[:<%=module_name_formatted.singularize%>])
+    respond_with @<%=module_name_formatted.singularize%>, :location => spud_admin_<%=module_name_formatted%>_url
+  end
+
+  def destroy
+    @<%=module_name_formatted.singularize%>.destroy
+    respond_with @<%=module_name_formatted.singularize%>, :location => spud_admin_<%=module_name_formatted%>_url
+  end
+
+private
+  def load_<%=module_name_formatted.singularize%>
+    @<%=module_name_formatted.singularize%> = <%=module_name_formatted.singularize.camelize%>.where(:id => params[:id]).first
+    if @<%=module_name_formatted.singularize%>.blank?
+      flash[:error] = "Whoops, this record does not exist."
+      redirect_to spud_admin_<%=module_name_formatted%>_url and return false
+    end
+  end
+end
