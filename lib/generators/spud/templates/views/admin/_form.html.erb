@@ -1,0 +1,33 @@
+<%%= form_for [:spud, :admin, @<%=module_name_formatted.singularize%>], :html => {:class => 'form-horizontal'} do |f| %>
+
+<%%= error_messages_for(f.object) %>
+
+  <fieldset>
+    <legend>Details</legend>
+    <%attributes.each do |attribute|%>
+      <%attribute_args = attribute.split(":")%>
+      <div class="control-group">
+        <%%= f.label :<%=attribute_args[0]%>, :class => "control-label" %>
+        <div class="controls">
+          <%if attribute_args[1] == 'integer'%>
+            <%%= f.number_field :<%=attribute_args[0]%> %>
+          <%elsif attribute_args[1] == 'string'%>
+            <%%= f.text_field :<%=attribute_args[0]%> %>
+          <%elsif attribute_args[1] == 'text'%>
+            <%%= f.text_area :<%=attribute_args[0]%>, :rows => 4 %>
+          <%elsif attribute_args[1] == 'boolean'%>
+            <%%= f.check_box :<%=attribute_args[0]%>%>
+          <%else%>
+            <%%= f.text_field :<%=attribute_args[0]%> %>
+          <%end%>
+        </div>
+      </div>
+    <%end%>
+  </fieldset>
+
+
+  <div class="form-actions">
+    <%%=f.submit "Save <%=module_name_formatted.singularize.humanize.titlecase%>", :class=>"btn btn-primary form-btn","data-loading-text"=>"Saving..."%> or <%%=link_to "cancel",request.referer,:class => "btn"%>
+  </div>
+
+<%% end %>

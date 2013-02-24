@@ -10,10 +10,14 @@ class Spud::ModuleGenerator < ::Rails::Generators::Base
   def create_module
     template "spud_admin_controller.rb.erb", "app/controllers/spud/admin/#{module_name_formatted}_controller.rb"
     template "spud_controller.rb.erb", "app/controllers/#{module_name_formatted}_controller.rb"
+    template "views/admin/index.html.erb", "app/views/spud/admin/#{module_name_formatted}/index.html.erb"
+    template "views/admin/new.html.erb", "app/views/spud/admin/#{module_name_formatted}/new.html.erb"
+    template "views/admin/edit.html.erb", "app/views/spud/admin/#{module_name_formatted}/edit.html.erb"
+    template "views/admin/_form.html.erb", "app/views/spud/admin/#{module_name_formatted}/_form.html.erb"
     invoke "model", [module_name_formatted.singularize] + attributes
-    # Add views for admin
+
     # Add views for user front end
-    # Add application.rb configuration
+    environment("Spud::Core.config.admin_applications += [{:name => '#{module_name_formatted.humanize.titlecase}',:thumbnail => \"/assets/spud/admin/portfolio.png\",:url => \"/spud/admin/#{module_name_formatted}\",:order => 96}]")
     create_routes
   end
 
@@ -26,11 +30,11 @@ private
     route <<EOF
 namespace :spud do
     namespace :admin do
-      resources :#{module_name}
+      resources :#{module_name_formatted}
     end
   end
 
-  resources :#{module_name}, :only => [:index, :show]
+  resources :#{module_name_formatted}, :only => [:index, :show]
 EOF
   end
 end

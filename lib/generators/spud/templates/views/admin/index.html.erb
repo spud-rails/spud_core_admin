@@ -1,0 +1,31 @@
+<%%= content_for :data_controls do %>
+  <%%= link_to "New <%=module_name_formatted.singularize.humanize.titlecase%>", new_spud_admin_<%=module_name_formatted.singularize%>_path, :class => "btn btn-primary", :title => "<%=module_name_formatted.singularize.humanize.titlecase%>" %>
+<%% end %>
+
+<%%= content_for :detail do %>
+  <table class="admin-table" id="client_table">
+    <thead>
+      <tr>
+        <%attributes.each do |attribute|%>
+          <%-attribute_args = attribute.split(":")-%>
+          <th><%=attribute_args[0].humanize.titlecase%></th>
+        <%end%>
+      </tr>
+    </thead>
+    <tbody>
+      <%% @<%=module_name_formatted%>.each do |<%=module_name_formatted.singularize%>| %>
+        <tr>
+          <%-attributes.each do |attribute|-%>
+          <%-attribute_args = attribute.split(":")-%>
+          <td><%%=<%=module_name_formatted.singularize%>.<%=attribute_args[0]%> %></td>
+          <%-end-%>
+          <td align="right" width="150">
+            <%%= link_to 'Edit', edit_spud_admin_<%=module_name_formatted.singularize%>_path(<%=module_name_formatted.singularize%>), :class => 'btn' %>
+            <%%= link_to 'Delete', spud_admin_<%=module_name_formatted.singularize%>_path(<%=module_name_formatted.singularize%>), :method => :delete, :confirm => 'Are you sure you want to delete this <%=module_name_formatted.singularize.humanize%>?', :class => 'btn btn-danger' %>
+          </td>
+        </tr>
+      <%%end%>
+    </tbody>
+  </table>
+  <%%=will_paginate @<%=module_name_formatted%>%>
+<%% end %>
