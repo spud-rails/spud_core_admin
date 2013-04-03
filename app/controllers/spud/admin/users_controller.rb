@@ -36,7 +36,7 @@ class Spud::Admin::UsersController < Spud::Admin::ApplicationController
 
 	def create
 		status = 500
-		@user = SpudUser.new(params[:spud_user],:as => :admin)
+		@user = SpudUser.new(user_params)
 
 		if @user.save
 			status = 200
@@ -71,7 +71,7 @@ class Spud::Admin::UsersController < Spud::Admin::ApplicationController
 	end
 
 	def update
-		if @user.update_attributes(params[:spud_user], :as => :admin)
+		if @user.update_attributes(user_params)
 			flash[:notice] = "User saved successfully."
 			redirect_to spud_admin_users_url()
 		else
@@ -104,6 +104,10 @@ private
 			redirect_to spud_admin_users_url() and return false
 		end
 		return true
+	end
+
+	def user_params
+		params.require(:spud_user).permit(:login,:email,:first_name,:last_name,:password,:password_confirmation,:password_salt,:last_login_at,:last_request_at,:last_login_ip,:failed_login_count,:current_login_at,:login_count,:persistence_token,:perishable_token,:single_access_token,:crypted_password, :current_login_ip, :created_at, :updated_at,:spud_admin_permissions_attributes,:time_zone, :super_admin)
 	end
 
 end

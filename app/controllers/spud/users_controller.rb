@@ -8,15 +8,15 @@ class Spud::UsersController < Spud::ApplicationController
 		end
 		add_breadcrumb "Settings", :spud_settings_path
 		@page_thumbnail = "spud/admin/users_thumb.png"
-		@page_name = "Settings"	
+		@page_name = "Settings"
 	end
 
 	def update
-		
+
 		add_breadcrumb "Settings", :spud_settings_path
 		@page_thumbnail = "spud/admin/users_thumb.png"
-		@page_name = "Settings"	
-		if @current_user.update_attributes(params[:spud_user].slice :login,:first_name,:last_name,:email,:password,:password_confirmation,:time_zone)
+		@page_name = "Settings"
+		if @current_user.update_attributes(user_params)
 			flash[:notice] = "User settings saved successfully."
 			redirect_to spud_admin_root_url()
 		else
@@ -42,4 +42,10 @@ class Spud::UsersController < Spud::ApplicationController
 			render :status => 500,:text => nil and return
 		end
 	end
+
+private
+	def user_params
+		params.require(:spud_user).permit(:login,:first_name,:last_name,:email,:password,:password_confirmation,:time_zone)
+	end
+
 end
