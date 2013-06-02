@@ -1,5 +1,4 @@
 class Spud::ApplicationController < ActionController::Base
-	unloadable
 	protect_from_forgery
 	helper_method :current_user_session, :current_user
 	around_filter :set_time_zone
