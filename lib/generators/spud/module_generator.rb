@@ -14,6 +14,8 @@ class Spud::ModuleGenerator < ::Rails::Generators::Base
     template "views/admin/new.html.erb", "app/views/spud/admin/#{module_name_formatted}/new.html.erb"
     template "views/admin/edit.html.erb", "app/views/spud/admin/#{module_name_formatted}/edit.html.erb"
     template "views/admin/_form.html.erb", "app/views/spud/admin/#{module_name_formatted}/_form.html.erb"
+    template "views/frontend/index.html.erb", "app/views/#{module_name_formatted}/index.html.erb"
+    template "views/frontend/show.html.erb", "app/views/#{module_name_formatted}/show.html.erb"
     invoke "model", [module_name_formatted.singularize] + attributes
 
     # Add views for user front end

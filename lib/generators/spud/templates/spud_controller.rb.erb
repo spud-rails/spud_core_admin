@@ -1,6 +1,7 @@
 class <%=module_name_formatted.camelize%>Controller < ApplicationController
-
+  respond_to :html
   before_filter :load_<%=module_name_formatted.singularize%>, :only => [:show]
+
 
   def index
     @<%=module_name_formatted%> = <%=module_name_formatted.singularize.camelize%>.paginate :page => params[:page]

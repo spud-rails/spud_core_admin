@@ -1,0 +1,4 @@
+<%-attributes.each do |attribute|-%>
+<%-attribute_args = attribute.split(":")-%>
+<p><strong><%=attribute_args[0].humanize.titlecase%></strong> <%%=@<%=module_name_formatted.singularize%>.<%=attribute_args[0]%> %></p>
+<%-end-%>
