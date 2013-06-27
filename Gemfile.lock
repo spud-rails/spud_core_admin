@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    spud_core (0.9.17)
+    spud_core (0.9.18)
       authlogic
       bootstrap-will_paginate
       breadcrumbs_on_rails
@@ -42,15 +42,15 @@ GEM
       i18n (~> 0.6)
       multi_json (~> 1.0)
     arel (3.0.2)
-    authlogic (3.2.0)
-      activerecord (>= 3.0.0)
-      activesupport (>= 3.0.0)
+    authlogic (3.3.0)
+      activerecord (>= 3.2)
+      activesupport (>= 3.2)
     bootstrap-will_paginate (0.0.9)
       will_paginate
     breadcrumbs_on_rails (2.3.0)
     builder (3.0.4)
-    codemirror-rails (3.00)
-      railties (~> 3.0)
+    codemirror-rails (3.13)
+      railties (>= 3.0, < 5)
     database_cleaner (0.7.1)
     diff-lcs (1.1.3)
     erubis (2.7.0)
@@ -99,9 +99,9 @@ GEM
     rake (10.0.3)
     rdoc (3.12)
       json (~> 1.4)
-    retina_tag (1.1.7)
+    retina_tag (1.1.9)
       jquery-rails
-      rails (~> 3.1)
+      rails (>= 3.1)
     rspec (2.8.0)
       rspec-core (~> 2.8.0)
       rspec-expectations (~> 2.8.0)
