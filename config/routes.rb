@@ -12,6 +12,7 @@ Rails.application.routes.draw do
          resource :sitemap,:only => [:show]
          resources :password_resets
 	   	get 'setup' => 'setup#index'
+         post 'setup' => 'setup#index'
    end
    
 end
