@@ -7,7 +7,9 @@ Rails.application.routes.draw do
    		namespace :admin do
    			root :to => "dashboard#index"
    			resources :users
-            get 'switch' => "dashboard#switch"
+
+            get  'switch' => "dashboard#switch"
+            post 'switch' => "dashboard#switch"
    		end
          resource :sitemap,:only => [:show]
          resources :password_resets

@@ -1,0 +1,22 @@
+<table>
+  <thead>
+    <tr>
+      <%attributes.each do |attribute|%>
+        <%-attribute_args = attribute.split(":")-%>
+        <th><%=attribute_args[0].humanize.titlecase%></th>
+      <%end%>
+    </tr>
+  </thead>
+  <tbody>
+    <%% @<%=module_name_formatted%>.each do |<%=module_name_formatted.singularize%>| %>
+      <tr>
+        <%-attributes.each do |attribute|-%>
+        <%-attribute_args = attribute.split(":")-%>
+        <td><%%=<%=module_name_formatted.singularize%>.<%=attribute_args[0]%> %></td>
+        <%-end-%>
+
+      </tr>
+    <%%end%>
+  </tbody>
+</table>
+<%%=will_paginate @<%=module_name_formatted%>%>

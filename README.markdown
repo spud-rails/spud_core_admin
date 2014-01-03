@@ -44,7 +44,7 @@ Testing
 Spud uses RSpec for testing. Get the tests running with a few short commands:
 
 1. Create and migrate the databases:
-   
+
 		rake db:create
 		rake db:migrate
 
@@ -60,3 +60,8 @@ After the tests have completed the current code coverage stats is available by o
 
 
 NOTE: Spud Core is Retina Resolution Compatible Now
+
+License
+-------
+This software is licensed under the Reciprocal 1.5 License
+http://opensource.org/licenses/rpl

@@ -16,7 +16,7 @@ Gem::Specification.new do |s|
   s.files = Dir["{app,config,db,lib}/**/*"] + ["MIT-LICENSE", "Rakefile", "README.markdown"]
   s.test_files = Dir["spec/**/*"]
 
-  s.add_dependency "rails", "~> 4.0.0.beta1"
+  s.add_dependency "rails", "~> 4.0.0"
   s.add_dependency 'authlogic'
   s.add_dependency 'jquery-rails'
   s.add_dependency 'breadcrumbs_on_rails'
@@ -25,13 +25,18 @@ Gem::Specification.new do |s|
   s.add_dependency 'retina_tag'
   s.add_dependency 'codemirror-rails'
 
+  s.add_dependency 'rails-observers'
+  s.add_dependency 'actionpack-page_caching'
+  s.add_dependency 'actionpack-action_caching'
+  s.add_dependency 'protected_attributes'
 
-  s.add_development_dependency 'mysql2', '0.3.11'
-  s.add_development_dependency 'rspec', '2.8.0'
-  s.add_development_dependency 'rspec-rails', '2.8.1'
+  s.add_development_dependency 'mysql2'
+  s.add_development_dependency 'rspec', '2.14.0'
+  s.add_development_dependency 'rspec-rails', '2.14.0'
   s.add_development_dependency 'shoulda', '~> 3.0.1'
   s.add_development_dependency 'factory_girl', '~> 3.0'
-  s.add_development_dependency 'mocha', '0.10.3'
   s.add_development_dependency 'database_cleaner', '1.0.0.RC1'
+  s.add_development_dependency 'mocha', '0.14.0'
+
   s.add_development_dependency 'simplecov', '~> 0.6.4'
 end
