@@ -8,13 +8,14 @@ describe Spud::SitemapsController do
         "http://www.example.com"
       ]
       get :show, :format => :xml
-      
+
       assigns(:sitemap_urls).should == Spud::Core.sitemap_urls
     end
-    
+
     it "should only respond to an XML format" do
-      get :show
-      response.response_code.should == 406
+      expect {
+        get :show
+      }.to raise_exception(ActionController::UnknownFormat)
     end
   end
 end
