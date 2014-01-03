@@ -1,5 +1,8 @@
 //= require codemirror
-//= require codemirror/modes/markdown
+//= require codemirror/modes/xml
+//= require codemirror/modes/javascript
+//= require codemirror/modes/css
+//= require codemirror/modes/htmlmixed
 
 spud.admin.editor = {};
 
@@ -48,31 +51,55 @@ spud.admin.editor = {};
   editor.init = function(options) {
     editor.monitorFormatters();
     options = options || {};
-    var selector = options.selector || 'textarea.tinymce';
+    var selector = options.selector || 'textarea.tinymce,textarea.spud-formatted-editor';
     $(selector).each(function() {
       var $this = $(this);
       var dataFormat = $this.attr('data-format');
-      switch(dataFormat) {
-        case 'Markdown':
-          editor.initCodeMirrorWithOptions(this,'markdown', options || {});
-          break;
-        case 'HTML':
-        default:
-          editor.initMCEWithOptions(this, options || {});
-      };
-
+      var initMethod = editor['init' + dataFormat]
+      if(!initMethod) {
+        editor.initMCEWithOptions(this, options || {});
+      } else {
+        initMethod.call(this, options)
+      }
 
     });
 
   };
 
+  editor.initRAW = function(options) {
+    editor.initCodeMirrorWithOptions(this,'htmlmixed', options || {});
+  };
+
+
+
   editor.monitorFormatters = function() {
-    $('select[data-formatter]').off('onchange');
-    $('select[data-formatter]').change(editor.formatterChanged);
+    $('select[data-formatter]').off('change');
+    $('select[data-formatter]').on('change',editor.formatterChanged);
+    $('select[data-formatter]').each(function() {
+      $.data(this, 'current', $(this).val());
+    })
+
   };
 
   editor.formatterChanged = function() {
     var formatId = $(this).attr('data-formatter');
+    var $this = $('#' + formatId);
+    var value = $this.val();
+    if($this.attr('code-mirror-id')) {
+      value = codeMirrors[parseInt($this.attr('code-mirror-id'),10)].getValue()
+    }
+
+    if(value) {
+      var answer = confirm("Warning!, Changing the format of content that has already been entered may result in loss of formatting.");
+      if(!answer) {
+        $('select[data-formatter]').off('change');
+        $(this).val($.data(this, 'current')); // added parenthesis (edit)
+        editor.monitorFormatters();
+        return false;
+      }
+    }
+
+    $.data(this, 'current', $(this).val());
     editor.unload('#' + formatId);
     $('#' + formatId).attr('data-format',$(this).val());
     editor.init({selector: '#' + formatId});
@@ -106,20 +133,26 @@ spud.admin.editor = {};
 
   var codeMirrors = [];
   editor.initCodeMirrorWithOptions = function(element, format, options) {
-    var editor = CodeMirror.fromTextArea(element, {
-        mode: 'markdown',
-        lineNumbers: true,
-        lineWrapping: true,
-        theme: "default",
-        extraKeys: {"Enter": "newlineAndIndentContinueMarkdownList"}
-      });
+    var defaultOptions = {
+      lineNumbers: true,
+      lineWrapping: true,
+      theme: "default"
+    };
+    defaultOptions.mode = {name: format};
+    if(options) {
+      for(var key in options) {
+        defaultOptions[key] = options[key]
+      }
+    }
+
+    var editor = CodeMirror.fromTextArea(element, defaultOptions);
     codeMirrors.push(editor);
 
     $(element).attr('code-mirror-id',codeMirrors.length-1);
   };
 
   editor.unload = function(selectorOptional) {
-    var selector = selectorOptional || 'textarea.tinymce';
+    var selector = selectorOptional || 'textarea.tinymce,textarea.spud-formatted-editor';
     $(selector).each(function() {
       var $this = $(this);
       if($this.attr('code-mirror-id')) {

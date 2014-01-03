@@ -31,9 +31,9 @@ Gem::Specification.new do |s|
   s.add_dependency 'protected_attributes'
 
   s.add_development_dependency 'mysql2'
+
   s.add_development_dependency 'rspec', '2.14.0'
   s.add_development_dependency 'rspec-rails', '2.14.0'
-
   s.add_development_dependency 'shoulda', '~> 3.0.1'
   s.add_development_dependency 'factory_girl', '~> 3.0'
   s.add_development_dependency 'database_cleaner', '1.0.0.RC1'
