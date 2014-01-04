@@ -112,6 +112,7 @@ spud.admin.editor = {};
 
     $(element).tinymce({
     theme: theme,
+    language: 'en',
     plugins: registeredPlugins.join(','),
     theme_advanced_toolbar_location: "top",
     theme_advanced_buttons1: registeredButtons[0].join(','),

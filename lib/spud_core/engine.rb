@@ -9,6 +9,7 @@ require 'authlogic'
 require 'breadcrumbs_on_rails'
 require 'will_paginate'
 require 'codemirror-rails'
+require 'tinymce-rails'
 
 module Spud
   module Core
@@ -28,12 +29,7 @@ module Spud
 
       initializer :assets do |config|
         Rails.application.config.assets.precompile += [
-          "tiny_mce/plugins/**/*",
-          "tiny_mce/themes/**/*",
-          "tiny_mce/utils/*",
-          "tiny_mce/langs/*",
-          'tiny_mce/tiny_mce_popup.js',
-          "tiny_mce/*",
+          "tinymce/plugins/**/*",
           "spud/admin*"
         ]
       end

@@ -29,6 +29,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'actionpack-page_caching'
   s.add_dependency 'actionpack-action_caching'
   s.add_dependency 'protected_attributes'
+  s.add_dependency 'tinymce-rails', '3.5.9'
 
   s.add_development_dependency 'mysql2'
 

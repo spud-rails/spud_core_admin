@@ -2,8 +2,11 @@
 //= require jquery
 //= require jquery_ujs
 //= require spud/admin/preinit
-//= require tiny_mce/jquery.tinymce.js
-//= require tiny_mce/tiny_mce_src.js
+//= require tinymce
+//= require tinymce-jquery
+//# require tiny_mce/tiny_mce_src.js
+//# require ./tiny_mce_plugins
+//# require tiny_mce/jquery.tinymce.js
 //= require spud/admin/jquery.dataTables.min
 //= require bootstrap/js/bootstrap
 //= require datepicker/js/bootstrap-datepicker
