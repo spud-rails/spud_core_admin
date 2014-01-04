@@ -1,0 +1,31 @@
+.spud-navbar {
+		/*height:100px;*/
+	background:#fc862a;
+	background-image: linear-gradient(top, #fc862a 5%, #f56a0e 53%);
+	background-image: -o-linear-gradient(top, #fc862a 5%, #f56a0e 53%);
+	background-image: -moz-linear-gradient(top, #fc862a 5%, #f56a0e 53%);
+	background-image: -webkit-linear-gradient(top, #fc862a 5%, #f56a0e 53%);
+	background-image: -ms-linear-gradient(top, #fc862a 5%, #f56a0e 53%);
+
+	background-image: -webkit-gradient(
+	linear,
+	left top,
+	left bottom,
+	color-stop(0.05, #fc862a),
+	color-stop(0.53, #f56a0e)
+	);
+
+	color:#fff;
+	border-color: #fc862a;
+}
+.spud-navbar .navbar-nav > li > a {
+	color: #fff;
+}
+
+.spud-navbar .nav > li > a {
+	padding: 40px 15px;
+}
+
+.navbar-inverse .navbar-nav > .open > a, .navbar-inverse .navbar-nav > .open > a:hover, .navbar-inverse .navbar-nav > .open > a:focus {
+	background:#fc862a;
+}
