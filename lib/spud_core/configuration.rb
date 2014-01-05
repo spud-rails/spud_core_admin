@@ -12,7 +12,7 @@ module Spud
     self.multisite_mode_enabled = false
     self.multisite_config = []
     self.from_address = "no-reply@spudengine.com"
-    self.renderers = {'HTML' => {:description => 'Formatted Html', :class => nil}, 'RAW' => {:description => "Raw", :class => nil}}
+    self.renderers = {'HTML' => {:description => 'Formatted Html', :class => nil}, 'RAW' => {:description => "Raw Html", :class => nil}}
     self.admin_javascripts = ['spud/admin/application']
     self.admin_stylesheets = ['spud/admin/application']
 
