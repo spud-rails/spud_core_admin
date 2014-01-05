@@ -17,7 +17,6 @@ module Spud
     self.admin_stylesheets = ['spud/admin/application']
 
     def self.renderer(name)
-      puts Spud::Core.config.renderers
       renderer_definition = Spud::Core.config.renderers[name]
       if renderer_definition && renderer_definition[:class]
         return renderer_definition[:class]
