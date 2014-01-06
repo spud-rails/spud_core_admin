@@ -81,6 +81,7 @@ spud.admin.editor = {};
 
   };
 
+
   editor.formatterChanged = function() {
     var formatId = $(this).attr('data-formatter');
     var $this = $('#' + formatId);
@@ -145,11 +146,14 @@ spud.admin.editor = {};
         defaultOptions[key] = options[key]
       }
     }
+    setTimeout($.proxy(function() {
+      var editor = CodeMirror.fromTextArea(element, defaultOptions);
+      codeMirrors.push(editor);
+      $(element).attr('code-mirror-id',codeMirrors.length-1);
+    },this),100);
 
-    var editor = CodeMirror.fromTextArea(element, defaultOptions);
-    codeMirrors.push(editor);
 
-    $(element).attr('code-mirror-id',codeMirrors.length-1);
+
   };
 
   editor.unload = function(selectorOptional) {
