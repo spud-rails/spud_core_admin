@@ -17,7 +17,9 @@ Gem::Specification.new do |s|
   s.test_files = Dir["spec/**/*"]
 
   s.add_dependency "rails", "~> 4.0.0"
-  s.add_dependency 'authlogic'
+  s.add_dependency 'authlogic', "~> 3.4.0"
+  s.add_dependency "scrypt"
+  s.add_dependency "bcrypt"
   s.add_dependency 'jquery-rails'
   s.add_dependency 'breadcrumbs_on_rails'
   s.add_dependency 'will_paginate'

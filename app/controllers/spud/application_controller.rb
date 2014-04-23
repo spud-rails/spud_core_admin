@@ -28,7 +28,7 @@ class Spud::ApplicationController < ActionController::Base
 
     def current_user_permissions
       return @current_user_permissions if defined?(@current_user_permissions)
-      @current_user_permissions = current_user.spud_admin_permissions.where(:access => true).all
+      @current_user_permissions = current_user.spud_admin_permissions.where(:access => true).load
     end
 
     def require_user
