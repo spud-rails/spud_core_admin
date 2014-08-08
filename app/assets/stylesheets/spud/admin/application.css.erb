@@ -1,5 +1,5 @@
 /* ...
-*= require bootstrap/css/bootstrap
+*= require spud/bootstrap-3.1.1/css/bootstrap
 *= require datepicker/css/datepicker
 *= require jquery-ui/css/flick/jquery-ui-1.9.1.custom
 *= require codemirror
@@ -7,9 +7,12 @@
 */
 
 body {
-	background:#eee;
-	background-color:#eee;
+	background:#fff;
 	margin: 0 0;
+}
+.CodeMirror {
+	border:1px solid #999;
+	height:400px;
 }
 a {
 	color:#0073EA;
@@ -26,8 +29,8 @@ a:hover .ui-button-text {
 }
 #header {
 	height:100px;
-	background:#fc862a;
-	background-image: linear-gradient(top, #fc862a 5%, #f56a0e 53%);
+	background:#ff7f39;
+/*	background-image: linear-gradient(top, #fc862a 5%, #f56a0e 53%);
 	background-image: -o-linear-gradient(top, #fc862a 5%, #f56a0e 53%);
 	background-image: -moz-linear-gradient(top, #fc862a 5%, #f56a0e 53%);
 	background-image: -webkit-linear-gradient(top, #fc862a 5%, #f56a0e 53%);
@@ -39,8 +42,7 @@ a:hover .ui-button-text {
 	left bottom,
 	color-stop(0.05, #fc862a),
 	color-stop(0.53, #f56a0e)
-	);
-
+	);*/
 
 	color:#fff;
 }
@@ -68,7 +70,7 @@ a:hover .ui-button-text {
 	width:200px;
 	height:100px;
 	text-indent:-10000px;
-	background: url(<%=image_path 'spud/admin/spud_logo.png'%>) center left no-repeat;
+	background: url('spud_logo.png') center left no-repeat;
 	background-size:200px 90px;
 }
 #header h1 .site_name {
@@ -82,13 +84,9 @@ a:hover .ui-button-text {
 }
 #breadcrumbs {
 	background:#fff;
-	height:25px;
-	/*border-top:1px solid rgb(200,148,72);*/
 	border-bottom:1px solid #999;
-	line-height:25px;
-	padding:5px 15px;
-	/*box-shadow: 0px 0px 10px #888;*/
-
+	line-height:30px;
+	padding:0px 15px;
 }
 #breadcrumbs a,
 #breadcrumbs a:visited {
@@ -110,15 +108,15 @@ a:hover .ui-button-text {
 }
 
 div.admin_application {
-	width:150px;
+	/*width:150px;*/
 	background:#fff;
 	/*height:150px;*/
-	float:left;
-
+	/*float:left;*/
+	padding:5px;
 	text-align:center;
-	border:1px solid transparent;
-	border-radius:10px;
-	margin: 0 10px 20px 10px;
+	/*border:1px solid transparent;*/
+	/*border-radius:10px;*/
+	/*margin: 0 10px 20px 10px;*/
 	-webkit-touch-callout: none;
 	-webkit-user-select: none;
 	-khtml-user-select: none;
@@ -126,9 +124,16 @@ div.admin_application {
 	-ms-user-select: none;
 	user-select: none;
 }
-div.admin_application:hover {
-	background:#fff;
-	border:1px solid #ccc;
+div.admin_application:hover .image_wrapper {
+background: #fddfca; /* Old browsers */
+background: -moz-radial-gradient(center, ellipse cover,  #fddfca 0%, #ffffff 80%); /* FF3.6+ */
+background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%,#fddfca), color-stop(80%,#ffffff)); /* Chrome,Safari4+ */
+background: -webkit-radial-gradient(center, ellipse cover,  #fddfca 0%,#ffffff 80%); /* Chrome10+,Safari5.1+ */
+background: -o-radial-gradient(center, ellipse cover,  #fddfca 0%,#ffffff 80%); /* Opera 12+ */
+background: -ms-radial-gradient(center, ellipse cover,  #fddfca 0%,#ffffff 80%); /* IE10+ */
+background: radial-gradient(ellipse at center,  #fddfca 0%,#ffffff 80%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fddfca', endColorstr='#ffffff',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+
 
 }
 .admin_application a,
@@ -146,10 +151,10 @@ div.admin_application:hover {
 }
 
 #detail_wrapper {
-	background:#fff;
-	width:960px;
-	min-height:300px;
-	border-radius:10px;
+	/*background:#fff;*/
+	/*width:960px;*/
+	/*min-height:300px;*/
+	/*border-radius:10px;*/
 	margin:50px auto 0px auto;
 }
 #detail_wrapper h2
@@ -165,7 +170,7 @@ div.admin_application:hover {
 	height:100px;
 	float:left;
 
-	margin:-50px 10px 10px 10px;
+	margin:-42px 5px 5px 0px;
 }
 #detail_wrapper h2 img {
 
@@ -246,7 +251,7 @@ div.field_with_errors {
 }
 div.field_with_errors label {
     color:#F00;
-    background: url(/images/icons/error.png) top left no-repeat;
+    background: url(<%=image_path 'icons/error.png'%>) top left no-repeat;
 }
 
 
@@ -300,7 +305,7 @@ div.field_with_errors label {
 }
 
 .admin-table th .asc {
-  background-image: url(<%=image_path 'spud/admin/up_arrow.gif'%>);
+  background-image: url(<%=image_path 'spud/admin/up_arrow.gif)'%>);
 }
 
 .admin-table th .desc {
@@ -348,6 +353,9 @@ div.field_with_errors label {
 	border-left:2px solid #999;
 	margin-left:20px;
 }
+.formtab_buttons {
+	margin: 0 12px 0 0 !important;
+}
 .formtab_buttons li {
 	width:auto;
 	clear:none;
@@ -357,12 +365,12 @@ div.field_with_errors label {
 	margin:0;
 }
 .formtab {
-	width:910px;
-	padding: 0 0 !important;
+	/*width:910px;*/
+	padding: 0 12px 0 0 !important;
 	overflow-y:visible;
 }
 .formtab textarea {
-	width:910px;
+	/*width:910px;*/
 
 	margin: 0 0;
 	height:200px;

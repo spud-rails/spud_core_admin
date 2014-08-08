@@ -2,36 +2,36 @@
 <fieldset>
   <legend>User Details</legend>
 
-<div class="control-group">
-	<%=f.label :login, :required=>true,:class=>"control-label"%>
-	<div class="controls">
-		<%=f.text_field :login,:title => "",:size=>25%>
+<div class="form-group">
+	<%=f.label :login, :required=>true,:class=>"control-lable col-sm-2"%>
+	<div class="col-sm-8">
+		<%=f.text_field :login,:title => "",:class => "form-control"%>
 	</div>
   
 </div>
-<div class="control-group">
-	<%=f.label :email,:class=>"control-label"%>
-	<div class="controls">
-		<%=f.text_field :email, :title => "",:size => 25%>
+<div class="form-group">
+	<%=f.label :email,:class=>"control-lable col-sm-2"%>
+	<div class="col-sm-8">
+		<%=f.text_field :email, :title => "",:class => "form-control"%>
 	</div>
   
 </div>
-<div class="control-group">
-	<%=f.label :first_name,:class=>"control-label"%>
-	<div class="controls">
-		<%=f.text_field :first_name, :title => "",:size => 25%>
+<div class="form-group">
+	<%=f.label :first_name,:class=>"control-lable col-sm-2"%>
+	<div class="col-sm-8">
+		<%=f.text_field :first_name, :title => "",:class => "form-control"%>
 	</div>
 </div>
-<div class="control-group">
-	<%=f.label :last_name,:class=>"control-label"%>
-	<div class="controls">
-		<%=f.text_field :last_name, :title => "",:size => 25%>
+<div class="form-group">
+	<%=f.label :last_name,:class=>"control-lable col-sm-2"%>
+	<div class="col-sm-8">
+		<%=f.text_field :last_name, :title => "",:class => "form-control"%>
 	</div>
 </div>
-<div class="control-group">
-  <%=f.label :time_zone,:class => "control-label"%>
-  <div class="controls">
-    <%=f.time_zone_select :time_zone,ActiveSupport::TimeZone.us_zones,:default => Rails.application.config.time_zone%>
+<div class="form-group">
+  <%=f.label :time_zone,:class => "control-lable col-sm-2"%>
+  <div class="col-sm-8">
+    <%=f.time_zone_select :time_zone,ActiveSupport::TimeZone.us_zones,{:default => Rails.application.config.time_zone},{:class => "form-control"}%>
   </div>
 </div>
 
@@ -40,18 +40,18 @@
 <fieldset>
   <legend>Credentials</legend>
 
-<div class="control-group">
-	<%=f.label :password,:class=>"control-label"%>
-	<div class="controls">
-		<%=f.password_field :password, :title => "",:size => 25%>
+<div class="form-group">
+	<%=f.label :password,:class=>"control-lable col-sm-2"%>
+	<div class="col-sm-8">
+		<%=f.password_field :password, :title => "",:class => "form-control"%>
 		<p class="help-block">Password must be at least 8 characters</p>
 	</div>
   
 </div>
-<div class="control-group">
-	<%=f.label :password_confirmation,"Confirm",:class=>"control-label"%>
-	<div class="controls">
-		<%=f.password_field :password_confirmation, :title => "",:size => 25%>
+<div class="form-group">
+	<%=f.label :password_confirmation,"Confirm",:class=>"control-lable col-sm-2"%>
+	<div class="col-sm-8">
+		<%=f.password_field :password_confirmation, :title => "",:class => "form-control"%>
 		<p class="help-block">Retype your password here.</p>
 	</div>
   

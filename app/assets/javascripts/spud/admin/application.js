@@ -8,10 +8,11 @@
 //# require ./tiny_mce_plugins
 //# require tiny_mce/jquery.tinymce.js
 //= require spud/admin/jquery.dataTables.min
-//= require bootstrap/js/bootstrap
+//= require spud/bootstrap-3.1.1/js/bootstrap
 //= require datepicker/js/bootstrap-datepicker
 //= require jquery-ui/js/jquery-ui-1.9.1.custom
 //= require_self
+//= require spud/admin/editor
 //= require_tree .
 //= require retina_tag
 

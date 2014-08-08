@@ -2,7 +2,7 @@ module Spud
   module Core
     include ActiveSupport::Configurable
     config_accessor :site_name,:admin_applications,:sitemap_urls,:multisite_mode_enabled,:multisite_config,:from_address,:site_id,:short_name, :javascripts,:stylesheets, :admin_javascripts, :admin_stylesheets, :renderers
-    self.admin_applications = [{:name => "Users",:thumbnail => "spud/admin/users_thumb.png",:url => "/spud/admin/users",:order => 100}]
+    self.admin_applications = [{:name => "Users",:thumbnail => "spud/admin/users_icon.png",:url => "/spud/admin/users",:order => 100}]
     self.site_name = "Company Name"
     self.site_id = 0
     self.short_name = 'default'
@@ -12,7 +12,7 @@ module Spud
     self.multisite_mode_enabled = false
     self.multisite_config = []
     self.from_address = "no-reply@spudengine.com"
-    self.renderers = {'HTML' => {:description => 'Formatted Html', :class => nil}, 'RAW' => {:description => "Raw Html", :class => nil}}
+    self.renderers = {'html' => {:description => 'Formatted Html', :class => nil}, 'raw' => {:description => "Raw Html", :class => nil}}
     self.admin_javascripts = ['spud/admin/application']
     self.admin_stylesheets = ['spud/admin/application']
 

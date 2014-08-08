@@ -7,14 +7,14 @@ class Spud::UsersController < Spud::ApplicationController
 			add_breadcrumb "Dashboard", :spud_admin_root_path
 		end
 		add_breadcrumb "Settings", :spud_settings_path
-		@page_thumbnail = "spud/admin/users_thumb.png"
+		@page_thumbnail = "spud/admin/users_icon.png"
 		@page_name = "Settings"
 	end
 
 	def update
 
 		add_breadcrumb "Settings", :spud_settings_path
-		@page_thumbnail = "spud/admin/users_thumb.png"
+		@page_thumbnail = "spud/admin/users_icon.png"
 		@page_name = "Settings"
 		if @current_user.update_attributes(user_params)
 			flash[:notice] = "User settings saved successfully."

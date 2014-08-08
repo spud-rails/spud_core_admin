@@ -25,7 +25,11 @@
 
 					<td><%=timestamp user.last_login_at%></td>
 					<td><%=timestamp user.created_at%></td>
-					<td align="right"><%=link_to "Remove",spud_admin_user_path(:id => user.id),:method => :delete,:remote => true,:data => {:confirm => "Are you sure you want to remove this user?"},:class => "btn btn-danger"%></td>
+					<td align="right">
+						<%=link_to spud_admin_user_path(:id => user.id),:method => :delete,:remote => true,:data => {:confirm => "Are you sure you want to remove this user?"},:class => "btn btn-sm btn-danger" do%>
+							<span class="glyphicon glyphicon-trash"></span>
+						<%end%>
+					</td>
 				</tr>
 			<%end%>
 		</tbody>

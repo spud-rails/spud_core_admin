@@ -1,31 +1,33 @@
 <%=content_for :content do %>
 	<div id="detail_wrapper">
-	<span class="data_controls">
-			<%=yield :data_controls%>
-		</span>
-		<h2>
-			<%if @page_thumbnail%>
-				<span class="thumb_wrapper"><%=image_tag(@page_thumbnail)%></span>
-			<%end%>
-			<%=@page_name%>
-		</h2>
-
-		<div id="details">
-			<%if content_for?(:detail_nav)%>
-				<div id="detail_nav_wrapper">
-					<div id="detail_nav">
-					<%= yield(:detail_nav)%>
+		<div class="row">
+			<span class="data_controls">
+				<%=yield :data_controls%>
+			</span>
+			<h2>
+				<%if @page_thumbnail%>
+					<span class="thumb_wrapper"><%=image_tag(@page_thumbnail)%></span>
+				<%end%>
+				<%=@page_name%>
+			</h2>
+</div>
+			<div id="details" class="row">
+				<%if content_for?(:detail_nav)%>
+					<div id="detail_nav_wrapper">
+						<div id="detail_nav">
+						<%= yield(:detail_nav)%>
+						</div>
 					</div>
-				</div>
-				<div id="detail_main_wrapper">
-					<div id="detail_main">
-					<%= content_for?(:detail) ? yield(:detail) : yield %></div>
-				</div>
-				<br style="clear:both;"/>
-			<%else%>
-				<%= content_for?(:detail) ? yield(:detail) : yield %>
-			<%end%>
+					<div id="detail_main_wrapper">
+						<div id="detail_main">
+						<%= content_for?(:detail) ? yield(:detail) : yield %></div>
+					</div>
+					<br style="clear:both;"/>
+				<%else%>
+					<%= content_for?(:detail) ? yield(:detail) : yield %>
+				<%end%>
+			</div>
 		</div>
-	</div>
+	
 <%end%>
 <%= render :template => 'layouts/spud/admin/application' %>
