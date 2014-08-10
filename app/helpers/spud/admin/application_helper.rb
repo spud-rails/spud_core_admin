@@ -38,7 +38,7 @@ module Spud::Admin::ApplicationHelper
   def error_messages_for(object)
     content = ""
     if object.errors.any?
-      content += "<div class='spud_admin_form_error_list'>"
+      content += "<div class=' alert alert-danger spud_admin_form_error_list'>"
       content += "<h4>#{pluralize(object.errors.count, "error")} prohibited you from saving:</h4>"
       content +="<ul>"
       object.errors.full_messages.each do |msg|

@@ -1,14 +1,17 @@
 
-
-  <p> Fill in all information pertaining to the current user you wish to modify. Fields marked with * are required and must be filled out.</p>
-
-  <%=form_for @user,:url => spud_admin_user_path(:id => @user.id),:html=>{:class=>"form-horizontal"} do |f|%>
-    <%=render :partial => "form",:locals => {:f => f}%>
-
-    <div class="form-actions form-actions-no-modal">
-      <%=f.submit "Save User", :class=>"btn btn-primary"%> or <%=link_to "cancel",request.referer,:class => "btn"%>
-    </div>
-
+<div class="modal-header">
+<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+<h4 class="modal-title">Edit User</h4>
+</div>
+<%=form_for @user,:url => spud_admin_user_path(:id => @user.id),:html=>{:class=>"form-horizontal"} do |f|%>
+      <div class="modal-body">
+	      <p> Fill in all information pertaining to the current user you wish to modify. Fields marked with * are required and must be filled out.</p>
+        	<%=render :partial => "form",:locals => {:f => f}%>
+      </div>
+      <div class="modal-footer">
+	      <%=f.submit "Save User", :class=>"btn btn-primary"%>
+        <button class="btn btn-default" data-dismiss="modal" aria-hidden="true">Cancel</button>
+      </div>
   <%end%>
 
-
+  

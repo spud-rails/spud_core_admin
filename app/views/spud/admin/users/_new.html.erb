@@ -1,14 +1,17 @@
-
-
-  <p> Fill in all information pertaining to the new user you wish to create. Fields marked with * are required and must be filled out.</p>
-
-  <%=form_for @user,:url => spud_admin_users_path(),:html=>{:class=>"form-horizontal"} do |f|%>
-    <%=render :partial => "form",:locals => {:f => f}%>
-
-    <div class="form-actions form-actions-no-modal">
-      <%=f.submit "Save User", :class=>"btn btn-primary"%> or <%=link_to "cancel",request.referer,:class => "btn"%>
+<div class="modal-header">
+	<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+	<h4 class="modal-title">New User</h4>
+</div>
+<%=form_for @user,:url => spud_admin_users_path(),:html=>{:class=>"form-horizontal"} do |f|%>
+	<div class="modal-body">
+		<p> Fill in all information pertaining to the new user you wish to create. Fields marked with * are required and must be filled out.</p>
+  
+	    <%=render :partial => "form",:locals => {:f => f}%>
     </div>
-
+    <div class="modal-footer">
+    	<%=f.submit "Save User", :class=>"btn btn-primary"%>
+        <button class="btn btn-default" data-dismiss="modal" aria-hidden="true">Cancel</button>
+    </div>
   <%end%>
 
 

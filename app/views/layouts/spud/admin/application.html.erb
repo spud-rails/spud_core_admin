@@ -43,7 +43,7 @@
 <% end %>
 <% if flash[:error]%>
 
-<div class="alert alert-error">
+<div class="alert alert-danger">
     <a class="close" data-dismiss="alert">×</a>
 	  <%= flash[:error] %>
 </div>
@@ -53,20 +53,24 @@
 
 
 
+<div class="modal fade" id="modal_window" tabindex="-1" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title"></h4>
+      </div>
+      <div class="modal-body">
+        
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-default" data-dismiss="modal" aria-hidden="true">Close</button>
+        <button class="btn btn-primary form-submit">Save changes</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
 
-<div id="modal_window" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-header">
-    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-    <h3 class="modal-title"></h3>
-  </div>
-  <div class="modal-body">
-
-  </div>
-  <div class="modal-footer modal-footer-default">
-    <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
-    <button class="btn btn-primary form-submit">Save changes</button>
-  </div>
-</div>
 
 </body>
 </html>
