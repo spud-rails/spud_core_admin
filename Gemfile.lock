@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    spud_core (1.0.3)
+    spud_core (1.0.4)
       actionpack-action_caching
       actionpack-page_caching
       authlogic (~> 3.4.0)
@@ -11,7 +11,7 @@ PATH
       codemirror-rails
       jquery-rails
       protected_attributes
-      rails (~> 4.0.0)
+      rails (>= 4.0.0)
       rails-observers
       retina_tag
       scrypt
