@@ -3,9 +3,6 @@ class Spud::ApplicationController < ActionController::Base
 	helper_method :current_user_session, :current_user
 	around_filter :set_time_zone
 
-  if Spud::Core.multisite_mode_enabled
-    before_filter :multisite_caching
-  end
   include Spud::ApplicationHelper
   before_filter :to
 
@@ -71,18 +68,4 @@ class Spud::ApplicationController < ActionController::Base
     ensure
       Time.zone = old_time_zone
     end
-
-    def multisite_caching
-      if Spud::Core.multisite_mode_enabled
-        @old_cache_directory = Rails.application.config.action_controller.page_cache_directory
-        if(@old_cache_directory.blank?)
-          @old_cache_directory = Rails.application.config.action_controller.page_cache_directory = File.join(Rails.root,'public')
-        end
-        site_config = Spud::Core.site_config_for_host request.host_with_port
-
-        self.class.page_cache_directory = File.join(@old_cache_directory.to_s,site_config[:short_name].to_s.downcase)
-        logger.debug "Cache directory set to: #{Rails.application.config.action_controller.page_cache_directory}"
-      end
-    end
-
 end
